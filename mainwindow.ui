@@ -1749,6 +1749,36 @@ color:black;</string>
         <string>Please enter relevant user details.</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="pbLoadUsers">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>60</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: #B4D6FF;
+border: 2.23px solid rgba(48, 111, 182, 0.88);
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;
+display: flex;
+align-items: center;
+text-align: center;</string>
+       </property>
+       <property name="text">
+        <string>Load From File</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>

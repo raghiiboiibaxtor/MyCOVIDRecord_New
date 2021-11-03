@@ -3,6 +3,7 @@
 //#include "ui_adminAddUser.h"
 //#include "adminadduser.h"
 #include "classcitizen.h"
+
 #include <QMainWindow>
 #include <QFile>
 #include <QTextStream>
@@ -13,6 +14,9 @@
 #include <QMessageBox>
 #include <QDir>
 
+// Main Window
+//*********************************************************
+
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -21,9 +25,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Manual Connection
     connect(ui->pbAddUser, &QPushButton::clicked, this, &MainWindow::mainAddNewUser);
     connect(ui->pbLogout, &QPushButton::clicked, this, &MainWindow::logout);
+
     //connect(ui->listAllUsersNew, &QListWidget::itemClicked, this, &MainWindow::mainAddNewUser);
-
-
     /*classCitizen* newCitizen = nullptr;
     if (newCitizen != nullptr)
     {
@@ -31,11 +34,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
          ui->listAllUsersNew->addItem(newCitizen->getName());
     }*/
 
-   /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord/files");
+   // Mac Create Directory
+   QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
        if(!pathDir.exists())
        {
-           QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord/files");
-       }*/
+           QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
+       }
 
 }
 
@@ -48,7 +52,7 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
 
 
 // Login Functions
-// ******************************************
+//*********************************************************
 
 // Logout Function
 void MainWindow::logout()
@@ -61,7 +65,7 @@ void MainWindow::logout()
 
 
 // Admin Functions
-// ******************************************
+//*********************************************************
 
 // Add New User Function (Admin)
 void MainWindow::mainAddNewUser()
@@ -88,7 +92,7 @@ void MainWindow::on_pbSave_clicked()
     {
         classCitizen *ptrNewCitizen = new classCitizen(addName, addPhone, addEmail, addDob, addNhi, addCvn);
         // *ptrNewCitizen = new classCitizen(addName, addPhone, addEmail, addDob, addNhi, addCvn);
-
+        userList.push_back(ptrNewCitizen);
         ui->listAllUsersNew->addItem(ptrNewCitizen->getName()); // Displays added user name to list widget on "all users page"
     }
     else
@@ -101,22 +105,25 @@ void MainWindow::on_pbSave_clicked()
     // Writing to file
 
     /// Windows File Path
-    QFile outputFile("Citizens.txt");
+    //QFile outputFile("Citizens.txt");
 
     /// Mac File Path
-    //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord/files/Citizens.txt");
-   // if(!mFile.open(QFile::WriteOnly | QFile::Text)){
+    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    QTextStream out(&outputFile);
 
-    outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
-    if(!outputFile.open(QFile::WriteOnly | QFile::Text))
+    outputFile.open(QIODevice::WriteOnly | QIODevice :: Append | QIODevice::Text);
+
+   // out << addName << ",";
+   /* if(!outputFile.open(QFile::WriteOnly | QIODevice::Text))
     {
         QMessageBox messageBox;
         messageBox.setText("File is not open");
         messageBox.exec();
+
     }
     else
-    {
-        QTextStream out(&outputFile);
+    {*/
+
         for (int i = 0; i < userList.size(); i++)
            {
             out << userList.at(i)->getName() << ", ";
@@ -126,11 +133,52 @@ void MainWindow::on_pbSave_clicked()
             out << userList.at(i)->getNHI() << ", ";
             out << userList.at(i)->getCVN();
            }
+        // Flushing file and then closing.
         out.flush();
         outputFile.close();
-        // Flushing file and then closing.
-    }
+
+  //  }
+
 }
+
+void MainWindow::on_pbLoadUsers_clicked()
+{
+    QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
+    QTextStream read(&inputFile);
+
+    /*for (int i = 0; i< userList.size(); i++)
+    {
+        delete userList.at(i);
+    }
+
+    userList.clear();
+    ui->listAllUsersNew->clear();*/
+
+   while(!inputFile.atEnd()) // Start while loop to read file and push info to vec
+   {
+       // Reading from file and seperating info at text.split()
+       QString text = inputFile.readLine();
+       QStringList info = text.split(",");
+
+       // Add read information to ui
+       ui->listAllUsersNew->addItem(info.at(0));
+
+       // Adding file information to vector
+       classCitizen* ptrNewCitizen = new classCitizen(info.at(0), info.at(1),info.at(2),info.at(3),info.at(4),info.at(5));
+       userList.push_back(ptrNewCitizen);
+   } // End while
+
+
+   // Flushing file and then closing.
+   read.flush();
+   inputFile.close();
+}
+
+
+
+// Stacked Widget Button Slots
+//*********************************************************
 
 /// Home Menu Buttons
 void MainWindow::on_pbHome_clicked()
@@ -153,7 +201,8 @@ void MainWindow::on_pbAddUser_clicked()
 
 
 // Destructor : End of Program.
-// ******************************************
+
+//*********************************************************
 
 MainWindow::~MainWindow()
 {
@@ -165,4 +214,7 @@ MainWindow::~MainWindow()
 
     delete ui;
 }
+
+
+
 
