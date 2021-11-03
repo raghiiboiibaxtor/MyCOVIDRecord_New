@@ -5,6 +5,7 @@
 #include <QListWidgetItem>
 #include <QVector>
 #include "classcitizen.h"
+#include "login.h"
 #include <QMainWindow>
 
 
@@ -21,6 +22,7 @@ private:
     //Login *login;
     QVector<classCitizen*> userList;
     classCitizen** ptrNewCitizen;
+    Login* login;
     void mainAddNewUser();
     void logout();
 
@@ -34,11 +36,12 @@ public:
 private slots:
     void on_pbAllUsers_clicked();
 
-    void on_pbAddUser_3_clicked();
+    void on_pbAddUser_clicked();
 
     void on_pbSave_clicked();
 
 
+    void on_pbHome_clicked();
 };
 #endif // MAINWINDOW_H
 
