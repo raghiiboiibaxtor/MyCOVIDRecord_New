@@ -30,9 +30,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
     connect(ui->pbEditUser, &QPushButton::clicked, this, &MainWindow::editUser);
     connect(ui->pbSaveEdit, &QPushButton::clicked, this, &MainWindow::saveEdit);
-
-
-
+    connect(ui->listAllUsersNew, &QListWidget::itemClicked, this, &MainWindow::selectUserDetails);
+    connect(ui->pbSearch, &QPushButton::clicked, this, &MainWindow::searchUser);
 
 
    // Mac Create Directory
@@ -132,7 +131,9 @@ void MainWindow::on_pbSave_clicked()
 
 }
 
+
 void MainWindow::loadUser()
+// Loading Users from Text File on All Users Pages
 {
     QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
     //QFile inputFile("Citizens.txt");
@@ -157,7 +158,6 @@ void MainWindow::loadUser()
        // Add read information to ui
        ui->listAllUsersNew->addItem(info.at(0));
 
-
        // Adding file information to vector
        classCitizen* temp = new classCitizen(info.at(0), info.at(1),info.at(2),info.at(3),info.at(4),info.at(5));
        userList.push_back(temp);
@@ -167,6 +167,59 @@ void MainWindow::loadUser()
    // Flushing file and then closing.
    read.flush();
    inputFile.close();
+}
+
+// Showing User's Data when selected from list widget
+void MainWindow::selectUserDetails()
+{
+    int index = ui->listAllUsersNew->currentRow();
+
+    if (index >= 0)
+    {
+        classCitizen *selectedUser = userList.at(index);
+        ui->showUserName->setText(selectedUser->getName());
+        ui->showUserPhone->setText(selectedUser->getContactNumber());
+        ui->showUserEmail->setText(selectedUser->getEmailAddress());
+        ui->showUserDOB->setText(selectedUser->getDateOfBirth());
+        ui->showUserNHI->setText(selectedUser->getNHI());
+        ui->showUserCV->setText(selectedUser->getCVN());
+        //ui->showUserGuardian->setText(selectedUser->getGuardian)
+        /// Still need to add guardian, notes, files in image paths
+    }
+}
+
+// Search for user in AllUsersList
+void MainWindow::searchUser()
+{
+    QString search = ui->labelSearchUser->text();
+
+    if(search !="")
+    {
+        // Loop to remove highlight on orginal search before highlighting next search
+        for (int i=0; i < ui->listAllUsersNew->count(); i++)
+        {
+            QListWidgetItem* user = ui->listAllUsersNew->item(i);
+            user->setBackground(Qt::transparent);
+        }
+
+        QList<QListWidgetItem*> list = ui->listAllUsersNew->findItems(search, Qt::MatchContains);
+
+        // Loop to highlight matching users
+        for (int i = 0; i <list.count(); i++)
+        {
+            QListWidgetItem* item = list.at(i);
+            item->setBackground(Qt::cyan);
+        }
+    }
+    else
+    {
+        // Loop to remove highlight
+        for (int i = 0; i < ui->listAllUsersNew->count(); i++)
+        {
+            QListWidgetItem* item = ui->listAllUsersNew->item(i);
+            item->setBackground(Qt::transparent);
+        }
+    }
 }
 
 

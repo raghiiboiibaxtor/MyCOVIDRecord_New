@@ -21,7 +21,8 @@ HEADERS += \
 
 FORMS += \
     login.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    usermainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -28,6 +28,9 @@ private:
     void loadUser();
     void editUser();
     void saveEdit();
+    void selectUserDetails();
+    void searchUser();
+
 
 public:
     MainWindow(QWidget *parent = nullptr);

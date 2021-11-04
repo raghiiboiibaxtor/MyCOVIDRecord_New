@@ -51,6 +51,5 @@ void Login::on_pbLogin_clicked()
     {
         ui->labelError->setText("Incorrect Name Entered");
     }
-
 }
 
