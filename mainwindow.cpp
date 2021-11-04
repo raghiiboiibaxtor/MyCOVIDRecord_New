@@ -23,21 +23,28 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
+
     // Manual Connection
     connect(ui->pbAddUser, &QPushButton::clicked, this, &MainWindow::mainAddNewUser);
     connect(ui->pbLogout, &QPushButton::clicked, this, &MainWindow::logout);
-   // connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
+    connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
+    connect(ui->pbEditUser, &QPushButton::clicked, this, &MainWindow::editUser);
+    connect(ui->pbSaveEdit, &QPushButton::clicked, this, &MainWindow::saveEdit);
+
+
+
+
 
    // Mac Create Directory
-   /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
+   QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
        if(!pathDir.exists())
        {
            QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
-       }*/
+       }
 
 }
 
-
+// Second constructor
 MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -85,7 +92,6 @@ void MainWindow::on_pbSave_clicked()
     if (addName.trimmed() != "")
     {
         classCitizen *ptrNewCitizen = new classCitizen(addName, addPhone, addEmail, addDob, addNhi, addCvn);
-        // *ptrNewCitizen = new classCitizen(addName, addPhone, addEmail, addDob, addNhi, addCvn);
         userList.push_back(ptrNewCitizen);
         ui->listAllUsersNew->addItem(ptrNewCitizen->getName()); // Displays added user name to list widget on "all users page"
     }
@@ -99,10 +105,10 @@ void MainWindow::on_pbSave_clicked()
     // Writing to file
 
     /// Windows File Path
-   QFile outputFile("Citizens.txt");
+   //QFile outputFile("Citizens.txt");
 
     /// Mac File Path
-    //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
     QTextStream out(&outputFile);
 
     outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
@@ -114,7 +120,7 @@ void MainWindow::on_pbSave_clicked()
             out << userList.at(i)->getEmailAddress() << ", ";
             out << userList.at(i)->getDateOfBirth() << ", ";
             out << userList.at(i)->getNHI() << ", ";
-            out << userList.at(i)->getAccessNumber()<< endl;
+            out << userList.at(i)->getAccessNumber()<< Qt::endl;
            }
         // Flushing file and then closing.
         out.flush();
@@ -126,10 +132,10 @@ void MainWindow::on_pbSave_clicked()
 
 }
 
-void MainWindow::on_pbLoadUsers_clicked()
+void MainWindow::loadUser()
 {
-    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-    QFile inputFile("Citizens.txt");
+    QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile inputFile("Citizens.txt");
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
     QTextStream read(&inputFile);
 
@@ -150,7 +156,7 @@ void MainWindow::on_pbLoadUsers_clicked()
 
        // Add read information to ui
        ui->listAllUsersNew->addItem(info.at(0));
-      // ui->listAllUsersNew->addItem(info.at(1));
+
 
        // Adding file information to vector
        classCitizen* temp = new classCitizen(info.at(0), info.at(1),info.at(2),info.at(3),info.at(4),info.at(5));
@@ -163,6 +169,82 @@ void MainWindow::on_pbLoadUsers_clicked()
    inputFile.close();
 }
 
+
+void MainWindow::editUser()
+{
+   int listNum = ui->listAllUsersNew->currentRow();
+
+   if (listNum != -1)
+   {
+       classCitizen* ptrNewCitizen = userList.at(listNum);
+
+           if (ptrNewCitizen != nullptr)
+          {
+               //ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
+
+               // Changing page
+               ui->stackedWidget->setCurrentIndex(2);
+             // ui->listAllUsersNew->clearSelection();
+
+               // Retrieving edited information
+               QString editName = ui->addUserName->text();
+               QString editPhone = ui->addUserPhone->text();
+               QString editEmail = ui->addUserEmail->text();
+               QString editDob = ui->addUserDOB->text();
+               QString editNhi = ui->addUserNHI->text();
+               QString editCvn = ui->addUserCVN->text();
+
+               ptrNewCitizen->setName(editName);
+               ptrNewCitizen->setContactNumber(editPhone);
+               ptrNewCitizen->setEmailAddress(editEmail);
+               ptrNewCitizen->setDateOfBirth(editDob);
+               ptrNewCitizen->setNHI(editNhi);
+               ptrNewCitizen->setCVN(editCvn);
+
+               //classCitizen *ptrNewCitizen = new classCitizen(editName, editPhone, editEmail, editDob, editNhi, editCvn);
+              // userList.append(ptrEditCitizen);
+              /* userList.clear();
+               ui->listAllUsersNew->clear();*/
+              // choice = listAllUsersNew.selectedItems();
+             // ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
+
+              // ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
+
+               //ui->listAllUsersNew->setText(ptrEditCitizen->getName());
+
+
+             /*for (int i = 0; i< userList.size(); i++)
+                {
+                    delete userList.at(i);
+                }
+               userList.clear();*/
+
+
+
+           }
+
+           else
+           {
+               QMessageBox messageBox;
+               messageBox.setText("ptrEditCitizen is pointing to nullptr");
+               messageBox.exec();
+           }
+   }
+
+   else
+   {
+       QMessageBox messageBox;
+       messageBox.setText("The listNum is != to current row");
+       messageBox.exec();
+   }
+
+}
+
+
+void MainWindow :: saveEdit()
+{
+
+}
 
 
 // Stacked Widget Button Slots

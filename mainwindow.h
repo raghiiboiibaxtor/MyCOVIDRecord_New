@@ -25,7 +25,9 @@ private:
     Login* login;
     void mainAddNewUser();
     void logout();
-
+    void loadUser();
+    void editUser();
+    void saveEdit();
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -38,7 +40,6 @@ private slots:
     void on_pbAddUser_clicked();
     void on_pbSave_clicked();
     void on_pbHome_clicked();
-    void on_pbLoadUsers_clicked();
 };
 #endif // MAINWINDOW_H
 

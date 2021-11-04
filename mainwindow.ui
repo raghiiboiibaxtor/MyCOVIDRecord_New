@@ -27,7 +27,7 @@
      <string notr="true">background-color: white;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="uiAdminHomePage">
      <widget class="QLabel" name="labelBackground">
@@ -527,7 +527,7 @@ color:black;</string>
       <widget class="QPushButton" name="pbEditUser">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>190</x>
          <y>140</y>
          <width>131</width>
          <height>31</height>
@@ -629,19 +629,25 @@ color:black;</string>
       <widget class="QPushButton" name="pbLoadUsers">
        <property name="geometry">
         <rect>
-         <x>650</x>
-         <y>50</y>
+         <x>30</x>
+         <y>140</y>
          <width>131</width>
-         <height>41</height>
+         <height>31</height>
         </rect>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="styleSheet">
-        <string notr="true">background: #B4D6FF;
-border: 2.23px solid rgba(48, 111, 182, 0.88);
-border-radius: 20px;
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 801px;
+
+background: rgba(252, 219, 100, 0.44);
+/*border: 2.3px solid #FFB61D;*/
+box-sizing: border-box;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 400;
@@ -656,6 +662,14 @@ text-align: center;</string>
         <string>Load From File</string>
        </property>
       </widget>
+      <zorder>pbLoadUsers</zorder>
+      <zorder>editSearchBar</zorder>
+      <zorder>pbSearch2</zorder>
+      <zorder>labelAllUserHeading</zorder>
+      <zorder>pbEditUser</zorder>
+      <zorder>listAllUsersNew</zorder>
+      <zorder>labelSubheading3</zorder>
+      <zorder>labelPrompt</zorder>
      </widget>
      <widget class="QLabel" name="labelBackground2">
       <property name="geometry">
@@ -898,7 +912,7 @@ border: 0px;</string>
        <widget class="QPushButton" name="pbSave">
         <property name="geometry">
          <rect>
-          <x>58</x>
+          <x>10</x>
           <y>448</y>
           <width>131</width>
           <height>41</height>
@@ -1301,6 +1315,36 @@ color: gray;</string>
          </property>
         </item>
        </widget>
+       <widget class="QPushButton" name="pbSaveEdit">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>448</y>
+          <width>91</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: #B4D6FF;
+border: 2.23px solid rgba(48, 111, 182, 0.88);
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;
+display: flex;
+align-items: center;
+text-align: center;</string>
+        </property>
+        <property name="text">
+         <string>Save Edit</string>
+        </property>
+       </widget>
        <zorder>labelDOB</zorder>
        <zorder>labelNHI</zorder>
        <zorder>labelCVN</zorder>
@@ -1319,6 +1363,7 @@ color: gray;</string>
        <zorder>pbSave</zorder>
        <zorder>labelVaccStatus</zorder>
        <zorder>comboBox</zorder>
+       <zorder>pbSaveEdit</zorder>
       </widget>
       <widget class="QFrame" name="RecordsFrame">
        <property name="geometry">
