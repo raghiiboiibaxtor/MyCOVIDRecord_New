@@ -28,20 +28,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->pbLogout, &QPushButton::clicked, this, &MainWindow::logout);
    // connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
 
-    //connect(ui->listAllUsersNew, &QListWidget::itemClicked, this, &MainWindow::mainAddNewUser);
-    /*classCitizen* newCitizen = nullptr;
-    if (newCitizen != nullptr)
-    {
-         userList.push_back(newCitizen);
-         ui->listAllUsersNew->addItem(newCitizen->getName());
-    }*/
-
    // Mac Create Directory
-   QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
+   /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
        if(!pathDir.exists())
        {
            QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
-       }
+       }*/
 
 }
 
@@ -107,24 +99,13 @@ void MainWindow::on_pbSave_clicked()
     // Writing to file
 
     /// Windows File Path
-    //QFile outputFile("Citizens.txt");
+   QFile outputFile("Citizens.txt");
 
     /// Mac File Path
-    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
     QTextStream out(&outputFile);
 
     outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
-
-   // out << addName << ",";
-   /* if(!outputFile.open(QFile::WriteOnly | QIODevice::Text))
-    {
-        QMessageBox messageBox;
-        messageBox.setText("File is not open");
-        messageBox.exec();
-
-    }
-    else
-    {*/
 
         for (int i = 0; i < userList.size(); i++)
            {
@@ -133,7 +114,7 @@ void MainWindow::on_pbSave_clicked()
             out << userList.at(i)->getEmailAddress() << ", ";
             out << userList.at(i)->getDateOfBirth() << ", ";
             out << userList.at(i)->getNHI() << ", ";
-            out << userList.at(i)->getAccessNumber()<< Qt::endl;
+            out << userList.at(i)->getAccessNumber()<< endl;
            }
         // Flushing file and then closing.
         out.flush();
@@ -147,18 +128,17 @@ void MainWindow::on_pbSave_clicked()
 
 void MainWindow::on_pbLoadUsers_clicked()
 {
-    QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    QFile inputFile("Citizens.txt");
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
     QTextStream read(&inputFile);
 
-   /* for (int i = 0; i< userList.size(); i++)
+   for (int i = 0; i< userList.size(); i++)
     {
         delete userList.at(i);
     }
-
     userList.clear();
-    ui->listAllUsersNew->clear();*/
-
+    ui->listAllUsersNew->clear();
 
 
    while(!read.atEnd()) // Start while loop to read file and push info to vec
@@ -166,8 +146,6 @@ void MainWindow::on_pbLoadUsers_clicked()
        // Reading from file and seperating info at text.split()
         QString text = read.readLine();
         QStringList info = text.split(",");
-
-
 
 
        // Add read information to ui
