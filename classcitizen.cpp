@@ -1,5 +1,5 @@
 #include "classcitizen.h"
-
+//
 classCitizen::classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString accessNumber)//cvn)
 {
     this->name = name;

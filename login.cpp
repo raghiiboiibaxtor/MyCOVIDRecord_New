@@ -1,7 +1,9 @@
+//
+
 #include "login.h"
 #include "ui_login.h"
 #include "mainwindow.h"
-#include "usermainwindow.h"
+//#include "usermainwindow.h"
 
 #include <QListWidgetItem>
 #include <QVector>
@@ -31,17 +33,17 @@ void Login::on_pbLogin_clicked()
     QString accessNumber = ui->editAccessNumber->text();
     //int index;
 
-    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+   /*QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
     QFile inputFile("Citizens.txt");
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
-    QTextStream read(&inputFile);
+   QTextStream read(&inputFile);
 
     // Check if login input matches, if not, an error message will be displayed
     // If correct, directed to Home Page
     while (!read.atEnd())
-    {
-        // QString text = read.readLine();
-        // userList.push_back(temp);
+   {
+        QString text = read.readLine();
+        userList.push_back(temp);*/
 
         if (email == "1") // Admin Login Check Loop
         {
@@ -89,11 +91,11 @@ void Login::on_pbLogin_clicked()
         else
         {
             ui->labelError->setText("Incorrect Name Entered");
-        }*/
+        }
     }
 
-    // Flushing file and then closing.
-    read.flush();
-    inputFile.close();
+    //Flushing file and then closing.
+  read.flush();
+  inputFile.close();*/
 }
 

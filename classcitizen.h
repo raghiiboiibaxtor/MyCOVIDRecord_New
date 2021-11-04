@@ -1,7 +1,7 @@
 #ifndef CLASSCITIZEN_H
 #define CLASSCITIZEN_H
 
-
+//
 #include <QString>
 
 class classCitizen

@@ -1,3 +1,4 @@
+//
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 //#include "ui_adminAddUser.h"
@@ -34,12 +35,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->pbSearch, &QPushButton::clicked, this, &MainWindow::searchUser);
 
 
-   // Mac Create Directory
-   /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
+   //Mac Create Directory
+   QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
        if(!pathDir.exists())
        {
            QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
-       }*/
+       }
 
 }
 
@@ -105,10 +106,10 @@ void MainWindow::on_pbSave_clicked()
     // Writing to file
 
     /// Windows File Path
-    QFile outputFile("Citizens.txt");
-
+    //QFile outputFile("Citizens.txt");
     /// Mac File Path
-    //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+
     QTextStream out(&outputFile);
 
     outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
@@ -142,8 +143,8 @@ void MainWindow::on_pbSave_clicked()
 void MainWindow::loadUser()
 // Loading Users from Text File on All Users Pages
 {
-    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-    QFile inputFile("Citizens.txt");
+    QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile inputFile("Citizens.txt");
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
     QTextStream read(&inputFile);
 
@@ -247,7 +248,7 @@ void MainWindow::editUser()
              // ui->listAllUsersNew->clearSelection();
 
                // Retrieving edited information
-               QString editName = ui->addUserName->text();
+           /*    QString editName = ui->addUserName->text();
                QString editPhone = ui->addUserPhone->text();
                QString editEmail = ui->addUserEmail->text();
                QString editDob = ui->addUserDOB->text();
@@ -259,7 +260,7 @@ void MainWindow::editUser()
                ptrNewCitizen->setEmailAddress(editEmail);
                ptrNewCitizen->setDateOfBirth(editDob);
                ptrNewCitizen->setNHI(editNhi);
-               ptrNewCitizen->setCVN(editCvn);
+               ptrNewCitizen->setCVN(editCvn); */
 
                //classCitizen *ptrNewCitizen = new classCitizen(editName, editPhone, editEmail, editDob, editNhi, editCvn);
               // userList.append(ptrEditCitizen);

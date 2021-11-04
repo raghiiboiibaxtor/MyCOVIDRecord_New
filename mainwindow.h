@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+//
 #include <QMainWindow>
 #include <QListWidgetItem>
 #include <QVector>
@@ -18,7 +18,7 @@ class MainWindow : public QMainWindow
 
 private:
     Ui::MainWindow *ui;
-    //Login *login;
+   // Login *login;
     QVector<classCitizen*> userList;
     classCitizen** ptrNewCitizen;
     void mainAddNewUser();

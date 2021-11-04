@@ -12,19 +12,16 @@ SOURCES += \
     classcitizen.cpp \
     login.cpp \
     main.cpp \
-    mainwindow.cpp \
-    usermainwindow.cpp
+    mainwindow.cpp
 
 HEADERS += \
     classcitizen.h \
     login.h \
-    mainwindow.h \
-    usermainwindow.h
+    mainwindow.h
 
 FORMS += \
     login.ui \
-    mainwindow.ui \
-    usermainwindow.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

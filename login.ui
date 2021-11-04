@@ -66,15 +66,9 @@ text-align: center;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-family: Quicksand;
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
+     <string notr="true">font-size: 18px;
 line-height: 23px;
-color: #2B2D2F;
-display: flex;
-align-items: center;
-text-align: center;</string>
+color: #2B2D2F;</string>
     </property>
     <property name="text">
      <string>Access Number:</string>
@@ -99,15 +93,10 @@ text-align: center;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-family: Quicksand;
-font-style: normal;
-font-weight: 400;
-font-size: 23px;
+     <string notr="true">font-size: 23px;
 line-height: 23px;
 color: #2B2D2F;
-display: flex;
-align-items: center;
-text-align: center;colour: black;</string>
+</string>
     </property>
     <property name="text">
      <string> Login / Sign-Up</string>
@@ -181,15 +170,9 @@ text-align: center;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-family: Quicksand;
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
+     <string notr="true">font-size: 18px;
 line-height: 23px;
-color: #2B2D2F;
-display: flex;
-align-items: center;
-text-align: center;colour: black;</string>
+color: #2B2D2F;</string>
     </property>
     <property name="text">
      <string>NHI Number:</string>
@@ -214,15 +197,9 @@ text-align: center;colour: black;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-family: Quicksand;
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
+     <string notr="true">font-size: 18px;
 line-height: 23px;
-color: #2B2D2F;
-display: flex;
-align-items: center;
-text-align: center;colour: black;</string>
+color: #2B2D2F;</string>
     </property>
     <property name="text">
      <string>Email:</string>
@@ -297,30 +274,16 @@ color: red;</string>
     <property name="font">
      <font>
       <family>Quicksand</family>
-      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 486px;
-background:#FAFCFF;
+     <string notr="true">background:#FAFCFF;
 border: 2.3px solid #979797;
-box-sizing: border-box;
 border-radius: 20px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 20px;
-line-height: 33px;
-/* or 143% */
-
-display: flex;
-align-items: center;
+font-size: 16;
 color: gray;</string>
     </property>
    </widget>
@@ -334,23 +297,10 @@ color: gray;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 486px;
-background:#FAFCFF;
+     <string notr="true">background:#FAFCFF;
 border: 2.3px solid #979797;
-box-sizing: border-box;
 border-radius: 20px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 20px;
-line-height: 33px;
-/* or 143% */
-
-display: flex;
-align-items: center;
+font-size: 16;
 color: gray;</string>
     </property>
    </widget>
@@ -364,23 +314,10 @@ color: gray;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 486px;
-background:#FAFCFF;
+     <string notr="true">background:#FAFCFF;
 border: 2.3px solid #979797;
-box-sizing: border-box;
 border-radius: 20px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 20px;
-line-height: 33px;
-/* or 143% */
-
-display: flex;
-align-items: center;
+font-size: 16;
 color: gray;</string>
     </property>
    </widget>
@@ -397,24 +334,12 @@ color: gray;</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 801px;
-
-background: rgba(252, 219, 100, 0.55);
-border: 2.3px solid #FFB61D;
-box-sizing: border-box;
+     <string notr="true">background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
 border-radius: 20px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 23px;
+font-size: 18px;
 line-height: 23px;
-color: #2B2D2F;
-display: flex;
-align-items: center;
-text-align: center;</string>
+color: #2B2D2F;</string>
     </property>
     <property name="text">
      <string>Login</string>
