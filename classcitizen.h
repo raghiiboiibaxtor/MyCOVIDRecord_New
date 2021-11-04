@@ -13,16 +13,16 @@ private:
     QString emailAddress;
     QString dateOfBirth;
     QString nhi;
-    QString cvn;
+   // QString cvn;
     QString accessNumber; // Either default Admin# or User Auth#
-    bool result;
+   /* bool result;
     QString additionalNotes;
     QString vaccineName;
     QString batchNumber;
     QString dateGiven;
     QString qrCode;
     QString certificate;
-    QString testResult;
+    QString testResult;*/
 
 public:
 public:
@@ -40,16 +40,16 @@ public:
     QString getName() const;
     QString getContactNumber() const;
     QString getDateOfBirth() const;
-    QString getAdditionalNotes() const;
+   // QString getAdditionalNotes() const;
 
     // Vaccine & Covid Info Getters
-    QString getVaccineName() const;
+ /*   QString getVaccineName() const;
     QString getBatchNumber() const;
     QString getDateGiven() const;
     QString getCVN() const;
     QString getQRCode() const;
     QString getCertificate() const;
-    QString getTestResult() const;
+    QString getTestResult() const;*/
 
     // Login Setters
     void setEmailAddress(QString emailAddress);
@@ -62,17 +62,17 @@ public:
     void setName(QString name);
     void setContactNumber(QString contactNumber );
     void setDateOfBirth(QString dateOfBirth);
-    void setAdditionalNotes(QString additionalNotes);
+  //  void setAdditionalNotes(QString additionalNotes);
 
     // Vaccine & Covid Info Setters
-    void setVaccineName(QString vaccineName);
+  /*  void setVaccineName(QString vaccineName);
     void setBatchNumber(QString batchNumber);
     void setDateGiven(QString dateGiven);
 
     void setQRCode(QString qrCode);
     void setCVN(QString cvn);
     void setCertificate(QString location);
-    void setTestResult(QString testResult);
+    void setTestResult(QString testResult);*/
 };
 
 #endif // CLASSCITIZEN_H

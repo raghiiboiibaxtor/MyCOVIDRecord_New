@@ -35,11 +35,8 @@ public:
 
 private slots:
     void on_pbAllUsers_clicked();
-
     void on_pbAddUser_clicked();
-
     void on_pbSave_clicked();
-
     void on_pbHome_clicked();
     void on_pbLoadUsers_clicked();
 };

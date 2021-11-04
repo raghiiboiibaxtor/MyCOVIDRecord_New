@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include <QDir>
 
+
 // Main Window
 //*********************************************************
 
@@ -25,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Manual Connection
     connect(ui->pbAddUser, &QPushButton::clicked, this, &MainWindow::mainAddNewUser);
     connect(ui->pbLogout, &QPushButton::clicked, this, &MainWindow::logout);
+   // connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
 
     //connect(ui->listAllUsersNew, &QListWidget::itemClicked, this, &MainWindow::mainAddNewUser);
     /*classCitizen* newCitizen = nullptr;
@@ -111,7 +113,7 @@ void MainWindow::on_pbSave_clicked()
     QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
     QTextStream out(&outputFile);
 
-    outputFile.open(QIODevice::WriteOnly | QIODevice :: Append | QIODevice::Text);
+    outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
 
    // out << addName << ",";
    /* if(!outputFile.open(QFile::WriteOnly | QIODevice::Text))
@@ -131,11 +133,13 @@ void MainWindow::on_pbSave_clicked()
             out << userList.at(i)->getEmailAddress() << ", ";
             out << userList.at(i)->getDateOfBirth() << ", ";
             out << userList.at(i)->getNHI() << ", ";
-            out << userList.at(i)->getCVN();
+            out << userList.at(i)->getAccessNumber()<< Qt::endl;
            }
         // Flushing file and then closing.
         out.flush();
         outputFile.close();
+
+         ui->addUserName->clear();
 
   //  }
 
@@ -147,7 +151,7 @@ void MainWindow::on_pbLoadUsers_clicked()
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
     QTextStream read(&inputFile);
 
-    /*for (int i = 0; i< userList.size(); i++)
+   /* for (int i = 0; i< userList.size(); i++)
     {
         delete userList.at(i);
     }
@@ -155,18 +159,24 @@ void MainWindow::on_pbLoadUsers_clicked()
     userList.clear();
     ui->listAllUsersNew->clear();*/
 
-   while(!inputFile.atEnd()) // Start while loop to read file and push info to vec
+
+
+   while(!read.atEnd()) // Start while loop to read file and push info to vec
    {
        // Reading from file and seperating info at text.split()
-       QString text = inputFile.readLine();
-       QStringList info = text.split(",");
+        QString text = read.readLine();
+        QStringList info = text.split(",");
+
+
+
 
        // Add read information to ui
        ui->listAllUsersNew->addItem(info.at(0));
+      // ui->listAllUsersNew->addItem(info.at(1));
 
        // Adding file information to vector
-       classCitizen* ptrNewCitizen = new classCitizen(info.at(0), info.at(1),info.at(2),info.at(3),info.at(4),info.at(5));
-       userList.push_back(ptrNewCitizen);
+       classCitizen* temp = new classCitizen(info.at(0), info.at(1),info.at(2),info.at(3),info.at(4),info.at(5));
+       userList.push_back(temp);
    } // End while
 
 

@@ -1,13 +1,14 @@
 #include "classcitizen.h"
 
-classCitizen::classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString cvn)
+classCitizen::classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString accessNumber)//cvn)
 {
     this->name = name;
     this->contactNumber = contactNumber;
     this->emailAddress = emailAddress;
     this->dateOfBirth = dateOfBirth;
     this->nhi = nhi;
-    this->cvn = cvn;
+   // this->cvn = cvn;
+    this->accessNumber = accessNumber;
 }
 
 
@@ -34,10 +35,10 @@ void classCitizen::setLogin (QString emailAddress, QString nhi, QString accessNu
     this->accessNumber = accessNumber;
 }
 
-void classCitizen::setResult(bool result)
+/*void classCitizen::setResult(bool result)
 {
     this->result = result;
-}
+}*/
 
 // Personal Info Setters
 void classCitizen::setName(QString name)
@@ -56,7 +57,7 @@ void classCitizen::setContactNumber(QString contactNumber)
     this->contactNumber = contactNumber;
 }
 
-void classCitizen::setAdditionalNotes(QString additionalNotes)
+/*void classCitizen::setAdditionalNotes(QString additionalNotes)
 {
     this->additionalNotes = additionalNotes;
 }
@@ -95,7 +96,7 @@ void classCitizen::setCertificate(QString certificate)
 void classCitizen::setTestResult(QString testResult)
 {
     this->testResult = testResult;
-}
+}*/
 
 // Login Getters
 QString classCitizen::getEmailAddress() const
@@ -139,7 +140,7 @@ QString classCitizen::getDateOfBirth() const
     return dateOfBirth;
 }
 
-QString classCitizen::getAdditionalNotes() const
+/*QString classCitizen::getAdditionalNotes() const
 {
     return additionalNotes;
 }
@@ -179,4 +180,4 @@ QString classCitizen::getCertificate() const
 QString classCitizen::getTestResult() const
 {
     return testResult;
-}
+}*/
