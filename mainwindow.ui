@@ -443,9 +443,9 @@ background-color: light gray;</string>
        <property name="geometry">
         <rect>
          <x>640</x>
-         <y>140</y>
+         <y>120</y>
          <width>131</width>
-         <height>41</height>
+         <height>31</height>
         </rect>
        </property>
        <property name="cursor">
@@ -459,7 +459,7 @@ top: 801px;
 
 background: rgba(252, 219, 100, 0.44);
 box-sizing: border-box;
-border-radius: 20px;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 400;
@@ -498,8 +498,8 @@ color:black;</string>
       <widget class="QPushButton" name="pbEditUser">
        <property name="geometry">
         <rect>
-         <x>640</x>
-         <y>620</y>
+         <x>637</x>
+         <y>50</y>
          <width>131</width>
          <height>31</height>
         </rect>
@@ -535,9 +535,9 @@ text-align: center;</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>220</y>
-         <width>281</width>
-         <height>391</height>
+         <y>180</y>
+         <width>311</width>
+         <height>471</height>
         </rect>
        </property>
        <property name="font">
@@ -557,7 +557,7 @@ top: 486px;
 background:#FAFCFF;
 border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 20px;
+border-radius: 30px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
@@ -576,7 +576,7 @@ color: gray;</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>88</y>
+         <y>75</y>
          <width>421</width>
          <height>41</height>
         </rect>
@@ -585,7 +585,7 @@ color: gray;</string>
         <string notr="true">font-family: Monterrat;
 font-style: normal;
 font-weight: 400;
-font-size: 23px;
+font-size: 18px;
 line-height: 69px;
 color:black;</string>
        </property>
@@ -596,14 +596,20 @@ color:black;</string>
       <widget class="QLabel" name="labelPrompt">
        <property name="geometry">
         <rect>
-         <x>40</x>
-         <y>180</y>
-         <width>381</width>
+         <x>30</x>
+         <y>150</y>
+         <width>391</width>
          <height>20</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string notr="true">color: gray;</string>
+        <string notr="true">color: gray;
+</string>
        </property>
        <property name="text">
         <string>Type a users name,  NHI number or phone number to search.</string>
@@ -612,8 +618,8 @@ color:black;</string>
       <widget class="QPushButton" name="pbLoadUsers">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>620</y>
+         <x>477</x>
+         <y>50</y>
          <width>131</width>
          <height>31</height>
         </rect>
@@ -645,45 +651,13 @@ text-align: center;</string>
         <string>Load From File</string>
        </property>
       </widget>
-      <widget class="QLabel" name="labelNHI2">
+      <widget class="QLineEdit" name="labelSearchUser">
        <property name="geometry">
         <rect>
-         <x>361</x>
-         <y>330</y>
-         <width>191</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-       </property>
-       <property name="text">
-        <string>National Health Index:</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="margin">
-        <number>13</number>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="showUserEmail">
-       <property name="geometry">
-        <rect>
-         <x>542</x>
-         <y>280</y>
-         <width>231</width>
-         <height>24</height>
+         <x>30</x>
+         <y>120</y>
+         <width>591</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -694,11 +668,11 @@ top: 486px;
 background:#FAFCFF;
 border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 10px;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
-font-size: 12px;
+font-size: 18px;
 line-height: 33px;
 /* or 143% */
 display: flex;
@@ -709,10 +683,10 @@ color: gray;</string>
       <widget class="QLineEdit" name="showUserName">
        <property name="geometry">
         <rect>
-         <x>542</x>
-         <y>220</y>
-         <width>231</width>
-         <height>24</height>
+         <x>370</x>
+         <y>235</y>
+         <width>391</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -723,7 +697,7 @@ top: 486px;
 background:#FAFCFF;
 border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 10px;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
@@ -733,141 +707,15 @@ line-height: 33px;
 display: flex;
 align-items: center;
 color: gray;</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="showUserDOB">
-       <property name="geometry">
-        <rect>
-         <x>542</x>
-         <y>310</y>
-         <width>231</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 486px;
-background:#FAFCFF;
-border: 2.3px solid #979797;
-box-sizing: border-box;
-border-radius: 10px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 33px;
-/* or 143% */
-display: flex;
-align-items: center;
-color: gray;</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labelVaccStatus2">
-       <property name="geometry">
-        <rect>
-         <x>362</x>
-         <y>420</y>
-         <width>161</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-       </property>
-       <property name="text">
-        <string>Vaccination Status:</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="margin">
-        <number>13</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labelFullName2">
-       <property name="geometry">
-        <rect>
-         <x>362</x>
-         <y>210</y>
-         <width>101</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;
-border-radius: 20px;</string>
-       </property>
-       <property name="text">
-        <string>Full Name:</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="margin">
-        <number>13</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labelDOB2">
-       <property name="geometry">
-        <rect>
-         <x>361</x>
-         <y>300</y>
-         <width>141</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-       </property>
-       <property name="text">
-        <string>Date of Birth:</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="margin">
-        <number>13</number>
        </property>
       </widget>
       <widget class="QLineEdit" name="showUserGuardian">
        <property name="geometry">
         <rect>
-         <x>542</x>
-         <y>400</y>
-         <width>231</width>
-         <height>24</height>
+         <x>370</x>
+         <y>460</y>
+         <width>391</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -878,7 +726,7 @@ top: 486px;
 background:#FAFCFF;
 border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 10px;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
@@ -888,169 +736,15 @@ line-height: 33px;
 display: flex;
 align-items: center;
 color: gray;</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="showUserPhone">
-       <property name="geometry">
-        <rect>
-         <x>542</x>
-         <y>250</y>
-         <width>231</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 486px;
-background:#FAFCFF;
-border: 2.3px solid #979797;
-box-sizing: border-box;
-border-radius: 10px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 33px;
-/* or 143% */
-display: flex;
-align-items: center;
-color: gray;</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labelEmail2">
-       <property name="geometry">
-        <rect>
-         <x>362</x>
-         <y>270</y>
-         <width>131</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-       </property>
-       <property name="text">
-        <string>Email Address:</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="margin">
-        <number>13</number>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="showUserCV">
-       <property name="geometry">
-        <rect>
-         <x>542</x>
-         <y>370</y>
-         <width>231</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 486px;
-background:#FAFCFF;
-border: 2.3px solid #979797;
-box-sizing: border-box;
-border-radius: 10px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 33px;
-/* or 143% */
-display: flex;
-align-items: center;
-color: gray;</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labelCVN2">
-       <property name="geometry">
-        <rect>
-         <x>362</x>
-         <y>360</y>
-         <width>61</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-       </property>
-       <property name="text">
-        <string>CVN:</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="margin">
-        <number>13</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labelPhoneNumber2">
-       <property name="geometry">
-        <rect>
-         <x>360</x>
-         <y>240</y>
-         <width>141</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-       </property>
-       <property name="text">
-        <string>Phone Number:</string>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="margin">
-        <number>13</number>
        </property>
       </widget>
       <widget class="QComboBox" name="showVaccStatus">
        <property name="geometry">
         <rect>
-         <x>542</x>
-         <y>430</y>
-         <width>231</width>
-         <height>21</height>
+         <x>370</x>
+         <y>519</y>
+         <width>391</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -1061,7 +755,7 @@ top: 486px;
 background:#FAFCFF;
 border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 10px;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
@@ -1088,13 +782,153 @@ color: gray;</string>
         </property>
        </item>
       </widget>
+      <widget class="QLabel" name="labelVaccStatus_2">
+       <property name="geometry">
+        <rect>
+         <x>349</x>
+         <y>485</y>
+         <width>161</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+       </property>
+       <property name="text">
+        <string>Vaccination Status:</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>13</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelDOB_2">
+       <property name="geometry">
+        <rect>
+         <x>361</x>
+         <y>262</y>
+         <width>121</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+       </property>
+       <property name="text">
+        <string>Date of Birth:</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="margin">
+        <number>13</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelFullName_2">
+       <property name="geometry">
+        <rect>
+         <x>348</x>
+         <y>204</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+       </property>
+       <property name="text">
+        <string>Full Name:</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>13</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelPhoneNumber_2">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>261</y>
+         <width>141</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+       </property>
+       <property name="text">
+        <string>Phone Number:</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>13</number>
+       </property>
+      </widget>
       <widget class="QLineEdit" name="showUserNHI">
        <property name="geometry">
         <rect>
-         <x>542</x>
-         <y>340</y>
-         <width>231</width>
-         <height>24</height>
+         <x>370</x>
+         <y>403</y>
+         <width>191</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -1105,7 +939,7 @@ top: 486px;
 background:#FAFCFF;
 border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 10px;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
@@ -1117,11 +951,46 @@ align-items: center;
 color: gray;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="labelGuardian2">
+      <widget class="QLabel" name="labelNHI_2">
        <property name="geometry">
         <rect>
          <x>362</x>
-         <y>390</y>
+         <y>371</y>
+         <width>181</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+       </property>
+       <property name="text">
+        <string>National Health Index:</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="margin">
+        <number>13</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelGuardian_2">
+       <property name="geometry">
+        <rect>
+         <x>362</x>
+         <y>428</y>
          <width>171</width>
          <height>41</height>
         </rect>
@@ -1134,10 +1003,77 @@ font-size: 12pt;
 line-height: 23px;
 color: #2B2D2F;
 border-color: white;
-border: 0px;</string>
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
        </property>
        <property name="text">
         <string>Guardian Full Name:</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="margin">
+        <number>13</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="showUserPhone">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>292</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelEmail_2">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>316</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+       </property>
+       <property name="text">
+        <string>Email Address:</string>
        </property>
        <property name="scaledContents">
         <bool>false</bool>
@@ -1152,10 +1088,10 @@ border: 0px;</string>
       <widget class="QLineEdit" name="showUserNotes">
        <property name="geometry">
         <rect>
-         <x>462</x>
-         <y>460</y>
-         <width>311</width>
-         <height>24</height>
+         <x>370</x>
+         <y>576</y>
+         <width>391</width>
+         <height>71</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -1166,7 +1102,100 @@ top: 486px;
 background:#FAFCFF;
 border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 10px;
+border-radius: 35px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="showUserDOB">
+       <property name="geometry">
+        <rect>
+         <x>371</x>
+         <y>292</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelCVN_2">
+       <property name="geometry">
+        <rect>
+         <x>565</x>
+         <y>373</y>
+         <width>61</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+       </property>
+       <property name="text">
+        <string>CVN:</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="margin">
+        <number>13</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="showUserEmail">
+       <property name="geometry">
+        <rect>
+         <x>369</x>
+         <y>346</y>
+         <width>391</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
@@ -1181,9 +1210,9 @@ color: gray;</string>
       <widget class="QLabel" name="labelNotes">
        <property name="geometry">
         <rect>
-         <x>362</x>
-         <y>450</y>
-         <width>71</width>
+         <x>361</x>
+         <y>545</y>
+         <width>61</width>
          <height>41</height>
         </rect>
        </property>
@@ -1195,7 +1224,10 @@ font-size: 12pt;
 line-height: 23px;
 color: #2B2D2F;
 border-color: white;
-border: 0px;</string>
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
        </property>
        <property name="text">
         <string>Notes:</string>
@@ -1210,13 +1242,13 @@ border: 0px;</string>
         <number>13</number>
        </property>
       </widget>
-      <widget class="QLineEdit" name="labelSearchUser">
+      <widget class="QLineEdit" name="showUserCV">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>140</y>
-         <width>571</width>
-         <height>41</height>
+         <x>570</x>
+         <y>403</y>
+         <width>191</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -1227,11 +1259,11 @@ top: 486px;
 background:#FAFCFF;
 border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 20px;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
-font-size: 18px;
+font-size: 12px;
 line-height: 33px;
 /* or 143% */
 display: flex;
@@ -1239,25 +1271,31 @@ align-items: center;
 color: gray;</string>
        </property>
       </widget>
-      <zorder>pbSearch</zorder>
-      <zorder>labelNHI2</zorder>
-      <zorder>showUserEmail</zorder>
-      <zorder>showUserName</zorder>
+      <widget class="QLabel" name="labelAdminUserProfileHeading">
+       <property name="geometry">
+        <rect>
+         <x>370</x>
+         <y>170</y>
+         <width>241</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Monterrat;
+font-style: normal;
+font-weight: 400;
+font-size: 23px;
+line-height: 69px;
+color:black;</string>
+       </property>
+       <property name="text">
+        <string>User Profile</string>
+       </property>
+      </widget>
       <zorder>showUserDOB</zorder>
-      <zorder>labelVaccStatus2</zorder>
-      <zorder>labelFullName2</zorder>
-      <zorder>labelDOB2</zorder>
-      <zorder>showUserGuardian</zorder>
-      <zorder>showUserPhone</zorder>
-      <zorder>labelEmail2</zorder>
-      <zorder>showUserCV</zorder>
-      <zorder>labelCVN2</zorder>
-      <zorder>labelPhoneNumber2</zorder>
-      <zorder>showVaccStatus</zorder>
-      <zorder>showUserNHI</zorder>
-      <zorder>labelGuardian2</zorder>
-      <zorder>showUserNotes</zorder>
-      <zorder>labelNotes</zorder>
+      <zorder>labelDOB_2</zorder>
+      <zorder>showUserName</zorder>
+      <zorder>pbSearch</zorder>
       <zorder>pbLoadUsers</zorder>
       <zorder>labelAllUserHeading</zorder>
       <zorder>pbEditUser</zorder>
@@ -1265,6 +1303,22 @@ color: gray;</string>
       <zorder>labelSubheading3</zorder>
       <zorder>labelPrompt</zorder>
       <zorder>labelSearchUser</zorder>
+      <zorder>showVaccStatus</zorder>
+      <zorder>labelVaccStatus_2</zorder>
+      <zorder>labelFullName_2</zorder>
+      <zorder>labelPhoneNumber_2</zorder>
+      <zorder>labelNHI_2</zorder>
+      <zorder>labelGuardian_2</zorder>
+      <zorder>showUserPhone</zorder>
+      <zorder>labelEmail_2</zorder>
+      <zorder>showUserNotes</zorder>
+      <zorder>labelCVN_2</zorder>
+      <zorder>showUserEmail</zorder>
+      <zorder>labelNotes</zorder>
+      <zorder>showUserCV</zorder>
+      <zorder>labelAdminUserProfileHeading</zorder>
+      <zorder>showUserNHI</zorder>
+      <zorder>showUserGuardian</zorder>
      </widget>
      <widget class="QLabel" name="labelBackground2">
       <property name="geometry">
@@ -1508,18 +1562,24 @@ border: 0px;</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>448</y>
-          <width>131</width>
-          <height>41</height>
+          <y>458</y>
+          <width>91</width>
+          <height>31</height>
          </rect>
         </property>
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">background: #B4D6FF;
-border: 2.23px solid rgba(48, 111, 182, 0.88);
-border-radius: 20px;
+         <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 801px;
+
+background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
+box-sizing: border-box;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 400;
@@ -1914,18 +1974,24 @@ color: gray;</string>
         <property name="geometry">
          <rect>
           <x>150</x>
-          <y>448</y>
+          <y>458</y>
           <width>91</width>
-          <height>41</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">background: #B4D6FF;
-border: 2.23px solid rgba(48, 111, 182, 0.88);
-border-radius: 20px;
+         <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 801px;
+
+background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
+box-sizing: border-box;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 400;
@@ -2003,20 +2069,19 @@ color: gray;</string>
           <x>25</x>
           <y>170</y>
           <width>431</width>
-          <height>51</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 14pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(84, 219, 97, 0.08);
-border: 2.23px solid #81C79F;
-box-sizing: border-box;
-border-radius: 25px;</string>
+         <string notr="true">background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
         </property>
         <property name="text">
          <string>Add Vaccine Record</string>
@@ -2110,20 +2175,19 @@ border: 0px;</string>
           <x>25</x>
           <y>370</y>
           <width>431</width>
-          <height>51</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 14pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(84, 219, 97, 0.08);
-border: 2.23px solid #81C79F;
-box-sizing: border-box;
-border-radius: 25px;</string>
+         <string notr="true">background: #B4D6FF;
+border: 2.23px solid #B4D6FF;
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
         </property>
         <property name="text">
          <string>Add Test Results</string>
@@ -2181,17 +2245,14 @@ color: gray;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background: #B4D6FF;
-border: 2.23px solid rgba(48, 111, 182, 0.88);
+border: 2.23px solid #B4D6FF;
 border-radius: 20px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 23px;
-color: #2B2D2F;
-display: flex;
-align-items: center;
-text-align: center;</string>
+color: #2B2D2F;</string>
         </property>
         <property name="text">
          <string>Add Notes</string>
@@ -2203,20 +2264,19 @@ text-align: center;</string>
           <x>23</x>
           <y>267</y>
           <width>431</width>
-          <height>51</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 14pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(84, 219, 97, 0.08);
-border: 2.23px solid #81C79F;
-box-sizing: border-box;
-border-radius: 25px;</string>
+         <string notr="true">background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
         </property>
         <property name="text">
          <string>Add QR Code</string>
@@ -2266,8 +2326,8 @@ border: 0px;</string>
        <widget class="QLabel" name="labelRecordAttach">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>180</y>
+          <x>32</x>
+          <y>174</y>
           <width>31</width>
           <height>31</height>
          </rect>
@@ -2300,8 +2360,8 @@ border-radius: 15px;</string>
        <widget class="QLabel" name="labelTestAttach">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>380</y>
+          <x>32</x>
+          <y>375</y>
           <width>31</width>
           <height>31</height>
          </rect>
@@ -2334,8 +2394,8 @@ border-radius: 15px;</string>
        <widget class="QLabel" name="labelQRAttach">
         <property name="geometry">
          <rect>
-          <x>38</x>
-          <y>277</y>
+          <x>30</x>
+          <y>272</y>
           <width>31</width>
           <height>31</height>
          </rect>
@@ -2548,24 +2608,29 @@ border: 0px;</string>
      <widget class="QPushButton" name="pbLogout">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>187</y>
+        <x>17</x>
+        <y>175</y>
         <width>81</width>
-        <height>21</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">background: rgba(252, 219, 100, 0.55);
-border: 2.3px solid #FFB61D;
+       <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 801px;
+
+background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
 box-sizing: border-box;
-border-radius: 10px;
+border-radius: 15px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 400;
-font-size: 12px;
+font-size: 14px;
 line-height: 23px;
 color: #2B2D2F;
 display: flex;
@@ -2586,7 +2651,8 @@ text-align: center;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-radius: 20px;</string>
+       <string notr="true">border-radius: 35px;
+</string>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Plain</enum>
