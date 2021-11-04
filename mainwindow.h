@@ -25,6 +25,8 @@ private:
     Login* login;
     void mainAddNewUser();
     void logout();
+    void selectUserDetails();
+    void searchUser();
 
 
 public:

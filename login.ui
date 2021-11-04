@@ -294,6 +294,15 @@ color: red;</string>
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Quicksand</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">width: 542px;
 height: 77px;
@@ -306,7 +315,7 @@ border-radius: 20px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
-font-size: 23px;
+font-size: 20px;
 line-height: 33px;
 /* or 143% */
 
@@ -336,7 +345,7 @@ border-radius: 20px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
-font-size: 23px;
+font-size: 20px;
 line-height: 33px;
 /* or 143% */
 
@@ -366,7 +375,7 @@ border-radius: 20px;
 font-family: Quicksand;
 font-style: normal;
 font-weight: 600;
-font-size: 23px;
+font-size: 20px;
 line-height: 33px;
 /* or 143% */
 
