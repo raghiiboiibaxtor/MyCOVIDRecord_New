@@ -6,7 +6,6 @@
 #include <QVector>
 #include "classcitizen.h"
 #include "login.h"
-#include <QMainWindow>
 
 
 QT_BEGIN_NAMESPACE
@@ -22,7 +21,6 @@ private:
     //Login *login;
     QVector<classCitizen*> userList;
     classCitizen** ptrNewCitizen;
-    Login* login;
     void mainAddNewUser();
     void logout();
     void loadUser();

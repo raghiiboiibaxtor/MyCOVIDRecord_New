@@ -3,6 +3,8 @@
 
 //#include <QDialog>
 #include <QMainWindow>
+#include "mainwindow.h"
+#include "usermainwindow.h"
 
 namespace Ui{
 class Login;
@@ -22,6 +24,7 @@ private slots:
 private:
     Ui::Login *ui;
     QMainWindow *mainWindow;
+    QVector<classCitizen*> userList;
 };
 
 #endif // LOGIN_H

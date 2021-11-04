@@ -12,12 +12,14 @@ SOURCES += \
     classcitizen.cpp \
     login.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    usermainwindow.cpp
 
 HEADERS += \
     classcitizen.h \
     login.h \
-    mainwindow.h
+    mainwindow.h \
+    usermainwindow.h
 
 FORMS += \
     login.ui \

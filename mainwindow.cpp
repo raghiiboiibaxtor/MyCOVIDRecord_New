@@ -35,11 +35,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
    // Mac Create Directory
-   QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
+   /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
        if(!pathDir.exists())
        {
            QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
-       }
+       }*/
 
 }
 
@@ -57,6 +57,7 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
 // Logout Function
 void MainWindow::logout()
 {
+    Login *login;
     close();
     //Displays Login window
     login = new Login(this);
@@ -104,10 +105,10 @@ void MainWindow::on_pbSave_clicked()
     // Writing to file
 
     /// Windows File Path
-   //QFile outputFile("Citizens.txt");
+    QFile outputFile("Citizens.txt");
 
     /// Mac File Path
-    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
     QTextStream out(&outputFile);
 
     outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
@@ -125,7 +126,13 @@ void MainWindow::on_pbSave_clicked()
         out.flush();
         outputFile.close();
 
-         ui->addUserName->clear();
+        // Clear input from labels
+        ui->addUserName->clear();
+        ui->addUserPhone->clear();
+        ui->addUserEmail->clear();
+        ui->addUserDOB->clear();
+        ui->addUserNHI->clear();
+        ui->addUserCVN->clear();
 
   //  }
 
@@ -135,8 +142,8 @@ void MainWindow::on_pbSave_clicked()
 void MainWindow::loadUser()
 // Loading Users from Text File on All Users Pages
 {
-    QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-    //QFile inputFile("Citizens.txt");
+    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    QFile inputFile("Citizens.txt");
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
     QTextStream read(&inputFile);
 
