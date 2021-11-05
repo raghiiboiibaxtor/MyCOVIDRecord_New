@@ -18,10 +18,9 @@ class MainWindow : public QMainWindow
 
 private:
     Ui::MainWindow *ui;
-    // Login *login;
     QVector<classCitizen*> userList;
     classCitizen** ptrNewCitizen;
-
+    classCitizen *ptrCurrentCitizen;
     void mainAddNewUser();
     void logout();
     void loadUser();
@@ -32,8 +31,10 @@ private:
 
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent = nullptr);
+
+    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent = nullptr);
+    explicit MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent = nullptr);
     ~MainWindow();
 
 

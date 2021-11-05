@@ -52,6 +52,12 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
 }
 
 
+MainWindow::MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    this->ptrCurrentCitizen = ptrCurrentCitizen;
+}
+
 // Login Functions
 //*********************************************************
 
@@ -81,6 +87,7 @@ void MainWindow::mainAddNewUser()
     }
 }
 
+
 void MainWindow::on_pbSave_clicked()
 {
     QString addName = ui->addUserName->text();
@@ -94,7 +101,7 @@ void MainWindow::on_pbSave_clicked()
     {
         classCitizen *ptrNewCitizen = new classCitizen(addName, addPhone, addEmail, addDob, addNhi, addCvn);
         userList.push_back(ptrNewCitizen);
-        ui->listAllUsersNew->addItem(ptrNewCitizen->getName()); // Displays added user name to list widget on "all users page"
+        ui->listAllUsersNew->addItem(ptrNewCitizen->getNHI()); // Displays added user name to list widget on "all users page"
     }
     else
     {
@@ -135,6 +142,22 @@ void MainWindow::on_pbSave_clicked()
         ui->addUserNHI->clear();
         ui->addUserCVN->clear();
 
+
+      /*  QFile loginFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Login.txt");
+        QTextStream login(&outputFile);
+
+        outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
+
+            for (int i = 0; i < userList.size(); i++)
+               {
+                out << userList.at(i)->getEmailAddress() << ", ";
+                out << userList.at(i)->getNHI() << ", ";
+                out << userList.at(i)->getAccessNumber()<< Qt::endl;
+               }
+            // Flushing file and then closing.
+            out.flush();
+            outputFile.close();*/
+
   //  }
 
 }
@@ -164,7 +187,7 @@ void MainWindow::loadUser()
 
 
        // Add read information to ui
-       ui->listAllUsersNew->addItem(info.at(0));
+       ui->listAllUsersNew->addItem(info.at(3));
 
        // Adding file information to vector
        classCitizen* temp = new classCitizen(info.at(0), info.at(1),info.at(2),info.at(3),info.at(4),info.at(5));
@@ -233,55 +256,51 @@ void MainWindow::searchUser()
 
 void MainWindow::editUser()
 {
+
    int listNum = ui->listAllUsersNew->currentRow();
 
    if (listNum != -1)
    {
-       classCitizen* ptrNewCitizen = userList.at(listNum);
 
-           if (ptrNewCitizen != nullptr)
+       ptrCurrentCitizen = userList.at(listNum);
+     //  userList.clear(listNum);
+
+           if (ptrCurrentCitizen != nullptr)
           {
                //ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
 
-               // Changing page
-               ui->stackedWidget->setCurrentIndex(2);
-             // ui->listAllUsersNew->clearSelection();
+               // Changing UI page
+               ui->stackedWidget->setCurrentIndex(3);
 
                // Retrieving edited information
-           /*    QString editName = ui->addUserName->text();
+               QString editName = ui->addUserName->text();
                QString editPhone = ui->addUserPhone->text();
                QString editEmail = ui->addUserEmail->text();
                QString editDob = ui->addUserDOB->text();
-               QString editNhi = ui->addUserNHI->text();
-               QString editCvn = ui->addUserCVN->text();
 
-               ptrNewCitizen->setName(editName);
-               ptrNewCitizen->setContactNumber(editPhone);
-               ptrNewCitizen->setEmailAddress(editEmail);
-               ptrNewCitizen->setDateOfBirth(editDob);
-               ptrNewCitizen->setNHI(editNhi);
-               ptrNewCitizen->setCVN(editCvn); */
+               int index = ui->listAllUsersNew->currentRow();
 
-               //classCitizen *ptrNewCitizen = new classCitizen(editName, editPhone, editEmail, editDob, editNhi, editCvn);
-              // userList.append(ptrEditCitizen);
-              /* userList.clear();
-               ui->listAllUsersNew->clear();*/
-              // choice = listAllUsersNew.selectedItems();
-             // ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
+               if (index >= 0)
+               {
+                   classCitizen *selectedUser = userList.at(index);
 
-              // ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
+                     ui->NHIDisplayLabel->setText(selectedUser->getNHI());
+                      ui->CVNDisplayLabel->setText(selectedUser->getCVN());
+               }
+               else
+               {
+                   QMessageBox messageBox;
+                   messageBox.setText("User not found");
+                   messageBox.exec();
+               }
 
-               //ui->listAllUsersNew->setText(ptrEditCitizen->getName());
-
-
-             /*for (int i = 0; i< userList.size(); i++)
-                {
-                    delete userList.at(i);
-                }
-               userList.clear();*/
-
-
-
+               ptrCurrentCitizen->setName(editName);
+               ptrCurrentCitizen->setContactNumber(editPhone);
+               ptrCurrentCitizen->setEmailAddress(editEmail);
+               ptrCurrentCitizen->setDateOfBirth(editDob);
+             //  userList.push_back(ptrCurrentCitizen);
+           //    ptrCurrentCitizen->setNHI(editNhi);
+             //  ptrCurrentCitizen->setCVN(editCvn);
            }
 
            else
@@ -290,7 +309,7 @@ void MainWindow::editUser()
                messageBox.setText("ptrEditCitizen is pointing to nullptr");
                messageBox.exec();
            }
-   }
+    }
 
    else
    {
@@ -301,10 +320,37 @@ void MainWindow::editUser()
 
 }
 
-
-void MainWindow :: saveEdit()
+void MainWindow::saveEdit()
 {
 
+    ui->stackedWidget->setCurrentIndex(1);
+
+    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+
+    QTextStream out(&outputFile);
+
+    outputFile.open(QIODevice::WriteOnly | QIODevice:: Append | QIODevice::Text);
+
+        for (int i = 0; i < userList.size(); i++)
+           {
+            out << userList.at(i)->getName() << ", ";
+            out << userList.at(i)->getContactNumber() << ", ";
+            out << userList.at(i)->getEmailAddress() << ", ";
+            out << userList.at(i)->getDateOfBirth() << ", ";
+            out << userList.at(i)->getNHI() << ", ";
+            out << userList.at(i)->getAccessNumber()<< Qt::endl;
+           }
+        // Flushing file and then closing.
+        out.flush();
+        outputFile.close();
+
+        // Clear input from labels
+      /*  ui->addUserName->clear();
+        ui->addUserPhone->clear();
+        ui->addUserEmail->clear();
+        ui->addUserDOB->clear();
+        ui->addUserNHI->clear();
+        ui->addUserCVN->clear();*/
 }
 
 
