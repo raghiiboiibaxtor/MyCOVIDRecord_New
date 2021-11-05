@@ -18,9 +18,10 @@ class MainWindow : public QMainWindow
 
 private:
     Ui::MainWindow *ui;
-   // Login *login;
+    // Login *login;
     QVector<classCitizen*> userList;
     classCitizen** ptrNewCitizen;
+
     void mainAddNewUser();
     void logout();
     void loadUser();

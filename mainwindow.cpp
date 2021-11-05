@@ -36,11 +36,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
    //Mac Create Directory
-   QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
+   /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
        if(!pathDir.exists())
        {
            QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
-       }
+       }*/
 
 }
 
@@ -106,9 +106,9 @@ void MainWindow::on_pbSave_clicked()
     // Writing to file
 
     /// Windows File Path
-    //QFile outputFile("Citizens.txt");
+    QFile outputFile("Citizens.txt");
     /// Mac File Path
-    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
 
     QTextStream out(&outputFile);
 
@@ -121,7 +121,7 @@ void MainWindow::on_pbSave_clicked()
             out << userList.at(i)->getEmailAddress() << ", ";
             out << userList.at(i)->getDateOfBirth() << ", ";
             out << userList.at(i)->getNHI() << ", ";
-            out << userList.at(i)->getAccessNumber()<< Qt::endl;
+            out << userList.at(i)->getCVN()<< endl;
            }
         // Flushing file and then closing.
         out.flush();
@@ -143,8 +143,8 @@ void MainWindow::on_pbSave_clicked()
 void MainWindow::loadUser()
 // Loading Users from Text File on All Users Pages
 {
-    QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-    //QFile inputFile("Citizens.txt");
+    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    QFile inputFile("Citizens.txt");
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
     QTextStream read(&inputFile);
 

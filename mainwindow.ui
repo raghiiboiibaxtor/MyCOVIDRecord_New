@@ -27,7 +27,7 @@
      <string notr="true">background-color: white;</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="uiAdminHomePage">
      <widget class="QLabel" name="labelBackground">
@@ -661,7 +661,7 @@ color: gray;
       <widget class="QLabel" name="labelVaccStatus_2">
        <property name="geometry">
         <rect>
-         <x>349</x>
+         <x>360</x>
          <y>485</y>
          <width>161</width>
          <height>41</height>
@@ -693,7 +693,7 @@ color: gray;
       <widget class="QLabel" name="labelDOB_2">
        <property name="geometry">
         <rect>
-         <x>361</x>
+         <x>360</x>
          <y>262</y>
          <width>121</width>
          <height>41</height>
@@ -725,8 +725,8 @@ color: gray;
       <widget class="QLabel" name="labelFullName_2">
        <property name="geometry">
         <rect>
-         <x>348</x>
-         <y>204</y>
+         <x>360</x>
+         <y>200</y>
          <width>111</width>
          <height>41</height>
         </rect>
@@ -891,7 +891,7 @@ color: gray;
       <widget class="QLabel" name="labelEmail_2">
        <property name="geometry">
         <rect>
-         <x>350</x>
+         <x>360</x>
          <y>316</y>
          <width>131</width>
          <height>41</height>
@@ -1014,7 +1014,7 @@ color: gray;
         <rect>
          <x>361</x>
          <y>545</y>
-         <width>61</width>
+         <width>71</width>
          <height>41</height>
         </rect>
        </property>
@@ -1332,7 +1332,7 @@ color: gray;
          <number>13</number>
         </property>
        </widget>
-       <widget class="QLineEdit" name="addUserDOB">
+       <widget class="QLineEdit" name="addUserNHI">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1350,7 +1350,7 @@ line-height: 33px;
 color: gray;</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="addUserNHI">
+       <widget class="QLineEdit" name="addUserDOB">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1672,7 +1672,7 @@ color: #2B2D2F;</string>
        <zorder>labelCVN</zorder>
        <zorder>labelPhoneNumber</zorder>
        <zorder>labelEmail</zorder>
-       <zorder>addUserNHI</zorder>
+       <zorder>addUserDOB</zorder>
        <zorder>addUserCVN</zorder>
        <zorder>addUserEmail</zorder>
        <zorder>addUserPhone</zorder>
@@ -1680,7 +1680,7 @@ color: #2B2D2F;</string>
        <zorder>labelGuardian</zorder>
        <zorder>lblSavedMessage</zorder>
        <zorder>addUserName</zorder>
-       <zorder>addUserDOB</zorder>
+       <zorder>addUserNHI</zorder>
        <zorder>addUserGuardian</zorder>
        <zorder>labelVaccStatus</zorder>
        <zorder>comboBox</zorder>
