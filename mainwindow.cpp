@@ -301,6 +301,9 @@ void MainWindow::editUser()
              //  userList.push_back(ptrCurrentCitizen);
            //    ptrCurrentCitizen->setNHI(editNhi);
              //  ptrCurrentCitizen->setCVN(editCvn);
+
+               ui->listAllUsersNew->clear();
+               ui->listAllUsersNew->addItem(ptrCurrentCitizen->getNHI());
            }
 
            else
@@ -318,6 +321,8 @@ void MainWindow::editUser()
        messageBox.exec();
    }
 
+
+
 }
 
 void MainWindow::saveEdit()
@@ -325,7 +330,8 @@ void MainWindow::saveEdit()
 
     ui->stackedWidget->setCurrentIndex(1);
 
-    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    QFile outputFile("Citizens.txt");
 
     QTextStream out(&outputFile);
 
@@ -338,7 +344,7 @@ void MainWindow::saveEdit()
             out << userList.at(i)->getEmailAddress() << ", ";
             out << userList.at(i)->getDateOfBirth() << ", ";
             out << userList.at(i)->getNHI() << ", ";
-            out << userList.at(i)->getAccessNumber()<< Qt::endl;
+            out << userList.at(i)->getAccessNumber()<< endl;
            }
         // Flushing file and then closing.
         out.flush();
