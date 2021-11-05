@@ -28,6 +28,10 @@ Login::~Login()
 
 void Login::on_pbLogin_clicked()
 {
+
+
+
+
     QString email = ui->editEmail->text();
     QString NHI = ui->editNHI->text();
     QString accessNumber = ui->editAccessNumber->text();
