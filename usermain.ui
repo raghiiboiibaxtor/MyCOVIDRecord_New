@@ -82,7 +82,7 @@ border-color: white;
 border: 0px;</string>
       </property>
       <property name="text">
-       <string>Administrator</string>
+       <string>User*</string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>
@@ -173,7 +173,7 @@ color: #2B2D2F;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resource.qrc">:/res/images/admin.png</pixmap>
+       <pixmap resource="Resource.qrc">:/res/images/user.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>

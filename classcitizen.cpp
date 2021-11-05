@@ -1,14 +1,14 @@
 #include "classcitizen.h"
 //
-classCitizen::classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString accessNumber)//cvn)
+classCitizen::classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString cvn) // , QString accessNumber)
 {
     this->name = name;
     this->contactNumber = contactNumber;
     this->emailAddress = emailAddress;
     this->dateOfBirth = dateOfBirth;
     this->nhi = nhi;
-   // this->cvn = cvn;
-    this->accessNumber = accessNumber;
+    this->cvn = cvn;
+    //this->accessNumber = accessNumber;
 }
 
 
@@ -28,7 +28,7 @@ void classCitizen::setAccessNumber(QString accessNumber)
     this->accessNumber = accessNumber;
 }
 
-void classCitizen::setLogin (QString emailAddress, QString nhi, QString accessNumber)
+/*void classCitizen::setLogin (QString emailAddress, QString nhi, QString accessNumber)
 {
     this->emailAddress = emailAddress;
     this->nhi = nhi;
@@ -38,7 +38,7 @@ void classCitizen::setLogin (QString emailAddress, QString nhi, QString accessNu
 void classCitizen::setResult(bool result)
 {
     this->result = result;
-}
+}*/
 
 // Personal Info Setters
 void classCitizen::setName(QString name)
@@ -113,7 +113,7 @@ QString classCitizen::getAccessNumber() const
     return accessNumber;
 }
 
-bool classCitizen::getLogin()
+/*bool classCitizen::getLogin()
 {
     return true;
 }
@@ -121,7 +121,7 @@ bool classCitizen::getLogin()
 bool classCitizen::getResult()
 {
     return true;
-}
+}*/
 
 // Personal Info Getters
 QString classCitizen::getName() const

@@ -61,8 +61,8 @@ void Login::on_pbLogin_clicked()
     }
     else if(email != "1")
     {
-        //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-        QFile inputFile("Citizens.txt");
+        QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+        //QFile inputFile("Citizens.txt");
         inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
         QTextStream read(&inputFile);
 

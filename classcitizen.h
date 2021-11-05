@@ -15,7 +15,7 @@ private:
     QString nhi;
     QString cvn;
     QString accessNumber; // Either default Admin# or User Auth#
-    bool result;
+    //bool result;
     QString additionalNotes;
     QString vaccineName;
     QString batchNumber;
@@ -25,16 +25,15 @@ private:
     QString testResult;
 
 public:
-public:
     // Constructor
-    classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString cvn);
+    classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString cvn); // , QString accessNumber
 
     // Login Getters
     QString getEmailAddress() const;
     QString getNHI() const;
     QString getAccessNumber() const;
-    bool getLogin ();
-    bool getResult();
+    /*bool getLogin ();
+    bool getResult();*/
 
     // Personal Info Getters
     QString getName() const;
@@ -55,8 +54,8 @@ public:
     void setEmailAddress(QString emailAddress);
     void setNHI(QString nhi);
     void setAccessNumber(QString accessNumber);
-    void setLogin (QString emailAddress, QString nhi, QString accessNumber);
-    void setResult(bool result);
+    /*void setLogin (QString emailAddress, QString nhi, QString accessNumber);
+    void setResult(bool result);*/
 
     // Personal Info Setters
     void setName(QString name);
