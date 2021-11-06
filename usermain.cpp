@@ -40,14 +40,14 @@ void UserMain::on_pbHome_clicked()
 
 
 /// User Profile Menu Button
-void UserMain::on_pbAllUsers_clicked()
+void UserMain::on_pbMyDetails_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(1);  
 }
 
 
 /// Contact Menu Button
-void UserMain::on_pbAddUser_clicked()
+void UserMain::on_pbContactUs_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 }

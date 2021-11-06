@@ -20,9 +20,9 @@ public:
 private slots:
     void on_pbHome_clicked();
 
-    void on_pbAllUsers_clicked();
+    void on_pbMyDetails_clicked();
 
-    void on_pbAddUser_clicked();
+    void on_pbContactUs_clicked();
 
 private:
     Ui::UserMainWindow *ui;

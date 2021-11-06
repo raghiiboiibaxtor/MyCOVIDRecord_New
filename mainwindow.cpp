@@ -259,7 +259,6 @@ void MainWindow::searchUser()
 // Editing existing users information
 void MainWindow:: editUser()
 {
-
     int listNum = ui->listAllUsersNew->currentRow();
 
     if (listNum != -1)
@@ -271,22 +270,21 @@ void MainWindow:: editUser()
                 // Changing UI page
                 ui->stackedWidget->setCurrentIndex(3);
 
+                // Populating Labels with existing info
+                ui->editUserName->setText(ptrCurrentCitizen->getName());
+                ui->editUserPhone->setText(ptrCurrentCitizen->getContactNumber());
+                ui->editUserEmail->setText(ptrCurrentCitizen->getEmailAddress());
+                ui->editUserDOB->setText(ptrCurrentCitizen->getDateOfBirth());
+
                 ui->NHIDisplayLabel->setText(ptrCurrentCitizen->getNHI());
                 ui->CVNDisplayLabel->setText(ptrCurrentCitizen->getCVN());
-
-                // Clearing ui
-             // ui->listAllUsersNew->clear();
-              //ui->listAllUsersNew->addItem(ptrCurrentCitizen->getNHI());
-
             }
             else
             {
                 QMessageBox messageBox;
                 messageBox.setText("ptrCurrentCitizen = nullptr");
                 messageBox.exec();
-
             }
-
     }
     else
     {
@@ -294,14 +292,12 @@ void MainWindow:: editUser()
         messageBox.setText("listNum = -1");
         messageBox.exec();
     }
-
 }
 
 
 // Saving edited information and re-writing file
 void MainWindow::saveEdit()
 {
-
     // Retrieving edited information from ui
     QString editName = ui->editUserName->text();
     QString editPhone = ui->editUserPhone->text();
@@ -357,7 +353,6 @@ void MainWindow::saveEdit()
 
             //Changing page back to All Users
             ui->stackedWidget->setCurrentIndex(1);
-
     }
     else
     {
@@ -365,8 +360,6 @@ void MainWindow::saveEdit()
         messageBox.setText("Please enter all user information.");
         messageBox.exec();
     }
-
-
 }
 
 

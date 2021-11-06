@@ -27,7 +27,7 @@
      <string notr="true">background-color: white;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="uiAdminHomePage">
      <widget class="QLabel" name="labelBackground">
@@ -2268,96 +2268,6 @@ color: gray;
          <number>13</number>
         </property>
        </widget>
-       <widget class="QLineEdit" name="editUserDOB">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>197</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#FAFCFF;
-border: 2.3px solid #979797;
-border-radius: 15px;
-font-size: 12px;
-line-height: 33px;
-color: gray;</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="editUserGuardian">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>362</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#FAFCFF;
-border: 2.3px solid #979797;
-border-radius: 15px;
-font-size: 12px;
-line-height: 33px;
-color: gray;</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="editUserEmail">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>146</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#FAFCFF;
-border: 2.3px solid #979797;
-border-radius: 15px;
-font-size: 12px;
-line-height: 33px;
-color: gray;</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="editUserPhone">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>93</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#FAFCFF;
-border: 2.3px solid #979797;
-border-radius: 15px;
-font-size: 12px;
-line-height: 33px;
-color: gray;</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="editUserName">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>40</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#FAFCFF;
-border: 2.3px solid #979797;
-border-radius: 15px;
-font-size: 12px;
-line-height: 33px;
-color: gray;</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="labelFullName_3">
         <property name="geometry">
          <rect>
@@ -2486,39 +2396,6 @@ color: gray;
          <number>13</number>
         </property>
        </widget>
-       <widget class="QComboBox" name="editUserVaccineSB">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>420</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:#FAFCFF;
-border: 2.3px solid #979797;
-border-radius: 15px;
-font-size: 12px;
-line-height: 33px;
-color: gray;</string>
-        </property>
-        <item>
-         <property name="text">
-          <string>Not Vaccinated</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Partially Vaccinated</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Fully Vaccinated</string>
-         </property>
-        </item>
-       </widget>
        <widget class="QPushButton" name="pbSaveEdit">
         <property name="geometry">
          <rect>
@@ -2585,24 +2462,129 @@ color: gray;</string>
          <string/>
         </property>
        </widget>
-       <zorder>labelDOB_3</zorder>
-       <zorder>labelNHI_3</zorder>
-       <zorder>labelCVN_3</zorder>
-       <zorder>labelPhoneNumber_3</zorder>
-       <zorder>labelEmail_3</zorder>
-       <zorder>editUserDOB</zorder>
-       <zorder>editUserEmail</zorder>
-       <zorder>editUserPhone</zorder>
-       <zorder>labelFullName_3</zorder>
-       <zorder>labelGuardian_3</zorder>
-       <zorder>lblSavedMessage_2</zorder>
-       <zorder>labelVaccStatus_3</zorder>
-       <zorder>editUserVaccineSB</zorder>
-       <zorder>pbSaveEdit</zorder>
-       <zorder>editUserName</zorder>
-       <zorder>NHIDisplayLabel</zorder>
-       <zorder>editUserGuardian</zorder>
-       <zorder>CVNDisplayLabel</zorder>
+       <widget class="QLineEdit" name="editUserName">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>231</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="editUserPhone">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>94</y>
+          <width>231</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="editUserEmail">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>148</y>
+          <width>231</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="editUserDOB">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>200</y>
+          <width>231</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="editUserGuardian">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>360</y>
+          <width>231</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="editUserVaccineSB">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>416</y>
+          <width>231</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Not Vaccinated</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Partially Vaccinated</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Fully Vaccinated</string>
+         </property>
+        </item>
+       </widget>
       </widget>
       <widget class="QFrame" name="RecordsFrame_2">
        <property name="geometry">
