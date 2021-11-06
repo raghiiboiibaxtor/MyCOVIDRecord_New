@@ -27,7 +27,7 @@
      <string notr="true">background-color: white;</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="uiAdminHomePage">
      <widget class="QLabel" name="labelBackground">
@@ -59,8 +59,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-background-color: light gray;</string>
+       <string notr="true">background:#FAFCFF;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -400,8 +399,7 @@ border-color: black;</string>
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-color:white;
-background-color: light gray;</string>
+       <string notr="true">background:#FAFCFF;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -493,7 +491,7 @@ color: #2B2D2F;</string>
        <property name="styleSheet">
         <string notr="true">background:#FAFCFF;
 border: 2.3px solid #979797;
-border-radius: 30px;
+border-radius: 20px;
 font-size: 18px;
 line-height: 33px;
 color: black;
@@ -994,7 +992,7 @@ color: gray;</string>
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="showUserCV">
+      <widget class="QLabel" name="showUserCVN">
        <property name="geometry">
         <rect>
          <x>570</x>
@@ -1101,7 +1099,7 @@ color: gray;</string>
       <zorder>showUserPhone</zorder>
       <zorder>showUserEmail</zorder>
       <zorder>showUserGuardian</zorder>
-      <zorder>showUserCV</zorder>
+      <zorder>showUserCVN</zorder>
       <zorder>showUserNHI</zorder>
       <zorder>showUserNotes</zorder>
       <zorder>showVaccStatus</zorder>
@@ -1139,7 +1137,7 @@ color: gray;</string>
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">backgorund:skyblue;</string>
+       <string notr="true">background:#FAFCFF;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -2076,7 +2074,7 @@ color:black;</string>
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">backgorund:skyblue;</string>
+       <string notr="true">background:#FAFCFF;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -3059,8 +3057,8 @@ color:black;</string>
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">background:#FAFCFF;
-border: 2.3px solid #979797;
+      <string notr="true">background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
 border-radius: 30px;
 font-size: 18px;
 line-height: 33px;
@@ -3082,9 +3080,8 @@ line-height: 33px;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
+       <string notr="true">background: rgba(252, 219, 100, 0.00);
+border: 2.3px rgba(252, 219, 100, 0.00);
 font-size: 23pt;
 line-height: 23px;
 color: #2B2D2F;
@@ -3114,14 +3111,13 @@ border: 0px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 18pt;
+       <string notr="true">font-size: 18pt;
 line-height: 23px;
 color: #2B2D2F;
 border-color: white;
-border: 0px;</string>
+border: 0px;
+background: rgba(252, 219, 100, 0.00);
+border: 2.3px rgba(252, 219, 100, 0.00);</string>
       </property>
       <property name="text">
        <string>Hey there,</string>
@@ -3292,7 +3288,7 @@ border-color: black;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background: white;</string>
+      <string notr="true">background:#FAFCFF;;</string>
      </property>
      <property name="text">
       <string/>

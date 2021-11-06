@@ -21,7 +21,8 @@ private:
     QVector<classCitizen*> userList;
     classCitizen** ptrNewCitizen;
     classCitizen *ptrCurrentCitizen;
-    void mainAddNewUser();
+    void addNewUser();
+    void saveUser();
     void logout();
     void loadUser();
     void editUser();
@@ -41,7 +42,6 @@ public:
 private slots:
     void on_pbAllUsers_clicked();
     void on_pbAddUser_clicked();
-    void on_pbSave_clicked();
     void on_pbHome_clicked();
 };
 #endif // MAINWINDOW_H

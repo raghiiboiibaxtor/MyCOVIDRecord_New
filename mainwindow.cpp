@@ -17,6 +17,8 @@
 //*********************************************************
 
 
+// { Overloading constructors begins :
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -25,7 +27,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->lblSavedMessage->hide(); // "Saved" pop up message on Add User Page hidden on launch
 
     // Manual Connection
-    connect(ui->pbAddUser, &QPushButton::clicked, this, &MainWindow::mainAddNewUser);
+    connect(ui->pbAddUser, &QPushButton::clicked, this, &MainWindow::addNewUser);
+    connect(ui->pbSave, &QPushButton::clicked, this, &MainWindow::saveUser);
     connect(ui->pbLogout, &QPushButton::clicked, this, &MainWindow::logout);
     connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
     connect(ui->pbEditUser, &QPushButton::clicked, this, &MainWindow::editUser);
@@ -43,19 +46,25 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 }
 
-// Second constructor for New Citizen
+// Second constructor passing double pointer for classCitizen ptrNewCitizen.
 MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     this->ptrNewCitizen = &ptrNewCitizen;
 }
 
-// Second constructor for Existing Citizen
+// Second constructor passing single pointer for classCitizen ptrCurrentCitizen.
 MainWindow::MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     this->ptrCurrentCitizen = ptrCurrentCitizen;
 }
+
+// } Overloading constructors ends.
+
+
+
+// { Class MainWindow methods begin:
 
 // Login Functions
 //*********************************************************
@@ -74,8 +83,8 @@ void MainWindow::logout()
 // Admin Functions
 //*********************************************************
 
-// Add New User Function (Admin)
-void MainWindow::mainAddNewUser()
+// Pushing new users information to a vector of pointers
+void MainWindow::addNewUser()
 {
     classCitizen* newCitizen = nullptr;
 
@@ -86,8 +95,8 @@ void MainWindow::mainAddNewUser()
     }
 }
 
-
-void MainWindow::on_pbSave_clicked()
+// Saving new user information to file
+void MainWindow::saveUser()
 {
     QString addName = ui->addUserName->text();
     QString addPhone = ui->addUserPhone->text();
@@ -110,23 +119,21 @@ void MainWindow::on_pbSave_clicked()
     }
 
     // Writing to file
-
     /// Windows File Path
     //QFile outputFile("Citizens.txt");
     /// Mac File Path
     QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
 
     QTextStream out(&outputFile);
-
     outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
 
         for (int i = 0; i < userList.size(); i++)
            {
-            out << userList.at(i)->getName() << ", ";
-            out << userList.at(i)->getContactNumber() << ", ";
-            out << userList.at(i)->getEmailAddress() << ", ";
-            out << userList.at(i)->getDateOfBirth() << ", ";
-            out << userList.at(i)->getNHI() << ", ";
+            out << userList.at(i)->getName() << ",";
+            out << userList.at(i)->getContactNumber() << ",";
+            out << userList.at(i)->getEmailAddress() << ",";
+            out << userList.at(i)->getDateOfBirth() << ",";
+            out << userList.at(i)->getNHI() << ",";
             out << userList.at(i)->getCVN()<< Qt::endl;
            }
         // Flushing file and then closing.
@@ -141,41 +148,28 @@ void MainWindow::on_pbSave_clicked()
         ui->addUserNHI->clear();
         ui->addUserCVN->clear();
 
+        // Displaying saved message for admin user
         ui->lblSavedMessage->show();
 
-
-      /*QFile loginFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Login.txt");
-        QTextStream login(&outputFile);
-
-        outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
-
-            for (int i = 0; i < userList.size(); i++)
-               {
-                out << userList.at(i)->getEmailAddress() << ", ";
-                out << userList.at(i)->getNHI() << ", ";
-                out << userList.at(i)->getAccessNumber()<< Qt::endl;
-               }
-            // Flushing file and then closing.
-            out.flush();
-            outputFile.close();*/
-
-  //  }
-
-}
+} // End of saveUser()
 
 
-void MainWindow::loadUser()
+
 // Loading Users from Text File on All Users Pages
+void MainWindow::loadUser()
 {
+    // Open file for reading
     QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
     //QFile inputFile("Citizens.txt");
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
     QTextStream read(&inputFile);
 
+    // Clearing existing data from vector
    for (int i = 0; i< userList.size(); i++)
     {
         delete userList.at(i);
     }
+   // Clearing ui
     userList.clear();
     ui->listAllUsersNew->clear();
 
@@ -199,7 +193,10 @@ void MainWindow::loadUser()
    // Flushing file and then closing.
    read.flush();
    inputFile.close();
-}
+
+
+} // End of loadUser()
+
 
 // Showing User's Data when selected from list widget
 void MainWindow::selectUserDetails()
@@ -214,7 +211,7 @@ void MainWindow::selectUserDetails()
         ui->showUserEmail->setText(selectedUser->getEmailAddress());
         ui->showUserDOB->setText(selectedUser->getDateOfBirth());
         ui->showUserNHI->setText(selectedUser->getNHI());
-        ui->showUserCV->setText(selectedUser->getCVN());
+        ui->showUserCVN->setText(selectedUser->getCVN());
         //ui->showUserGuardian->setText(selectedUser->getGuardian)
         /// Still need to add guardian, notes, files in image paths
     }
@@ -255,182 +252,121 @@ void MainWindow::searchUser()
 }
 
 
-// Function to edit existing user's data
-void MainWindow::editUser()
+
+// ****************************************************************************************************************  NEW EDIT USER
+// NEW EDIT USER FUNCTIONS
+
+// Editing existing users information
+void MainWindow:: editUser()
 {
-    /// ******************* RAGHII'S ATTEMPT *********************
 
-   /*int listNum = ui->listAllUsersNew->currentRow();
+    int listNum = ui->listAllUsersNew->currentRow();
 
-   if (listNum != -1)
-   {
+    if (listNum != -1)
+    {
+        ptrCurrentCitizen = userList.at(listNum);
 
-       ptrCurrentCitizen = userList.at(listNum);
-     //  userList.clear(listNum);
-
-           if (ptrCurrentCitizen != nullptr)
-          {
-               //ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
-
-               // Changing UI page
-               ui->stackedWidget->setCurrentIndex(3);
-
-               // Retrieving edited information
-               QString editName = ui->addUserName->text();
-               QString editPhone = ui->addUserPhone->text();
-               QString editEmail = ui->addUserEmail->text();
-               QString editDob = ui->addUserDOB->text();
-
-               int index = ui->listAllUsersNew->currentRow();
-
-               if (index >= 0)
-               {
-                   classCitizen *selectedUser = userList.at(index);
-
-                     ui->NHIDisplayLabel->setText(selectedUser->getNHI());
-                     ui->CVNDisplayLabel->setText(selectedUser->getCVN());
-               }
-               else
-               {
-                   QMessageBox messageBox;
-                   messageBox.setText("User not found");
-                   messageBox.exec();
-               }
-
-               ptrCurrentCitizen->setName(editName);
-               ptrCurrentCitizen->setContactNumber(editPhone);
-               ptrCurrentCitizen->setEmailAddress(editEmail);
-               ptrCurrentCitizen->setDateOfBirth(editDob);
-             //  userList.push_back(ptrCurrentCitizen);
-           //    ptrCurrentCitizen->setNHI(editNhi);
-             //  ptrCurrentCitizen->setCVN(editCvn);
-
-               ui->listAllUsersNew->clear();
-               ui->listAllUsersNew->addItem(ptrCurrentCitizen->getNHI());
-           }
-
-           else
+            if (ptrCurrentCitizen != nullptr)
            {
-               QMessageBox messageBox;
-               messageBox.setText("ptrEditCitizen is pointing to nullptr");
-               messageBox.exec();
-           }
+                // Changing UI page
+                ui->stackedWidget->setCurrentIndex(3);
+
+                ui->NHIDisplayLabel->setText(ptrCurrentCitizen->getNHI());
+                ui->CVNDisplayLabel->setText(ptrCurrentCitizen->getCVN());
+
+                // Clearing ui
+             // ui->listAllUsersNew->clear();
+              //ui->listAllUsersNew->addItem(ptrCurrentCitizen->getNHI());
+
+            }
+            else
+            {
+                QMessageBox messageBox;
+                messageBox.setText("ptrCurrentCitizen = nullptr");
+                messageBox.exec();
+
+            }
+
+    }
+    else
+    {
+        QMessageBox messageBox;
+        messageBox.setText("listNum = -1");
+        messageBox.exec();
     }
 
-   else
-   {
-       QMessageBox messageBox;
-       messageBox.setText("The listNum is != to current row");
-       messageBox.exec();
-   }*/
+}
 
 
-    /// ******************* TESS' ATTEMPT *********************
-
-    // Selected Item
-   int listNumber = ui->listAllUsersNew->currentRow();
-
-   if (listNumber >= 0)
-   {
-       classCitizen* ptrCurrentCitizen = userList.at(listNumber);
-
-       if (ptrCurrentCitizen != nullptr)
-       {
-           //ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
-
-           // Changing UI page
-           ui->stackedWidget->setCurrentIndex(3);
-
-           // Populating Labels with existing info
-           ui->editUserName->setText(ptrCurrentCitizen->getName());
-           ui->editUserPhone->setText(ptrCurrentCitizen->getContactNumber());
-           ui->editUserEmail->setText(ptrCurrentCitizen->getEmailAddress());
-           ui->editUserDOB->setText(ptrCurrentCitizen->getDateOfBirth());
-
-           // Non-Editable Populations
-           ui->NHIDisplayLabel->setText(ptrCurrentCitizen->getNHI());
-           ui->CVNDisplayLabel->setText(ptrCurrentCitizen->getCVN());
-           // ** NEED TO ADD IN GUARDIAN, VACC STATUS, RECORDS, & NOTES **
-       }
-       else
-       {
-           // Error Message
-           QMessageBox messageBox;
-           messageBox.setText("User not found");
-           messageBox.exec();
-       }
-
-       /*ui->listAllUsersNew->clear();
-       ui->listAllUsersNew->addItem(ptrCurrentCitizen->getNHI());*/
-   }
-} //
-
+// Saving edited information and re-writing file
 void MainWindow::saveEdit()
 {
 
-    ui->stackedWidget->setCurrentIndex(1);
-
-    /// ******************* RAGHII'S ATTEMPT *********************
-
-    /*QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-    //QFile outputFile("Citizens.txt");
-    QTextStream out(&outputFile);
-    outputFile.open(QIODevice::WriteOnly | QIODevice:: Append | QIODevice::Text);*/
-
-        /*for (int i = 0; i < userList.size(); i++)
-           {
-            out << userList.at(i)->getName() << ", ";
-            out << userList.at(i)->getContactNumber() << ", ";
-            out << userList.at(i)->getEmailAddress() << ", ";
-            out << userList.at(i)->getDateOfBirth() << ", ";
-            out << userList.at(i)->getNHI() << ", ";
-            out << userList.at(i)->getAccessNumber()<< Qt::endl;
-           }
-        // Flushing file and then closing.
-        out.flush();
-        outputFile.close();*/
-
-        // Clear input from labels
-      /*  ui->addUserName->clear();
-        ui->addUserPhone->clear();
-        ui->addUserEmail->clear();
-        ui->addUserDOB->clear();
-        ui->addUserNHI->clear();
-        ui->addUserCVN->clear();*/
-
-
-    /// ******************* TESS' ATTEMPT *********************
-
-    QString editName = ui->addUserName->text();
-    QString editPhone = ui->addUserPhone->text();
-    QString editEmail = ui->addUserEmail->text();
-    QString editDob = ui->addUserDOB->text();
+    // Retrieving edited information from ui
+    QString editName = ui->editUserName->text();
+    QString editPhone = ui->editUserPhone->text();
+    QString editEmail = ui->editUserEmail->text();
+    QString editDob = ui->editUserDOB->text();
 
     if(editName.trimmed() != "")
     {
+         // Changing the information of the current citizen
         ptrCurrentCitizen->setName(editName);
         ptrCurrentCitizen->setContactNumber(editPhone);
         ptrCurrentCitizen->setEmailAddress(editEmail);
         ptrCurrentCitizen->setDateOfBirth(editDob);
+
+        // Writing edit to file
+        /// Windows File Path
+        //QFile outputFile("Citizens.txt");
+        /// Mac File Path
+        QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+
+        QTextStream out(&outputFile);
+        outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
+
+            for (int i = 0; i < userList.size(); i++)
+               {
+                out << userList.at(i)->getName() << ", ";
+                out << userList.at(i)->getContactNumber() << ", ";
+                out << userList.at(i)->getEmailAddress() << ", ";
+                out << userList.at(i)->getDateOfBirth() << ", ";
+                out << userList.at(i)->getNHI() << ", ";
+                out << userList.at(i)->getCVN()<< Qt::endl;
+               }
+            // Flushing file and then closing.
+            out.flush();
+            outputFile.close();
+
+            /// Arranging ui to meet ux standards
+            // Clear input from edit labels
+            ui->editUserName->clear();
+            ui->editUserPhone->clear();
+            ui->editUserEmail->clear();
+            ui->editUserDOB->clear();
+            ui->NHIDisplayLabel->clear();
+            ui->CVNDisplayLabel->clear();
+
+            // Changing input from view user labels
+            ui->showUserName->setText(ptrCurrentCitizen->getName());
+            ui->showUserPhone->setText(ptrCurrentCitizen->getContactNumber());
+            ui->showUserEmail->setText(ptrCurrentCitizen->getEmailAddress());
+            ui->showUserDOB->setText(ptrCurrentCitizen->getDateOfBirth());
+            ui->showUserNHI->setText(ptrCurrentCitizen->getNHI());
+            ui->showUserCVN->setText(ptrCurrentCitizen->getCVN());
+
+            //Changing page back to All Users
+            ui->stackedWidget->setCurrentIndex(1);
+
+    }
+    else
+    {
+        QMessageBox messageBox;
+        messageBox.setText("Please enter all user information.");
+        messageBox.exec();
     }
 
-    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-    //QFile outputFile("Citizens.txt");
-    QTextStream out(&outputFile);
-    outputFile.open(QIODevice:: Append | QIODevice::Text);
 
-    for (int i = 0; i < userList.size(); i++)
-       {
-        out << userList.at(i)->getName() << ", ";
-        out << userList.at(i)->getContactNumber() << ", ";
-        out << userList.at(i)->getEmailAddress() << ", ";
-        out << userList.at(i)->getDateOfBirth() << ", ";
-        out << userList.at(i)->getNHI() << ", ";
-        out << userList.at(i)->getAccessNumber()<< Qt::endl;
-       }
-    // Flushing file and then closing.
-    out.flush();
-    outputFile.close();
 }
 
 
@@ -473,5 +409,200 @@ MainWindow::~MainWindow()
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// BROKEN CODE
+
+//*********************************************************************************************************************************
+
+
+
+
+// Function to edit existing user's data
+/* void MainWindow::editUser()
+{
+    /// ******************* RAGHII'S ATTEMPT *********************
+
+   int listNum = ui->listAllUsersNew->currentRow();
+
+   if (listNum != -1)
+   {
+
+       ptrCurrentCitizen = userList.at(listNum);
+     //  userList.clear(listNum);
+
+           if (ptrCurrentCitizen != nullptr)
+          {
+               //ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
+
+               // Changing UI page
+               ui->stackedWidget->setCurrentIndex(3);
+
+               // Retrieving edited information
+               QString editName = ui->addUserName->text();
+               QString editPhone = ui->addUserPhone->text();
+               QString editEmail = ui->addUserEmail->text();
+               QString editDob = ui->addUserDOB->text();
+
+               int index = ui->listAllUsersNew->currentRow();
+
+               if (index >= 0)
+               {
+                   classCitizen *selectedUser = userList.at(index);
+
+                     ui->NHIDisplayLabel->setText(selectedUser->getNHI());
+                     ui->CVNDisplayLabel->setText(selectedUser->getCVN());
+               }
+               else
+               {
+                   QMessageBox messageBox;
+                   messageBox.setText("User not found");
+                   messageBox.exec();
+               }
+
+
+             //  userList.push_back(ptrCurrentCitizen);
+           //    ptrCurrentCitizen->setNHI(editNhi);
+             //  ptrCurrentCitizen->setCVN(editCvn);
+
+               ui->listAllUsersNew->clear();
+               ui->listAllUsersNew->addItem(ptrCurrentCitizen->getNHI());
+           }
+
+           else
+           {
+               QMessageBox messageBox;
+               messageBox.setText("ptrEditCitizen is pointing to nullptr");
+               messageBox.exec();
+           }
+    }
+
+   else
+   {
+       QMessageBox messageBox;
+       messageBox.setText("The listNum is != to current row");
+       messageBox.exec();
+   }
+
+
+    /// ******************* TESS' ATTEMPT *********************
+
+    // Selected Item
+   int listNumber = ui->listAllUsersNew->currentRow();
+
+   if (listNumber >= 0)
+   {
+       classCitizen* ptrCurrentCitizen = userList.at(listNumber);
+
+       if (ptrCurrentCitizen != nullptr)
+       {
+           //ui->listAllUsersNew->addItem(ptrEditCitizen->getName());
+
+           // Changing UI page
+           ui->stackedWidget->setCurrentIndex(3);
+
+           // Populating Labels with existing info
+           ui->editUserName->setText(ptrCurrentCitizen->getName());
+           ui->editUserPhone->setText(ptrCurrentCitizen->getContactNumber());
+           ui->editUserEmail->setText(ptrCurrentCitizen->getEmailAddress());
+           ui->editUserDOB->setText(ptrCurrentCitizen->getDateOfBirth());
+
+           // Non-Editable Populations
+           ui->NHIDisplayLabel->setText(ptrCurrentCitizen->getNHI());
+           ui->CVNDisplayLabel->setText(ptrCurrentCitizen->getCVN());
+           // ** NEED TO ADD IN GUARDIAN, VACC STATUS, RECORDS, & NOTES **
+       }
+       else
+       {
+           // Error Message
+           QMessageBox messageBox;
+           messageBox.setText("User not found");
+           messageBox.exec();
+       }
+
+       ui->listAllUsersNew->clear();
+       ui->listAllUsersNew->addItem(ptrCurrentCitizen->getNHI());
+   }
+} */
+
+/* void MainWindow::saveEdit()
+{
+
+    ui->stackedWidget->setCurrentIndex(1);
+
+    /// ******************* RAGHII'S ATTEMPT *********************
+
+    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile outputFile("Citizens.txt");
+    QTextStream out(&outputFile);
+    outputFile.open(QIODevice::WriteOnly | QIODevice:: Append | QIODevice::Text);
+
+        for (int i = 0; i < userList.size(); i++)
+           {
+            out << userList.at(i)->getName() << ", ";
+            out << userList.at(i)->getContactNumber() << ", ";
+            out << userList.at(i)->getEmailAddress() << ", ";
+            out << userList.at(i)->getDateOfBirth() << ", ";
+            out << userList.at(i)->getNHI() << ", ";
+            out << userList.at(i)->getAccessNumber()<< Qt::endl;
+           }
+        // Flushing file and then closing.
+        out.flush();
+        outputFile.close();
+
+        // Clear input from labels
+        ui->addUserName->clear();
+        ui->addUserPhone->clear();
+        ui->addUserEmail->clear();
+        ui->addUserDOB->clear();
+        ui->addUserNHI->clear();
+        ui->addUserCVN->clear();
+
+
+    /// ******************* TESS' ATTEMPT *********************
+
+    QString editName = ui->addUserName->text();
+    QString editPhone = ui->addUserPhone->text();
+    QString editEmail = ui->addUserEmail->text();
+    QString editDob = ui->addUserDOB->text();
+
+    if(editName.trimmed() != "")
+    {
+        ptrCurrentCitizen->setName(editName);
+        ptrCurrentCitizen->setContactNumber(editPhone);
+        ptrCurrentCitizen->setEmailAddress(editEmail);
+        ptrCurrentCitizen->setDateOfBirth(editDob);
+    }
+
+    QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    //QFile outputFile("Citizens.txt");
+    QTextStream out(&outputFile);
+    outputFile.open(QIODevice:: Append | QIODevice::Text);
+
+    for (int i = 0; i < userList.size(); i++)
+       {
+        out << userList.at(i)->getName() << ", ";
+        out << userList.at(i)->getContactNumber() << ", ";
+        out << userList.at(i)->getEmailAddress() << ", ";
+        out << userList.at(i)->getDateOfBirth() << ", ";
+        out << userList.at(i)->getNHI() << ", ";
+        out << userList.at(i)->getAccessNumber()<< Qt::endl;
+       }
+    // Flushing file and then closing.
+    out.flush();
+    outputFile.close();
+}*/
 
 
