@@ -1,6 +1,7 @@
 #include "classcitizen.h"
 //
-classCitizen::classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString cvn) // , QString accessNumber)
+classCitizen::classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth,
+                           QString nhi, QString guardian, QString additionalNotes, QString vaccineStatus, QString cvn) // , QString accessNumber)
 {
     this->name = name;
     this->contactNumber = contactNumber;
@@ -8,25 +9,11 @@ classCitizen::classCitizen(QString name, QString contactNumber, QString emailAdd
     this->dateOfBirth = dateOfBirth;
     this->nhi = nhi;
     this->cvn = cvn;
-    //this->accessNumber = accessNumber;
+    this->guardian = guardian;
+    this->additionalNotes = additionalNotes;
+    this->vaccineStatus = vaccineStatus;
 }
 
-
-// Login Setters
-void classCitizen::setEmailAddress(QString emailAddress)
-{
-    this->emailAddress = emailAddress;
-}
-
-void classCitizen::setNHI(QString nhi)
-{
-    this->nhi = nhi;
-}
-
-void classCitizen::setAccessNumber(QString accessNumber)
-{
-    this->accessNumber = accessNumber;
-}
 
 /*void classCitizen::setLogin (QString emailAddress, QString nhi, QString accessNumber)
 {
@@ -40,10 +27,20 @@ void classCitizen::setResult(bool result)
     this->result = result;
 }*/
 
-// Personal Info Setters
+// Personal Info / Login Setters
 void classCitizen::setName(QString name)
 {
     this->name = name;
+}
+
+void classCitizen::setContactNumber(QString contactNumber)
+{
+    this->contactNumber = contactNumber;
+}
+
+void classCitizen::setEmailAddress(QString emailAddress)
+{
+    this->emailAddress = emailAddress;
 }
 
 
@@ -52,9 +49,14 @@ void classCitizen::setDateOfBirth(QString dateOfBirth)
     this->dateOfBirth = dateOfBirth;
 }
 
-void classCitizen::setContactNumber(QString contactNumber)
+void classCitizen::setNHI(QString nhi)
 {
-    this->contactNumber = contactNumber;
+    this->nhi = nhi;
+}
+
+void classCitizen::setGuardian(QString guardian)
+{
+    this->guardian = guardian;
 }
 
 void classCitizen::setAdditionalNotes(QString additionalNotes)
@@ -63,6 +65,11 @@ void classCitizen::setAdditionalNotes(QString additionalNotes)
 }
 
 // Vaccine & Covid Info Setters
+void classCitizen::setVaccineStatus(QString vaccineStatus)
+{
+    this->vaccineStatus = vaccineStatus;
+}
+
 void classCitizen::setVaccineName(QString vaccineName)
 {
     this->vaccineName = vaccineName;
@@ -78,14 +85,14 @@ void classCitizen::setDateGiven(QString dateGiven)
     this->dateGiven = dateGiven;
 }
 
-void classCitizen::setQRCode(QString qrCode)
-{
-    this->qrCode = qrCode;
-}
-
 void classCitizen::setCVN(QString cvn)
 {
     this->cvn = cvn;
+}
+
+void classCitizen::setQRCode(QString qrCode)
+{
+    this->qrCode = qrCode;
 }
 
 void classCitizen::setCertificate(QString certificate)
@@ -98,20 +105,6 @@ void classCitizen::setTestResult(QString testResult)
     this->testResult = testResult;
 }
 
-// Login Getters
-QString classCitizen::getEmailAddress() const
-{
-    return emailAddress;
-}
-
-QString classCitizen::getNHI() const
-{
-    return nhi;
-}
-QString classCitizen::getAccessNumber() const
-{
-    return accessNumber;
-}
 
 /*bool classCitizen::getLogin()
 {
@@ -123,16 +116,20 @@ bool classCitizen::getResult()
     return true;
 }*/
 
-// Personal Info Getters
+// Personal Info / Login Getters
 QString classCitizen::getName() const
 {
     return name;
 }
 
-
 QString classCitizen::getContactNumber() const
 {
     return contactNumber;
+}
+
+QString classCitizen::getEmailAddress() const
+{
+    return emailAddress;
 }
 
 QString classCitizen::getDateOfBirth() const
@@ -140,12 +137,28 @@ QString classCitizen::getDateOfBirth() const
     return dateOfBirth;
 }
 
+QString classCitizen::getNHI() const
+{
+    return nhi;
+}
+
+QString classCitizen::getGuardian() const
+{
+    return guardian;
+}
+
 QString classCitizen::getAdditionalNotes() const
 {
     return additionalNotes;
 }
 
+
 // Vaccine & Covid Info Getters
+QString classCitizen::getVaccineStatus() const
+{
+    return vaccineStatus;
+}
+
 QString classCitizen::getVaccineName() const
 {
     return vaccineName;
@@ -160,7 +173,6 @@ QString classCitizen::getDateGiven() const
 {
     return dateGiven;
 }
-
 
 QString classCitizen::getCVN() const
 {

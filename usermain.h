@@ -15,13 +15,12 @@ public:
     explicit UserMain(QWidget *parent = nullptr);
     ~UserMain();
 
+    void submitReport();
     void logout();
 
 private slots:
     void on_pbHome_clicked();
-
     void on_pbMyDetails_clicked();
-
     void on_pbContactUs_clicked();
 
 private:

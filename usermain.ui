@@ -281,7 +281,7 @@ border-color: black;</string>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="uiUserHomePage">
      <widget class="QFrame" name="HomeFrame">
@@ -1740,7 +1740,7 @@ color: gray;</string>
         <rect>
          <x>40</x>
          <y>80</y>
-         <width>651</width>
+         <width>301</width>
          <height>41</height>
         </rect>
        </property>
@@ -1759,11 +1759,21 @@ color:black;</string>
       <widget class="QPushButton" name="pbVaxInfo">
        <property name="geometry">
         <rect>
-         <x>40</x>
-         <y>189</y>
+         <x>540</x>
+         <y>28</y>
          <width>221</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Quicksand</family>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <strikeout>true</strikeout>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">width: 542px;
@@ -1810,41 +1820,12 @@ color:black;</string>
         <string>Contact Us</string>
        </property>
       </widget>
-      <widget class="QTextEdit" name="editSearchBar">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>266</y>
-         <width>471</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 486px;
-background:#FAFCFF;
-border: 2.3px solid #979797;
-box-sizing: border-box;
-border-radius: 20px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 23px;
-line-height: 33px;
-/* or 143% */
-display: flex;
-align-items: center;
-color: gray;</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="labelPrompt">
        <property name="geometry">
         <rect>
-         <x>48</x>
-         <y>316</y>
-         <width>381</width>
+         <x>430</x>
+         <y>190</y>
+         <width>201</width>
          <height>20</height>
         </rect>
        </property>
@@ -1852,46 +1833,27 @@ color: gray;</string>
         <string notr="true">color: gray;</string>
        </property>
        <property name="text">
-        <string>Leave us a message.  You have a limit of 500 characters.</string>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="listAllUsers">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>340</y>
-         <width>731</width>
-         <height>231</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">width: 542px;
-height: 77px;
-left: 54px;
-top: 486px;
-background:#FAFCFF;
-border: 2.3px solid #979797;
-box-sizing: border-box;
-border-radius: 20px;
-font-family: Quicksand;
-font-style: normal;
-font-weight: 600;
-font-size: 23px;
-line-height: 33px;
-/* or 143% */
-display: flex;
-align-items: center;
-color: gray;</string>
+        <string>Leave us a detailed message.</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pbQuestion">
        <property name="geometry">
         <rect>
          <x>540</x>
-         <y>189</y>
-         <width>231</width>
+         <y>107</y>
+         <width>221</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Quicksand</family>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <strikeout>true</strikeout>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">width: 542px;
@@ -1917,11 +1879,11 @@ text-align: center;</string>
         <string>I have a question</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pbSendMsg">
+      <widget class="QPushButton" name="pbSendMessage">
        <property name="geometry">
         <rect>
-         <x>550</x>
-         <y>590</y>
+         <x>160</x>
+         <y>530</y>
          <width>221</width>
          <height>41</height>
         </rect>
@@ -1955,11 +1917,21 @@ text-align: center;</string>
       <widget class="QPushButton" name="pbSoftware">
        <property name="geometry">
         <rect>
-         <x>290</x>
-         <y>189</y>
+         <x>540</x>
+         <y>68</y>
          <width>221</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Quicksand</family>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <strikeout>true</strikeout>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">width: 542px;
@@ -1985,12 +1957,12 @@ text-align: center;</string>
         <string>The application software</string>
        </property>
       </widget>
-      <widget class="QLabel" name="labelSubHeading3">
+      <widget class="QLabel" name="labelName">
        <property name="geometry">
         <rect>
-         <x>40</x>
-         <y>139</y>
-         <width>651</width>
+         <x>44</x>
+         <y>343</y>
+         <width>211</width>
          <height>41</height>
         </rect>
        </property>
@@ -2003,14 +1975,14 @@ line-height: 69px;
 color:black;</string>
        </property>
        <property name="text">
-        <string>What is your message about?</string>
+        <string>Preferred Name</string>
        </property>
       </widget>
       <widget class="QLabel" name="labelSubHeading4">
        <property name="geometry">
         <rect>
          <x>44</x>
-         <y>227</y>
+         <y>183</y>
          <width>71</width>
          <height>41</height>
         </rect>
@@ -2027,35 +1999,259 @@ color:black;</string>
         <string>Subject</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lblThanks">
+      <widget class="QLabel" name="labelConfirmation">
        <property name="geometry">
         <rect>
-         <x>40</x>
-         <y>590</y>
-         <width>521</width>
+         <x>90</x>
+         <y>600</y>
+         <width>611</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">color: gray;
 font-size:16px;</string>
        </property>
        <property name="text">
-        <string>Thank you! We'll be in touch via e-mail soon :)</string>
+        <string>Thank you! Your query has been submitted and we will be in touch soon.</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelName_2">
+       <property name="geometry">
+        <rect>
+         <x>44</x>
+         <y>424</y>
+         <width>261</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Monterrat;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 69px;
+color:black;</string>
+       </property>
+       <property name="text">
+        <string>Contact Number or Email</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelSubHeading4_2">
+       <property name="geometry">
+        <rect>
+         <x>44</x>
+         <y>264</y>
+         <width>111</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font-family: Monterrat;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 69px;
+color:black;</string>
+       </property>
+       <property name="text">
+        <string>Enquiry Type</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbReportCategory">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>300</y>
+         <width>341</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>General Enquiries</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>COVID-19 Vaccine</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Change/Update Personal Details</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>My COVID Record Application</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Other</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPlainTextEdit" name="editReportDetails">
+       <property name="geometry">
+        <rect>
+         <x>420</x>
+         <y>210</y>
+         <width>331</width>
+         <height>361</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="editReportSubject">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>220</y>
+         <width>341</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="editPreferredName">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>380</y>
+         <width>341</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="editPreferredContact">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>460</y>
+         <width>341</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
        </property>
       </widget>
       <zorder>labelSubHeading2</zorder>
       <zorder>pbVaxInfo</zorder>
       <zorder>labelHeading2</zorder>
       <zorder>labelPrompt</zorder>
-      <zorder>listAllUsers</zorder>
       <zorder>pbQuestion</zorder>
       <zorder>pbSoftware</zorder>
-      <zorder>labelSubHeading3</zorder>
+      <zorder>labelName</zorder>
       <zorder>labelSubHeading4</zorder>
-      <zorder>lblThanks</zorder>
-      <zorder>editSearchBar</zorder>
-      <zorder>pbSendMsg</zorder>
+      <zorder>labelConfirmation</zorder>
+      <zorder>pbSendMessage</zorder>
+      <zorder>labelName_2</zorder>
+      <zorder>labelSubHeading4_2</zorder>
+      <zorder>cbReportCategory</zorder>
+      <zorder>editReportDetails</zorder>
+      <zorder>editReportSubject</zorder>
+      <zorder>editPreferredName</zorder>
+      <zorder>editPreferredContact</zorder>
      </widget>
     </widget>
    </widget>

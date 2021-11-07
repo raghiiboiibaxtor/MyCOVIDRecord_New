@@ -61,8 +61,8 @@ void Login::on_pbLogin_clicked()
     }
     else if(email != "1")
     {
-        QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-        //QFile inputFile("Citizens.txt");
+        //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+        QFile inputFile("Citizens.txt");
         inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
         QTextStream read(&inputFile);
 
@@ -98,58 +98,14 @@ void Login::on_pbLogin_clicked()
                 ui->labelError->setText("Incorrect NHI Number Entered");
             }
         }
-            //Flushing file and then closing.
-            read.flush();
-            inputFile.close();
+        //Flushing file and then closing.
+        read.flush();
+        inputFile.close();
     }
     else
     {
         ui->labelError->setText("Incorrect Email Entered");
     }
-
-       /*while (!read.atEnd())
-        {
-            QString line = read.readLine();
-            QStringList info = line.split(", ");
-
-            QString fileEmail = info.at(2);
-            QString fileNHI = info.at(4);
-
-            if (email == fileEmail) // User Login Check Loop
-            {
-                if (NHI == fileNHI)
-                {
-                    if (accessNumber == "1234")
-                    {
-                        UserMain *userMain;
-                        hide();
-                        // Displays User Home Page
-                        userMain = new UserMain(this);
-                        userMain->show();
-                    }
-                    else
-                    {
-                        ui->labelError->setText("Incorrect Access Number Entered");
-                    }
-                }
-                else
-                {
-                    ui->labelError->setText("Incorrect NHI Number Entered");
-                }
-            }
-            else
-            {
-                  ui->labelError->setText("Incorrect Email Entered");
-            }
-        }
-            //Flushing file and then closing.
-            read.flush();
-            inputFile.close();
-    }
-    else
-    {
-        ui->labelError->setText("Incorrect Email Entered");
-    }*/
 }
 
 

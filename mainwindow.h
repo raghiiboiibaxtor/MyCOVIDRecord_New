@@ -29,10 +29,11 @@ private:
     void saveEdit();
     void selectUserDetails();
     void searchUser();
-
+    void loadReports();
+    void selectReportDetails();
+    void searchCategory();
 
 public:
-
     explicit MainWindow(QWidget *parent = nullptr);
     explicit MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent = nullptr);
     explicit MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent = nullptr);
@@ -43,6 +44,7 @@ private slots:
     void on_pbAllUsers_clicked();
     void on_pbAddUser_clicked();
     void on_pbHome_clicked();
+    void on_pbReports_clicked();
 };
 #endif // MAINWINDOW_H
 

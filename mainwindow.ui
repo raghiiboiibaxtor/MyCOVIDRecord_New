@@ -1055,7 +1055,7 @@ color: gray;</string>
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="showVaccStatus">
+      <widget class="QLabel" name="showUserVaccStatus">
        <property name="geometry">
         <rect>
          <x>370</x>
@@ -1102,7 +1102,7 @@ color: gray;</string>
       <zorder>showUserCVN</zorder>
       <zorder>showUserNHI</zorder>
       <zorder>showUserNotes</zorder>
-      <zorder>showVaccStatus</zorder>
+      <zorder>showUserVaccStatus</zorder>
      </widget>
      <widget class="QLabel" name="labelBackground2">
       <property name="geometry">
@@ -1609,7 +1609,7 @@ line-height: 33px;
 color: gray;</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="comboBox">
+       <widget class="QComboBox" name="addVaccStatus">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1802,7 +1802,7 @@ color: #2B2D2F;</string>
          <number>12</number>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineNotes">
+       <widget class="QLineEdit" name="addNotes">
         <property name="geometry">
          <rect>
           <x>25</x>
@@ -2010,7 +2010,7 @@ border-radius: 15px;</string>
        </widget>
        <zorder>labelVaccineResults</zorder>
        <zorder>labelTestResults</zorder>
-       <zorder>lineNotes</zorder>
+       <zorder>addNotes</zorder>
        <zorder>pbAddNotes</zorder>
        <zorder>labelRecord</zorder>
        <zorder>labelResult</zorder>
@@ -2059,6 +2059,389 @@ color:black;</string>
       <zorder>RecordsFrame</zorder>
       <zorder>labelAddUserHeading</zorder>
      </widget>
+    </widget>
+    <widget class="QWidget" name="uiReportsPage">
+     <widget class="QLabel" name="labelContact">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>526</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+      </property>
+      <property name="text">
+       <string>Contact Details:</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>13</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelName">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>465</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+      </property>
+      <property name="text">
+       <string>Preferred Name:</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>13</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbLoadReports">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>595</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: rgba(252, 219, 100, 0.44);
+border-radius: 15px;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
+      </property>
+      <property name="text">
+       <string>Load From File</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listAllReports">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>150</y>
+        <width>261</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Quicksand</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 20px;
+font-size: 18px;
+line-height: 33px;
+color: black;
+</string>
+      </property>
+      <property name="spacing">
+       <number>5</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="showPreferredName">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>497</y>
+        <width>421</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: #B4D6FF;
+border: 2.23px solid #B4D6FF;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="showContactDetails">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>560</y>
+        <width>421</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: #B4D6FF;
+border: 2.23px solid #B4D6FF;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelReportHeading">
+      <property name="geometry">
+       <rect>
+        <x>339</x>
+        <y>16</y>
+        <width>241</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 33px;
+color:black;</string>
+      </property>
+      <property name="text">
+       <string>Reports</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="showReportDetails">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>231</y>
+        <width>421</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: #B4D6FF;
+border: 2.23px solid #B4D6FF;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelMessage">
+      <property name="geometry">
+       <rect>
+        <x>641</x>
+        <y>190</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+      </property>
+      <property name="text">
+       <string>Message:</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>13</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelBackground22">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>-10</y>
+        <width>1071</width>
+        <height>701</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: white;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelSubject">
+      <property name="geometry">
+       <rect>
+        <x>633</x>
+        <y>130</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+      </property>
+      <property name="text">
+       <string>Subject:</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>13</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="showReportCategory">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>170</y>
+        <width>421</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: #B4D6FF;
+border: 2.23px solid #B4D6FF;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbSearchCategory">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>80</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: rgba(252, 219, 100, 0.44);
+border-radius: 15px;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
+      </property>
+      <property name="text">
+       <string>Search</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="labelSearchCategory">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>80</y>
+        <width>591</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelPrompt2">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>112</y>
+        <width>391</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: gray;
+</string>
+      </property>
+      <property name="text">
+       <string>Type a users name,  NHI number or phone number to search.</string>
+      </property>
+     </widget>
+     <zorder>labelBackground22</zorder>
+     <zorder>labelContact</zorder>
+     <zorder>labelName</zorder>
+     <zorder>pbLoadReports</zorder>
+     <zorder>listAllReports</zorder>
+     <zorder>showPreferredName</zorder>
+     <zorder>labelReportHeading</zorder>
+     <zorder>labelMessage</zorder>
+     <zorder>showReportDetails</zorder>
+     <zorder>showContactDetails</zorder>
+     <zorder>labelSubject</zorder>
+     <zorder>showReportCategory</zorder>
+     <zorder>pbSearchCategory</zorder>
+     <zorder>labelSearchCategory</zorder>
+     <zorder>labelPrompt2</zorder>
     </widget>
     <widget class="QWidget" name="uiEditUserPage">
      <widget class="QFrame" name="AddUserPage_2">
@@ -2745,7 +3128,7 @@ color: #2B2D2F;</string>
          <number>12</number>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineNotes_2">
+       <widget class="QLineEdit" name="editUserNotes">
         <property name="geometry">
          <rect>
           <x>25</x>
@@ -2954,7 +3337,7 @@ border-radius: 15px;</string>
        <zorder>labelVaccineResults_2</zorder>
        <zorder>labelTestResults_2</zorder>
        <zorder>labelResult_2</zorder>
-       <zorder>lineNotes_2</zorder>
+       <zorder>editUserNotes</zorder>
        <zorder>pbAddNotes_2</zorder>
        <zorder>labelQR_2</zorder>
        <zorder>labelRecordAttach_2</zorder>
@@ -3265,7 +3648,7 @@ border-color: black;</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>1071</width>
+       <width>271</width>
        <height>661</height>
       </rect>
      </property>
