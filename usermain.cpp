@@ -4,6 +4,7 @@
 #include "classcitizen.h"
 
 #include <QFile>
+#include <QDir>
 
 
 // Main Window
@@ -21,12 +22,21 @@ UserMain::UserMain(QWidget *parent) : QMainWindow(parent), ui(new Ui::UserMainWi
     connect(ui->pbSendMessage, &QPushButton::clicked, this, &UserMain::submitReport);
 
     //Mac Create Directory
-    /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
+    QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
         if(!pathDir.exists())
         {
             QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
-        }*/
+        }
 }
+
+/*UserMain::UserMain(QString*ptrTestLogin, QWidget *parent) : QMainWindow(parent), ui(new Ui::UserMainWindow)
+{
+    ui->setupUi(this);
+    this->ptrTestLogin = ptrTestLogin;
+}*/
+
+
+
 
 // Login Functions
 //*********************************************************
@@ -74,6 +84,43 @@ void UserMain::submitReport()
     // Displaying saved message for admin user
     ui->labelConfirmation->show();
 }
+
+
+/*QString UserMain::accessUserLogin(QString *ptrTestLogin)
+{
+    *ptrTestLogin = "TestText";
+    ui->labelUserName->setText(*ptrTestLogin);
+    return *ptrTestLogin;
+
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Stacked Widget Button Slots

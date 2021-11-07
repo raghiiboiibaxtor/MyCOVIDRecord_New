@@ -62,7 +62,7 @@ line-height: 33px;
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="labelAdminName">
+     <widget class="QLabel" name="labelUserName">
       <property name="geometry">
        <rect>
         <x>10</x>

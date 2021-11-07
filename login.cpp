@@ -4,22 +4,28 @@
 #include "ui_login.h"
 #include "mainwindow.h"
 #include "usermain.h"
-
+#include "ui_usermain.h"
 #include <QListWidgetItem>
 #include <QVector>
 #include <QFile>
 #include <QTextStream>
+#include <QString>
 
 #define STR_EQUAL 0
+
+//UserMain userLoginDetails;
 
 Login::Login(QWidget *parent) : QMainWindow(parent), ui(new Ui::Login)
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(0);
 
     // Home page display image
     QPixmap pixmap(":/res/images/dp.png");
     ui->imgHome->setPixmap(pixmap);
     ui->imgHome->setScaledContents(true);
+
+    // userLoginDetails.
 }
 
 Login::~Login()
@@ -61,8 +67,8 @@ void Login::on_pbLogin_clicked()
     }
     else if(email != "1")
     {
-        //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
-        QFile inputFile("Citizens.txt");
+        QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+        //QFile inputFile("Citizens.txt");
         inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
         QTextStream read(&inputFile);
 
@@ -73,16 +79,19 @@ void Login::on_pbLogin_clicked()
 
             QString fileEmail = info.at(2);
             QString fileNHI = info.at(4);
+            QString fileName = info.at(0);
 
             if (email == fileEmail && NHI == fileNHI) // User Login Check Loop
             {
                 if (accessNumber == "1234")
                 {
-                    UserMain *userMain;
-                    hide();
+                    //UserMain *userMain;
+                    //hide();
                     // Displays User Home Page
-                    userMain = new UserMain(this);
-                    userMain->show();
+                   // userMain = new UserMain(this);
+                   // userMain->show();
+                    ui->stackedWidget->setCurrentIndex(1);
+                    ui->labelUserName->setText(fileName);
                 }
                 else
                 {
@@ -108,4 +117,36 @@ void Login::on_pbLogin_clicked()
     }
 }
 
+
+/*void Login::accessLUI()
+{
+   // QString test = ui->editNHI->text();
+    //UserMain *ptrUserMain = new UserMain(ui->editNHI);
+    QString ptrEditNHI = ui->editNHI->text();
+   UserMain* ptrNew = accessUserLogin(ptrEditNHI);
+}*/
+
+
+
+
+
+
+
+
+
+
+
+/* void Login::setUserLogin(QString userLoginNHI)
+ {
+     this->userLoginNHI = userLoginNHI;
+ }
+
+
+ QString Login::getUserLogin()
+ {
+
+     userLoginNHI = ui->editNHI->text();
+     return userLoginNHI;
+
+ }*/
 

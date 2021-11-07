@@ -57,7 +57,7 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
     this->ptrNewCitizen = &ptrNewCitizen;
 }
 
-// Second constructor passing single pointer for classCitizen ptrCurrentCitizen.
+// Third constructor passing single pointer for classCitizen ptrCurrentCitizen.
 MainWindow::MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
