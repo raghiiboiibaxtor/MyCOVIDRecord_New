@@ -27,6 +27,14 @@ UserLogin::UserLogin(QWidget *parent) : QMainWindow(parent), ui(new Ui::UserLogi
     QPixmap pixmap(":/res/images/dp.png");
     ui->imgHome->setPixmap(pixmap);
     ui->imgHome->setScaledContents(true);
+
+}
+
+// Second constructor passing single pointer for classCitizen ptrCurrentCitizen.
+UserLogin::UserLogin(classCitizen* ptrCurrentCitizen, QWidget *parent) : QMainWindow(parent), ui(new Ui::UserLogin)
+{
+    ui->setupUi(this);
+    this->ptrCurrentCitizen = ptrCurrentCitizen;
 }
 
 UserLogin::~UserLogin()
@@ -71,28 +79,49 @@ void UserLogin::on_pbLogin_clicked()
         inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
         QTextStream read(&inputFile);
 
+        // Clearing existing data from vector
+        for (int i = 0; i< userList.size(); i++)
+        {
+            delete userList.at(i);
+        }
+        // Clearing ui
+        userList.clear();
+
         while (!read.atEnd())
         {
             QString line = read.readLine();
             QStringList info = line.split(", ");
 
-            QString fileName = info.at(0);
-            QString fileNumber = info.at(1);
+
             QString fileEmail = info.at(2);
-            QString fileDOB = info.at(3);
             QString fileNHI = info.at(4);
-            QString fileGuardian = info.at(5);
-            //QString fileNotes = info.at(6);
-            QString fileVacc = info.at(7);
-            QString fileCV = info.at(8);
 
 
             if (email == fileEmail && NHI == fileNHI) // User Login Check Loop
             {
                 if (accessNumber == "1234")
                 {
+                    // Adding file information to vector
+                    classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8));
+                    userList.push_back(temp);
+
+
+                    //classCitizen* currentUser = userList.at();
+                    ui->showUserName->setText(temp->getName());
+                    ui->showUserNumber->setText(temp->getContactNumber());
+                    ui->showUserEmail->setText(temp->getEmailAddress());
+                    ui->showUserDOB->setText(temp->getDateOfBirth());
+                    ui->showUserNHI->setText(temp->getNHI());
+                    ui->showUserCV->setText(temp->getCVN());
+                    ui->showUserGuardian->setText(temp->getGuardian());
+                    ui->showUserVaccStatus->setText(temp->getVaccineStatus());
+                    // ui->showUserNotes->setText(info.at(8));
+
+                    ui->editPreferredName->setText(temp->getName());
+                    ui->editPreferredContact->setText(temp->getEmailAddress());
+
                     ui->stackedWidget->setCurrentIndex(1);
-                    ui->labelUserName->setText(fileName);
+                    ui->labelUserName->setText(info.at(0));
                 }
                 else
                 {
@@ -107,19 +136,6 @@ void UserLogin::on_pbLogin_clicked()
             {
                 ui->labelError->setText("Incorrect NHI Number Entered");
             }
-
-            ui->showUserName->setText(fileName);
-            ui->showUserNumber->setText(fileNumber);
-            ui->showUserEmail->setText(fileEmail);
-            ui->showUserDOB->setText(fileDOB);
-            ui->showUserNHI->setText(fileNHI);
-            ui->showUserCV->setText(fileCV);
-            ui->showUserGuardian->setText(fileGuardian);
-            ui->showUserVaccStatus->setText(fileVacc);
-            // ui->showUserNotes->setText(fileNotes);
-
-            ui->editPreferredName->setText(fileName);
-            ui->editPreferredContact->setText(fileEmail);
         }
 
         //Flushing file and then closing.
@@ -149,7 +165,7 @@ void UserLogin::submitReport()
     out << ui->cbReportCategory->currentText() << ", ";
     out << ui->editPreferredName->text() << ", ";
     out << ui->editPreferredContact->text() << ", ";
-    out << ui->editReportDetails->toPlainText() << endl;
+    out << ui->editReportDetails->toPlainText() << Qt::endl;
 
 
     // Flushing file and then closing.

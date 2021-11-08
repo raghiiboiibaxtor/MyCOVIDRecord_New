@@ -5,7 +5,7 @@
 #include <QVector>
 #include <QMainWindow>
 #include <QString>
-#include "userlogin.h"
+#include "mainwindow.h"
 
 
 namespace Ui{
@@ -20,9 +20,10 @@ private slots:
     void on_pbLogin_clicked();
 
 private:
-    //QString userLoginNHI;
     Ui::UserLogin *ui;
     QMainWindow *mainWindow;
+    QVector<classCitizen*> userList;
+    classCitizen *ptrCurrentCitizen;
 
     void pbHome();
     void pbMyDetails();
@@ -32,6 +33,7 @@ private:
 
 public:
     explicit UserLogin(QWidget *parent = nullptr);
+    explicit UserLogin(classCitizen* ptrCurrentCitizen, QWidget *parent = nullptr);
     ~UserLogin();
 
 

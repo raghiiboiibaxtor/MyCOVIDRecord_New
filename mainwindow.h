@@ -52,6 +52,7 @@ private slots:
     void on_pbAddUser_clicked();
     void on_pbHome_clicked();
     void on_pbReports_clicked();
+    void on_pbEditUser_clicked();
 };
 #endif // MAINWINDOW_H
 

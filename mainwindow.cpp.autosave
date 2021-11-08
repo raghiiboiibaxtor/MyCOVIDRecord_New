@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->listAllReports, &QListWidget::itemClicked, this, &MainWindow::selectReportDetails);
     connect(ui->pbSearchCategory, &QPushButton::clicked, this, &MainWindow::searchCategory);
 
-
+    QWidget::setStyle(g)
    //Mac Create Directory
    /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
        if(!pathDir.exists())
