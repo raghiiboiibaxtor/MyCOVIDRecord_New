@@ -64,6 +64,19 @@ MainWindow::MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent) : QMain
     this->ptrCurrentCitizen = ptrCurrentCitizen;
 }
 
+MainWindow::MainWindow(citizenReport* ptrCurrentReport, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    this->ptrCurrentReport = ptrCurrentReport;
+}
+
+
+/*MainWindow::MainWindow(classCitizen* ptrReportList, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    this->ptrReportDetails = ptrReportDetails;
+}*/
+
 // } Overloading constructors ends.
 
 
@@ -76,10 +89,10 @@ MainWindow::MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent) : QMain
 // Logout Function
 void MainWindow::logout()
 {
-    Login *login;
+    UserLogin *login;
     close();
     //Displays Login window
-    login = new Login(this);
+    login = new UserLogin(this);
     login->show();
 }
 
@@ -144,7 +157,7 @@ void MainWindow::saveUser()
             out << userList.at(i)->getGuardian() << ", ";
             out << userList.at(i)->getAdditionalNotes() << ", ";
             out << userList.at(i)->getVaccineStatus() << ", ";
-            out << userList.at(i)->getCVN()<< Qt::endl;
+            out << userList.at(i)->getCVN()<< endl;
            }
         // Flushing file and then closing.
         out.flush();
@@ -353,7 +366,7 @@ void MainWindow::saveEdit()
                 out << userList.at(i)->getGuardian() << ", ";
                 out << userList.at(i)->getAdditionalNotes() << ", ";
                 out << userList.at(i)->getVaccineStatus() << ", ";
-                out << userList.at(i)->getCVN()<< Qt::endl;
+                out << userList.at(i)->getCVN()<< endl;
                }
             // Flushing file and then closing.
             out.flush();
@@ -402,6 +415,13 @@ void MainWindow::loadReports()
     inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
     QTextStream read(&inputFile);
 
+    // Clearing existing data from vector
+   for (int i = 0; i< reportList.size(); i++)
+    {
+        delete reportList.at(i);
+    }
+
+    reportList.clear();
     ui->listAllReports->clear();
 
     while(!read.atEnd())
@@ -412,6 +432,11 @@ void MainWindow::loadReports()
 
         // Add read information to ui list widget
         ui->listAllReports->addItem(info.at(0)); // Display category in list widget
+
+        // Adding file information to vector
+        citizenReport* temp = new citizenReport(info.at(0), info.at(1), info.at(2));
+        reportList.push_back(temp);
+
     } // End while
 
     read.flush();
@@ -423,38 +448,20 @@ void MainWindow::loadReports()
 // Show Report Details when selected ******************  FUNCTION IN PROGRESS ********************************
 void MainWindow::selectReportDetails()
 {
-    /*int index = ui->listAllReports->currentRow();
-
-    // Open file for reading
-    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/UserReports.txt");
-    QFile inputFile("UserReports.txt");
-    inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
-    QTextStream read(&inputFile);
-
-    while(!read.atEnd())
-    {
-        // Reading from file and seperating info at text.split()
-        QString text = read.readLine();
-        QStringList info = text.split(", ");
-
-        //QString fileSubject = info.at()
-        QString selectedReport;
+    int index = ui->listAllReports->currentRow();
 
         if (index >= 0)
         {
-            ui->showReportCategory->setText(info.at(1));
-            ui->showPreferredName->setText(info.at(2));
-            ui->showContactDetails->setText(info.at(3));
-            ui->showReportDetails->setText(info.at(4));
+            citizenReport *ptrCitizenReport = reportList.at(index);
+            ui->showReportCategory->setText(ptrCitizenReport->getCategory());
+            ui->showReportDetails->setText(ptrCitizenReport->getDetails());
         }
-    }
 
-    read.flush();
-    inputFile.close();*/
+
 
 } // End of selectedReportDetails() ****************** FUNCTION IN PROGRESS ********************************
 
-void MainWindow::searchCategory()
+void MainWindow::searchCategory() // ******************  FUNCTION NOT STARTED ********************************
 {
 
 } // End of searchCategory()

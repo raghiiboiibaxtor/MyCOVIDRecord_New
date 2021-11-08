@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="aSideNav">
+   <widget class="QFrame" name="SideNav">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -281,7 +281,7 @@ border-color: black;</string>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="uiUserHomePage">
      <widget class="QFrame" name="HomeFrame">

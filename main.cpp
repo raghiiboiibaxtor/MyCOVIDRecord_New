@@ -1,6 +1,6 @@
 //
 #include "mainwindow.h"
-#include "login.h"
+#include "userlogin.h"
 
 #include <QApplication>
 
@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     MainWindow mainWindow;
     mainWindow.hide();
 
-    Login login;
+    UserLogin login;
     login.show();
 
     return a.exec();

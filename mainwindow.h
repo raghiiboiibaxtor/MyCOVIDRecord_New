@@ -5,8 +5,8 @@
 #include <QListWidgetItem>
 #include <QVector>
 #include "classcitizen.h"
-#include "login.h"
-
+#include "citizenreport.h"
+#include "userlogin.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +21,11 @@ private:
     QVector<classCitizen*> userList;
     classCitizen** ptrNewCitizen;
     classCitizen *ptrCurrentCitizen;
+
+    QVector<citizenReport*> reportList;
+    citizenReport *ptrCurrentReport;
+
+
     void addNewUser();
     void saveUser();
     void logout();
@@ -37,6 +42,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     explicit MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent = nullptr);
     explicit MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent = nullptr);
+    explicit MainWindow(citizenReport* ptrCurrentReport, QWidget *parent = nullptr);
+    //explicit MainWindow(classCitizen* ptrReportDetails, QWidget *parent = nullptr);
     ~MainWindow();
 
 

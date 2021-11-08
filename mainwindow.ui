@@ -2327,7 +2327,7 @@ color: gray;
 </string>
       </property>
       <property name="text">
-       <string>Subject:</string>
+       <string>Category:</string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>

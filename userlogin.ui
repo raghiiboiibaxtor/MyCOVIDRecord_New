@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Login</class>
- <widget class="QMainWindow" name="Login">
+ <class>UserLogin</class>
+ <widget class="QMainWindow" name="UserLogin">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -364,7 +364,6 @@ color: #2B2D2F;</string>
      </widget>
      <zorder>labelBackground</zorder>
      <zorder>labelLogin</zorder>
-     <zorder>labelTitle</zorder>
      <zorder>imgHome</zorder>
      <zorder>editEmail</zorder>
      <zorder>labelWelcome</zorder>
@@ -375,9 +374,10 @@ color: #2B2D2F;</string>
      <zorder>labelNHI</zorder>
      <zorder>pbLogin</zorder>
      <zorder>editAccessNumber</zorder>
+     <zorder>labelTitle</zorder>
     </widget>
     <widget class="QWidget" name="UserHome">
-     <widget class="QStackedWidget" name="stackedWidget_2">
+     <widget class="QStackedWidget" name="stackedWidget2">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -2197,7 +2197,14 @@ line-height: 33px;
 /* or 143% */
 display: flex;
 align-items: center;
-color: gray;</string>
+color: gray;
+drop-down: 0px;</string>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <property name="frame">
+          <bool>true</bool>
          </property>
          <item>
           <property name="text">
@@ -2429,7 +2436,7 @@ border-color: white;
 border: 0px;</string>
         </property>
         <property name="text">
-         <string>User*</string>
+         <string/>
         </property>
         <property name="scaledContents">
          <bool>false</bool>

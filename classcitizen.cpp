@@ -14,19 +14,6 @@ classCitizen::classCitizen(QString name, QString contactNumber, QString emailAdd
     this->vaccineStatus = vaccineStatus;
 }
 
-
-/*void classCitizen::setLogin (QString emailAddress, QString nhi, QString accessNumber)
-{
-    this->emailAddress = emailAddress;
-    this->nhi = nhi;
-    this->accessNumber = accessNumber;
-}
-
-void classCitizen::setResult(bool result)
-{
-    this->result = result;
-}*/
-
 // Personal Info / Login Setters
 void classCitizen::setName(QString name)
 {

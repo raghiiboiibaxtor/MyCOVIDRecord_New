@@ -1,9 +1,10 @@
 #include "usermain.h"
 #include "ui_usermain.h"
-#include "login.h"
+#include "userlogin.h"
 #include "classcitizen.h"
 
 #include <QFile>
+#include <QTextStream>
 #include <QDir>
 
 
@@ -44,10 +45,10 @@ UserMain::UserMain(QWidget *parent) : QMainWindow(parent), ui(new Ui::UserMainWi
 // Logout Function
 void UserMain::logout()
 {
-    Login *login;
+    UserLogin *login;
     close();
     //Displays Login window
-    login = new Login(this);
+    login = new UserLogin(this);
     login->show();
 }
 
@@ -68,7 +69,7 @@ void UserMain::submitReport()
     out << ui->cbReportCategory->currentText() << ", ";
     out << ui->editPreferredName->text() << ", ";
     out << ui->editPreferredContact->text() << ", ";
-    out << ui->editReportDetails->toPlainText() << Qt::endl;
+    out << ui->editReportDetails->toPlainText() << endl;
 
 
     // Flushing file and then closing.
