@@ -27,7 +27,7 @@
      <string notr="true">background-color: white;</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="uiAdminHomePage">
      <widget class="QLabel" name="labelBackground">
@@ -1672,9 +1672,9 @@ line-height: 33px;
        <widget class="QLabel" name="labelRecord">
         <property name="geometry">
          <rect>
-          <x>25</x>
-          <y>170</y>
-          <width>431</width>
+          <x>300</x>
+          <y>10</y>
+          <width>161</width>
           <height>41</height>
          </rect>
         </property>
@@ -1687,7 +1687,7 @@ line-height: 23px;
 color: #2B2D2F;</string>
         </property>
         <property name="text">
-         <string>Add Vaccine Record</string>
+         <string>Upload Certificate</string>
         </property>
         <property name="scaledContents">
          <bool>false</bool>
@@ -1702,10 +1702,10 @@ color: #2B2D2F;</string>
        <widget class="QLabel" name="labelVaccineResults">
         <property name="geometry">
          <rect>
-          <x>25</x>
-          <y>120</y>
+          <x>10</x>
+          <y>10</y>
           <width>341</width>
-          <height>61</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="font">
@@ -1744,7 +1744,7 @@ border: 0px;</string>
         <property name="geometry">
          <rect>
           <x>25</x>
-          <y>324</y>
+          <y>340</y>
           <width>321</width>
           <height>51</height>
          </rect>
@@ -1775,9 +1775,9 @@ border: 0px;</string>
        <widget class="QLabel" name="labelResult">
         <property name="geometry">
          <rect>
-          <x>25</x>
-          <y>370</y>
-          <width>431</width>
+          <x>280</x>
+          <y>346</y>
+          <width>161</width>
           <height>41</height>
          </rect>
         </property>
@@ -1790,7 +1790,7 @@ line-height: 23px;
 color: #2B2D2F;</string>
         </property>
         <property name="text">
-         <string>Add Test Results</string>
+         <string>Upload Test Results</string>
         </property>
         <property name="scaledContents">
          <bool>false</bool>
@@ -1847,9 +1847,9 @@ color: #2B2D2F;</string>
        <widget class="QLabel" name="labelQRCode">
         <property name="geometry">
          <rect>
-          <x>23</x>
-          <y>267</y>
-          <width>431</width>
+          <x>280</x>
+          <y>289</y>
+          <width>161</width>
           <height>41</height>
          </rect>
         </property>
@@ -1862,7 +1862,7 @@ line-height: 23px;
 color: #2B2D2F;</string>
         </property>
         <property name="text">
-         <string>Add QR Code</string>
+         <string>Upload QR Code</string>
         </property>
         <property name="scaledContents">
          <bool>false</bool>
@@ -1878,7 +1878,7 @@ color: #2B2D2F;</string>
         <property name="geometry">
          <rect>
           <x>23</x>
-          <y>221</y>
+          <y>290</y>
           <width>321</width>
           <height>51</height>
          </rect>
@@ -1906,106 +1906,232 @@ border: 0px;</string>
          <number>13</number>
         </property>
        </widget>
-       <widget class="QLabel" name="labelRecordAttach">
+       <widget class="QLabel" name="labelFullName_4">
         <property name="geometry">
          <rect>
-          <x>32</x>
-          <y>174</y>
-          <width>31</width>
-          <height>31</height>
+          <x>10</x>
+          <y>50</y>
+          <width>161</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 14pt;
-line-height: 0px;
+         <string notr="true">font-size: 12pt;
+line-height: 23px;
 color: #2B2D2F;
-background: rgba(84, 219, 97, 0.08);
-border:#2B2D2F;
-box-sizing: border-box;
-border-radius: 15px;</string>
-        </property>
-        <property name="lineWidth">
-         <number>0</number>
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
         </property>
         <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="Resource.qrc">:/res/images/attach.png</pixmap>
+         <string>First Dose Details:</string>
         </property>
         <property name="scaledContents">
-         <bool>true</bool>
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="margin">
+         <number>13</number>
         </property>
        </widget>
-       <widget class="QLabel" name="labelTestAttach">
+       <widget class="QLineEdit" name="addUserPhone_2">
         <property name="geometry">
          <rect>
-          <x>32</x>
-          <y>375</y>
-          <width>31</width>
+          <x>260</x>
+          <y>87</y>
+          <width>181</width>
           <height>31</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 14pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(84, 219, 97, 0.08);
-border:#2B2D2F;
-box-sizing: border-box;
-border-radius: 15px;</string>
-        </property>
-        <property name="lineWidth">
-         <number>0</number>
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
         </property>
         <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="Resource.qrc">:/res/images/attach.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
+         <string>Batch Number</string>
         </property>
        </widget>
-       <widget class="QLabel" name="labelQRAttach">
+       <widget class="QLineEdit" name="addUserEmail_2">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>272</y>
-          <width>31</width>
+          <x>260</x>
+          <y>127</y>
+          <width>181</width>
           <height>31</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 14pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(84, 219, 97, 0.08);
-border:#2B2D2F;
-box-sizing: border-box;
-border-radius: 15px;</string>
-        </property>
-        <property name="lineWidth">
-         <number>0</number>
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
         </property>
         <property name="text">
-         <string/>
+         <string>Date Given</string>
         </property>
-        <property name="pixmap">
-         <pixmap resource="Resource.qrc">:/res/images/attach.png</pixmap>
+       </widget>
+       <widget class="QRadioButton" name="radioButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>87</y>
+          <width>201</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+        <property name="text">
+         <string>Pfizer/BioNTech</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>127</y>
+          <width>201</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+        <property name="text">
+         <string>Johnson and Johnson</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelFullName_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>163</y>
+          <width>181</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size: 12pt;
+line-height: 23px;
+color: #2B2D2F;
+border-color: white;
+border: 0px;
+border-radius: 20px;
+color: gray;
+</string>
+        </property>
+        <property name="text">
+         <string>Second Dose Details:</string>
         </property>
         <property name="scaledContents">
-         <bool>true</bool>
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="margin">
+         <number>13</number>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_5">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>200</y>
+          <width>201</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+        <property name="text">
+         <string>Pfizer/BioNTech</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="addUserPhone_4">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>200</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+        <property name="text">
+         <string>Batch Number</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="addUserEmail_4">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>240</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border: 2.3px solid #979797;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+        <property name="text">
+         <string>Date Given</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_6">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>240</y>
+          <width>201</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:#FAFCFF;
+border-radius: 15px;
+font-size: 12px;
+line-height: 33px;
+color: gray;</string>
+        </property>
+        <property name="text">
+         <string>Johnson and Johnson</string>
         </property>
        </widget>
        <zorder>labelVaccineResults</zorder>
@@ -2016,9 +2142,16 @@ border-radius: 15px;</string>
        <zorder>labelResult</zorder>
        <zorder>labelQR</zorder>
        <zorder>labelQRCode</zorder>
-       <zorder>labelRecordAttach</zorder>
-       <zorder>labelTestAttach</zorder>
-       <zorder>labelQRAttach</zorder>
+       <zorder>labelFullName_4</zorder>
+       <zorder>addUserPhone_2</zorder>
+       <zorder>addUserEmail_2</zorder>
+       <zorder>radioButton</zorder>
+       <zorder>radioButton_2</zorder>
+       <zorder>labelFullName_6</zorder>
+       <zorder>radioButton_5</zorder>
+       <zorder>addUserPhone_4</zorder>
+       <zorder>addUserEmail_4</zorder>
+       <zorder>radioButton_6</zorder>
       </widget>
       <widget class="QLabel" name="labelAddUserHeading">
        <property name="geometry">

@@ -28,7 +28,8 @@ private:
 
 public:
     // Constructor
-    explicit classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString guardian, QString additionalNotes, QString vaccineStatus, QString cvn); // , QString accessNumber
+    explicit classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString guardian, QString additionalNotes,
+                          QString vaccineStatus, QString cvn);
 
 
     /*bool getLogin ();
