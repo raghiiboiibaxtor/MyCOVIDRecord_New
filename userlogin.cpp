@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QString>
+#include <QMessageBox>
 
 //UserMain userLoginDetails;
 
@@ -17,6 +18,8 @@ UserLogin::UserLogin(QWidget *parent) : QMainWindow(parent), ui(new Ui::UserLogi
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
 
+    ui->labelConfirmation->hide();
+
     connect(ui->pbLogout, &QPushButton::clicked, this, &UserLogin::logout);
     connect(ui->pbHome, &QPushButton::clicked, this, &UserLogin::pbHome);
     connect(ui->pbMyDetails, &QPushButton::clicked, this, &UserLogin::pbMyDetails);
@@ -24,9 +27,9 @@ UserLogin::UserLogin(QWidget *parent) : QMainWindow(parent), ui(new Ui::UserLogi
     connect(ui->pbSendMessage, &QPushButton::clicked, this, &UserLogin::submitReport);
 
     // Home page display image
-    QPixmap pixmap(":/res/images/dp.png");
+    /*QPixmap pixmap("/res/images/admin.png");
     ui->imgHome->setPixmap(pixmap);
-    ui->imgHome->setScaledContents(true);
+    ui->imgHome->setScaledContents(true);*/
 
 }
 
@@ -37,8 +40,20 @@ UserLogin::UserLogin(classCitizen* ptrCurrentCitizen, QWidget *parent) : QMainWi
     this->ptrCurrentCitizen = ptrCurrentCitizen;
 }
 
+UserLogin::UserLogin(citizenReport*& ptrNewReport, QWidget *parent) : QMainWindow(parent), ui(new Ui::UserLogin)
+{
+    ui->setupUi(this);
+    this->ptrNewReport = &ptrNewReport;
+}
+
 UserLogin::~UserLogin()
 {
+    for (int i=0; i<reportList.size(); i++)
+    {
+        delete reportList.at(i);
+    }
+    reportList.clear();
+
     delete ui;
 }
 
@@ -76,7 +91,7 @@ void UserLogin::on_pbLogin_clicked()
     {
         //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
         QFile inputFile("Citizens.txt");
-        inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
+        inputFile.open(QIODevice::ReadOnly | QIODevice::Text);
         QTextStream read(&inputFile);
 
         // Clearing existing data from vector
@@ -90,7 +105,7 @@ void UserLogin::on_pbLogin_clicked()
         while (!read.atEnd())
         {
             QString line = read.readLine();
-            QStringList info = line.split(", ");
+            QStringList info = line.split(",");
 
 
             QString fileEmail = info.at(2);
@@ -152,6 +167,24 @@ void UserLogin::on_pbLogin_clicked()
 //*********************************************************
 void UserLogin::submitReport()
 {
+    QString addName = ui->editPreferredName->text();
+    QString addContact = ui->editPreferredContact->text();
+    QString addCategory = ui->cbReportCategory->currentText();
+    QString addSubject = ui->editReportSubject->text();
+    QString addDetails = ui->editReportDetails->toPlainText();
+
+    if (addDetails.trimmed() != "")
+    {
+        citizenReport *ptrNewReport = new citizenReport(addName, addContact, addCategory, addSubject, addDetails);
+        reportList.push_back(ptrNewReport);
+    }
+    else
+    {
+       QMessageBox messageBox;
+       messageBox.setText("Please enter details...");
+       messageBox.exec();
+    }
+
     // Writing to file
     /// Windows File Path
     QFile outputFile("UserReports.txt");
@@ -159,13 +192,16 @@ void UserLogin::submitReport()
     //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/UserReports.txt");
 
     QTextStream out(&outputFile);
-    outputFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
+    outputFile.open(QIODevice::WriteOnly | QIODevice:: Append | QIODevice::Text);
 
-    out << ui->editReportSubject->text() << ", ";
-    out << ui->cbReportCategory->currentText() << ", ";
-    out << ui->editPreferredName->text() << ", ";
-    out << ui->editPreferredContact->text() << ", ";
-    out << ui->editReportDetails->toPlainText() << Qt::endl;
+    for (int i = 0; i < reportList.size(); i++)
+       {
+        out << reportList.at(i)->getName() << ",";
+        out << reportList.at(i)->getContact() << ",";
+        out << reportList.at(i)->getCategory() << ",";
+        out << reportList.at(i)->getSubject() << ",";
+        out << reportList.at(i)->getDetails()<< Qt::endl;
+       }
 
 
     // Flushing file and then closing.
@@ -174,8 +210,6 @@ void UserLogin::submitReport()
 
     // Clear input from labels
     ui->editReportSubject->clear();
-    ui->editPreferredName->clear();
-    ui->editPreferredContact->clear();
     ui->editReportDetails->clear();
 
     // Displaying saved message for admin user
@@ -207,4 +241,11 @@ void UserLogin::pbMyDetails()
 void UserLogin::pbContactUs()
 {
     ui->stackedWidget2->setCurrentIndex(2);
+
+    citizenReport* ptrNewReport = nullptr;
+
+    if (ptrNewReport != nullptr)
+    {
+        reportList.push_back(ptrNewReport);
+    }
 }

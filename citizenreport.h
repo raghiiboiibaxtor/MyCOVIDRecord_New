@@ -6,7 +6,7 @@
 #include <QVector>
 
 
-class citizenReport
+class citizenReport //: public classCitizen
 {
 private:
     QString preferredName;
@@ -16,7 +16,7 @@ private:
     QString reportDetails;
 
 public:
-    explicit citizenReport(QString preferredName, QString preferredContact, QString reportCategory, QString reportSubject, QString reportDetails);
+    explicit citizenReport(QString preferredName, QString preferredContact, QString reportCategory, QString reportSubject, QString reportDetails); //: classCitizen(name, email)
 
     QString getName();
     QString getContact();

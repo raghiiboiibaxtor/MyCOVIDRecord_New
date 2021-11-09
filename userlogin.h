@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QString>
 #include "mainwindow.h"
+#include "citizenreport.h"
 
 
 namespace Ui{
@@ -25,6 +26,9 @@ private:
     QVector<classCitizen*> userList;
     classCitizen *ptrCurrentCitizen;
 
+    QVector<citizenReport*> reportList;
+    citizenReport **ptrNewReport;
+
     void pbHome();
     void pbMyDetails();
     void pbContactUs();
@@ -34,6 +38,7 @@ private:
 public:
     explicit UserLogin(QWidget *parent = nullptr);
     explicit UserLogin(classCitizen* ptrCurrentCitizen, QWidget *parent = nullptr);
+    explicit UserLogin(citizenReport*& ptrNewReport, QWidget *parent = nullptr);
     ~UserLogin();
 
 

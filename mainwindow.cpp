@@ -46,7 +46,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
        {
            QDir().mkdir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
        }*/
-
 }
 
 // Second constructor passing double pointer for classCitizen ptrNewCitizen.
@@ -139,14 +138,14 @@ void MainWindow::saveUser()
 
         for (int i = 0; i < userList.size(); i++)
            {
-            out << userList.at(i)->getName() << ", ";
-            out << userList.at(i)->getContactNumber() << ", ";
-            out << userList.at(i)->getEmailAddress() << ", ";
-            out << userList.at(i)->getDateOfBirth() << ", ";
-            out << userList.at(i)->getNHI() << ", ";
-            out << userList.at(i)->getGuardian() << ", ";
-            out << userList.at(i)->getAdditionalNotes() << ", ";
-            out << userList.at(i)->getVaccineStatus() << ", ";
+            out << userList.at(i)->getName() << ",";
+            out << userList.at(i)->getContactNumber() << ",";
+            out << userList.at(i)->getEmailAddress() << ",";
+            out << userList.at(i)->getDateOfBirth() << ",";
+            out << userList.at(i)->getNHI() << ",";
+            out << userList.at(i)->getGuardian() << ",";
+            out << userList.at(i)->getAdditionalNotes() << ",";
+            out << userList.at(i)->getVaccineStatus() << ",";
             out << userList.at(i)->getCVN()<< Qt::endl;
            }
         // Flushing file and then closing.
@@ -194,7 +193,7 @@ void MainWindow::loadUser()
    {
        // Reading from file and seperating info at text.split()
         QString text = read.readLine();
-        QStringList info = text.split(", ");
+        QStringList info = text.split(",");
 
        // Add read information to ui
        ui->listAllUsersNew->addItem(info.at(4));
@@ -346,14 +345,14 @@ void MainWindow::saveEdit()
 
             for (int i = 0; i < userList.size(); i++)
                {
-                out << userList.at(i)->getName() << ", ";
-                out << userList.at(i)->getContactNumber() << ", ";
-                out << userList.at(i)->getEmailAddress() << ", ";
-                out << userList.at(i)->getDateOfBirth() << ", ";
-                out << userList.at(i)->getNHI() << ", ";
-                out << userList.at(i)->getGuardian() << ", ";
-                out << userList.at(i)->getAdditionalNotes() << ", ";
-                out << userList.at(i)->getVaccineStatus() << ", ";
+                out << userList.at(i)->getName() << ",";
+                out << userList.at(i)->getContactNumber() << ",";
+                out << userList.at(i)->getEmailAddress() << ",";
+                out << userList.at(i)->getDateOfBirth() << ",";
+                out << userList.at(i)->getNHI() << ",";
+                out << userList.at(i)->getGuardian() << ",";
+                out << userList.at(i)->getAdditionalNotes() << ",";
+                out << userList.at(i)->getVaccineStatus() << ",";
                 out << userList.at(i)->getCVN()<< Qt::endl;
                }
             // Flushing file and then closing.
@@ -416,10 +415,10 @@ void MainWindow::loadReports()
     {
         // Reading from file and seperating info at text.split()
         QString text = read.readLine();
-        QStringList info = text.split(", ");
+        QStringList info = text.split(",");
 
         // Add read information to ui list widget
-        ui->listAllReports->addItem(info.at(1)); // Display subject in list widget
+        ui->listAllReports->addItem(info.at(3)); // Display subject in list widget
 
         // Adding file information to vector
         citizenReport* temp = new citizenReport(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4));

@@ -28,7 +28,7 @@
 </string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="LoginPage">
      <widget class="QLabel" name="labelBackground">
@@ -127,7 +127,7 @@ text-align: center;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resource.qrc">:/res/images/dp.png</pixmap>
+       <pixmap resource="../MyCOVIDRecord_New/Resources.qrc">:/res/images/loginHome.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -387,7 +387,7 @@ color: #2B2D2F;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="uiUserHomePage">
        <widget class="QFrame" name="HomeFrame">
@@ -724,7 +724,7 @@ border-color: black;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="Resource.qrc">:/res/images/dose1.png</pixmap>
+          <pixmap resource="../MyCOVIDRecord_New/Resources.qrc">:/res/images/dose1.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -752,7 +752,7 @@ border-color: black;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="Resource.qrc">:/res/images/dose2.png</pixmap>
+          <pixmap resource="../MyCOVIDRecord_New/Resources.qrc">:/res/images/dose2.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -2527,7 +2527,7 @@ color: #2B2D2F;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Resource.qrc">:/res/images/user.png</pixmap>
+         <pixmap resource="../MyCOVIDRecord_New/Resources.qrc">:/res/images/user.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -2631,7 +2631,7 @@ border-color: black;</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="Resource.qrc"/>
+  <include location="../MyCOVIDRecord_New/Resources.qrc"/>
  </resources>
  <connections/>
 </ui>
