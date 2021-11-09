@@ -27,7 +27,7 @@
      <string notr="true">background-color: white;</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="uiAdminHomePage">
      <widget class="QLabel" name="labelBackground">
@@ -762,7 +762,7 @@ color: gray;
 </string>
        </property>
        <property name="text">
-        <string>Guardian Full Name:</string>
+        <string>Emergency Contact</string>
        </property>
        <property name="scaledContents">
         <bool>false</bool>
@@ -971,7 +971,7 @@ color: gray;</string>
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="showUserGuardian">
+      <widget class="QLabel" name="showUserEmergency">
        <property name="geometry">
         <rect>
          <x>370</x>
@@ -1098,7 +1098,7 @@ color: gray;</string>
       <zorder>showUserDOB</zorder>
       <zorder>showUserPhone</zorder>
       <zorder>showUserEmail</zorder>
-      <zorder>showUserGuardian</zorder>
+      <zorder>showUserEmergency</zorder>
       <zorder>showUserCVN</zorder>
       <zorder>showUserNHI</zorder>
       <zorder>showUserNotes</zorder>
@@ -1383,7 +1383,7 @@ color: gray;
 </string>
         </property>
         <property name="text">
-         <string>Guardian Full Name:</string>
+         <string>Emergency Contact</string>
         </property>
         <property name="scaledContents">
          <bool>false</bool>
@@ -1591,7 +1591,7 @@ line-height: 33px;
 color: gray;</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="addUserGuardian">
+       <widget class="QLineEdit" name="addUserEmergency">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1669,206 +1669,11 @@ line-height: 33px;
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <widget class="QLabel" name="addCertificate">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>20</y>
-          <width>161</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: rgba(252, 219, 100, 0.44);
-border: 2.3px rgba(252, 219, 100, 0.44);
-border-radius: 20px;
-font-size: 14px;
-line-height: 23px;
-color: #2B2D2F;</string>
-        </property>
-        <property name="text">
-         <string>Upload Certificate</string>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="margin">
-         <number>12</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="labelVaccineResults">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>341</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Quicksand</family>
-          <pointsize>12</pointsize>
-          <weight>25</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-        </property>
-        <property name="text">
-         <string>COVID-19 Vaccination Record</string>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-        <property name="margin">
-         <number>13</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="labelTestResults">
-        <property name="geometry">
-         <rect>
-          <x>25</x>
-          <y>340</y>
-          <width>321</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-        </property>
-        <property name="text">
-         <string>COVID-19 Test Results</string>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-        <property name="margin">
-         <number>13</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="addTestResults">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>346</y>
-          <width>161</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: rgba(252, 219, 100, 0.44);
-border: 2.3px rgba(252, 219, 100, 0.44);
-border-radius: 20px;
-font-size: 14px;
-line-height: 23px;
-color: #2B2D2F;</string>
-        </property>
-        <property name="text">
-         <string>Upload Test Results</string>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="margin">
-         <number>12</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="addQRCode">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>289</y>
-          <width>161</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: rgba(252, 219, 100, 0.44);
-border: 2.3px rgba(252, 219, 100, 0.44);
-border-radius: 20px;
-font-size: 14px;
-line-height: 23px;
-color: #2B2D2F;</string>
-        </property>
-        <property name="text">
-         <string>Upload QR Code</string>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="margin">
-         <number>12</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="labelQR">
-        <property name="geometry">
-         <rect>
-          <x>23</x>
-          <y>290</y>
-          <width>321</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-        </property>
-        <property name="text">
-         <string>QR Code</string>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-        <property name="margin">
-         <number>13</number>
-        </property>
-       </widget>
        <widget class="QLabel" name="labelFullName_4">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>50</y>
+          <y>2</y>
           <width>161</width>
           <height>41</height>
          </rect>
@@ -1899,9 +1704,9 @@ color: gray;
        <widget class="QLineEdit" name="add1stDoseBatch">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>87</y>
-          <width>181</width>
+          <x>20</x>
+          <y>80</y>
+          <width>121</width>
           <height>31</height>
          </rect>
         </property>
@@ -1920,9 +1725,9 @@ color: gray;</string>
        <widget class="QLineEdit" name="add1stDoseDate">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>127</y>
-          <width>181</width>
+          <x>150</x>
+          <y>80</y>
+          <width>131</width>
           <height>31</height>
          </rect>
         </property>
@@ -1942,7 +1747,7 @@ color: gray;</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>163</y>
+          <y>120</y>
           <width>181</width>
           <height>41</height>
          </rect>
@@ -1973,9 +1778,9 @@ color: gray;
        <widget class="QLineEdit" name="add2ndDoseBatch">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>200</y>
-          <width>181</width>
+          <x>20</x>
+          <y>190</y>
+          <width>121</width>
           <height>31</height>
          </rect>
         </property>
@@ -1994,9 +1799,9 @@ color: gray;</string>
        <widget class="QLineEdit" name="add2ndDoseDate">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>240</y>
-          <width>181</width>
+          <x>150</x>
+          <y>190</y>
+          <width>131</width>
           <height>31</height>
          </rect>
         </property>
@@ -2015,9 +1820,9 @@ color: gray;</string>
        <widget class="QLineEdit" name="add1stDoseName">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>90</y>
-          <width>181</width>
+          <x>20</x>
+          <y>40</y>
+          <width>261</width>
           <height>31</height>
          </rect>
         </property>
@@ -2036,9 +1841,9 @@ color: gray;</string>
        <widget class="QLineEdit" name="add2ndDoseName">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>200</y>
-          <width>181</width>
+          <x>20</x>
+          <y>150</y>
+          <width>261</width>
           <height>31</height>
          </rect>
         </property>
@@ -2058,9 +1863,9 @@ color: gray;</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>410</y>
+          <y>224</y>
           <width>321</width>
-          <height>51</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2090,8 +1895,8 @@ border: 0px;</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>443</y>
-          <width>421</width>
+          <y>260</y>
+          <width>441</width>
           <height>61</height>
          </rect>
         </property>
@@ -2104,22 +1909,117 @@ line-height: 33px;
 </string>
         </property>
        </widget>
-       <zorder>labelVaccineResults</zorder>
-       <zorder>labelTestResults</zorder>
-       <zorder>addCertificate</zorder>
-       <zorder>addTestResults</zorder>
-       <zorder>labelQR</zorder>
-       <zorder>addQRCode</zorder>
-       <zorder>labelFullName_4</zorder>
-       <zorder>add1stDoseBatch</zorder>
-       <zorder>add1stDoseDate</zorder>
-       <zorder>labelFullName_6</zorder>
-       <zorder>add2ndDoseBatch</zorder>
-       <zorder>add2ndDoseDate</zorder>
-       <zorder>add1stDoseName</zorder>
-       <zorder>add2ndDoseName</zorder>
-       <zorder>labelExtraNotes</zorder>
-       <zorder>addNotes</zorder>
+       <widget class="QPushButton" name="pbAddQRCode">
+        <property name="geometry">
+         <rect>
+          <x>44</x>
+          <y>330</y>
+          <width>151</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
+border-radius: 15px;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
+        </property>
+        <property name="text">
+         <string>Upload QR Code</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pbAddTestResults">
+        <property name="geometry">
+         <rect>
+          <x>265</x>
+          <y>330</y>
+          <width>151</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
+border-radius: 15px;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
+        </property>
+        <property name="text">
+         <string>Upload Test Results</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pbAddCertificate">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>10</y>
+          <width>151</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
+border-radius: 15px;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
+        </property>
+        <property name="text">
+         <string>Upload Certificate</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="showCertificate">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>50</y>
+          <width>151</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="showQRCode">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>370</y>
+          <width>131</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="showTestResults">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>370</y>
+          <width>221</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </widget>
       <widget class="QLabel" name="labelAddUserHeading">
        <property name="geometry">
@@ -2421,7 +2321,7 @@ color: gray;
 </string>
         </property>
         <property name="text">
-         <string>Guardian Full Name:</string>
+         <string>Emergency Contact</string>
         </property>
         <property name="scaledContents">
          <bool>false</bool>
@@ -2635,7 +2535,7 @@ line-height: 33px;
 color: gray;</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="editUserGuardian">
+       <widget class="QLineEdit" name="editUserEmergency">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -3152,7 +3052,7 @@ border: 0px;</string>
          <number>13</number>
         </property>
        </widget>
-       <widget class="QPushButton" name="pbAddCertificate">
+       <widget class="QPushButton" name="pbEditCertificate">
         <property name="geometry">
          <rect>
           <x>280</x>
@@ -3192,7 +3092,7 @@ color: #2B2D2F;</string>
        <zorder>addTestResults_2</zorder>
        <zorder>labelEditNotes</zorder>
        <zorder>editUserNotes</zorder>
-       <zorder>pbAddCertificate</zorder>
+       <zorder>pbEditCertificate</zorder>
       </widget>
       <widget class="QLabel" name="labelAddUserHeading_2">
        <property name="geometry">

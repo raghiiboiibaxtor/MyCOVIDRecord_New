@@ -118,18 +118,16 @@ void UserLogin::on_pbLogin_clicked()
                 {
                     // Adding file information to vector
                     classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8), info.at(9), info.at(10),
-                                                          info.at(11), info.at(12), info.at(13), info.at(14));
+                                                          info.at(11), info.at(12), info.at(13), info.at(14), info.at(15), info.at(16), info.at(17));
                     userList.push_back(temp);
 
-
-                    //classCitizen* currentUser = userList.at();
                     ui->showUserName->setText(temp->getName());
                     ui->showUserNumber->setText(temp->getContactNumber());
                     ui->showUserEmail->setText(temp->getEmailAddress());
                     ui->showUserDOB->setText(temp->getDateOfBirth());
                     ui->showUserNHI->setText(temp->getNHI());
                     ui->showUserCV->setText(temp->getCVN());
-                    ui->showUserGuardian->setText(temp->getGuardian());
+                    ui->showUserEmergency->setText(temp->getEmergencyContact());
                     ui->showUserVaccStatus->setText(temp->getVaccineStatus());
                     ui->showDose1Name->setText(temp->getVaccineName1());
                     ui->showDose1Batch->setText(temp->getBatchNumber1());
@@ -137,6 +135,15 @@ void UserLogin::on_pbLogin_clicked()
                     ui->showDose2Name->setText(temp->getVaccineName2());
                     ui->showDose2Batch->setText(temp->getBatchNumber2());
                     ui->showDose2Date->setText(temp->getDateGiven2());
+                    QPixmap pixmap(temp->getCertificate());
+                    ui->showCertificate->setPixmap(pixmap);
+                    ui->showCertificate->setScaledContents(true);
+                    QPixmap pixmap1(temp->getQRCode());
+                    ui->showQRCode->setPixmap(pixmap1);
+                    ui->showQRCode->setScaledContents(true);
+                    QPixmap pixmap2(temp->getTestResult());
+                    ui->showTestResults->setPixmap(pixmap2);
+                    ui->showTestResults->setScaledContents(true);
 
                     ui->editPreferredName->setText(temp->getName());
                     ui->editPreferredContact->setText(temp->getEmailAddress());
@@ -206,7 +213,7 @@ void UserLogin::submitReport()
         out << reportList.at(i)->getContact() << ",";
         out << reportList.at(i)->getCategory() << ",";
         out << reportList.at(i)->getSubject() << ",";
-        out << reportList.at(i)->getDetails()<< endl;
+        out << reportList.at(i)->getDetails()<< Qt::endl;
        }
 
 

@@ -25,9 +25,14 @@ private:
     QVector<citizenReport*> reportList;
     citizenReport *ptrCurrentReport;
 
+    QString certificateImage;
     QString qrCodeImage;
+    QString testResultImage;
 
     void addNewUser();
+    void addCertificateImage();
+    void addQRCodeImage();
+    void addTestResultImage();
     void saveUser();
     void logout();
     void loadUser();
