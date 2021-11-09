@@ -349,7 +349,7 @@ border-color: black;</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="Resource.qrc">:/res/images/dose1.png</pixmap>
+        <pixmap>:/res/images/dose1.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -377,7 +377,7 @@ border-color: black;</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="Resource.qrc">:/res/images/dose2.png</pixmap>
+        <pixmap>:/res/images/dose2.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -3010,7 +3010,7 @@ border-radius: 15px;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Resource.qrc">:/res/images/attach.png</pixmap>
+         <pixmap>:/res/images/attach.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -3044,7 +3044,7 @@ border-radius: 15px;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Resource.qrc">:/res/images/attach.png</pixmap>
+         <pixmap>:/res/images/attach.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -3078,7 +3078,7 @@ border-radius: 15px;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Resource.qrc">:/res/images/attach.png</pixmap>
+         <pixmap>:/res/images/attach.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -3777,7 +3777,7 @@ color: #2B2D2F;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resource.qrc">:/res/images/admin.png</pixmap>
+       <pixmap resource="Resources.qrc">:/res/MyCOVIDRecord_New/images/admin.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -3903,7 +3903,7 @@ border-color: black;</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="Resource.qrc"/>
+  <include location="Resources.qrc"/>
  </resources>
  <connections/>
 </ui>

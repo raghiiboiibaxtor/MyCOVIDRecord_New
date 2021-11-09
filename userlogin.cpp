@@ -200,7 +200,7 @@ void UserLogin::submitReport()
         out << reportList.at(i)->getContact() << ",";
         out << reportList.at(i)->getCategory() << ",";
         out << reportList.at(i)->getSubject() << ",";
-        out << reportList.at(i)->getDetails()<< Qt::endl;
+        out << reportList.at(i)->getDetails()<< endl;
        }
 
 

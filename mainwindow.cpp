@@ -146,7 +146,7 @@ void MainWindow::saveUser()
             out << userList.at(i)->getGuardian() << ",";
             out << userList.at(i)->getAdditionalNotes() << ",";
             out << userList.at(i)->getVaccineStatus() << ",";
-            out << userList.at(i)->getCVN()<< Qt::endl;
+            out << userList.at(i)->getCVN()<< endl;
            }
         // Flushing file and then closing.
         out.flush();
@@ -353,7 +353,7 @@ void MainWindow::saveEdit()
                 out << userList.at(i)->getGuardian() << ",";
                 out << userList.at(i)->getAdditionalNotes() << ",";
                 out << userList.at(i)->getVaccineStatus() << ",";
-                out << userList.at(i)->getCVN()<< Qt::endl;
+                out << userList.at(i)->getCVN()<< endl;
                }
             // Flushing file and then closing.
             out.flush();
