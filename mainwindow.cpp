@@ -53,6 +53,15 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
 {
     ui->setupUi(this);
     this->ptrNewCitizen = &ptrNewCitizen;
+
+    qrCodeImage = "none.png";
+
+    QDir pathDir("./UserDocuments/qrCodes");
+    if(!pathDir.exists())
+    {
+        //create it!
+        QDir().mkdir("./UserDocuments/qrCodes");
+    }
 }
 
 // Third constructor passing single pointer for classCitizen ptrCurrentCitizen.
@@ -109,14 +118,24 @@ void MainWindow::saveUser()
     QString addEmail = ui->addUserEmail->text();
     QString addDob = ui->addUserDOB->text();
     QString addNhi = ui->addUserNHI->text();
-    QString addGuardian = ui->addUserGuardian->text();
+    QString addEmergencyContact = ui->addUserGuardian->text();
     QString addNotes = ui->addNotes->text();
     QString addVaccStatus = ui->addVaccStatus->currentText();
     QString addCvn = ui->addUserCVN->text();
+    QString add1VaccName = ui->add1stDoseName->text();
+    QString add1BatchNum = ui->add1stDoseBatch->text();
+    QString add1Date = ui->add1stDoseDate->text();
+    QString add2VaccName = ui->add2ndDoseName->text();
+    QString add2BatchNum = ui->add2ndDoseBatch->text();
+    QString add2Date = ui->add2ndDoseDate->text();
+
+    //QString add immage stuff
+
 
     if (addName.trimmed() != "")
     {
-        classCitizen *ptrNewCitizen = new classCitizen(addName, addPhone, addEmail, addDob, addNhi, addGuardian, addNotes, addVaccStatus, addCvn);
+        classCitizen *ptrNewCitizen = new classCitizen(addName, addPhone, addEmail, addDob, addNhi, addEmergencyContact, addNotes, addVaccStatus, addCvn,
+                                                       add1VaccName, add1BatchNum, add1Date, add2VaccName, add2BatchNum, add2Date, qrCodeImage);
         userList.push_back(ptrNewCitizen);
         ui->listAllUsersNew->addItem(ptrNewCitizen->getNHI()); // Displays added user name to list widget on "all users page"
     }
@@ -143,10 +162,16 @@ void MainWindow::saveUser()
             out << userList.at(i)->getEmailAddress() << ",";
             out << userList.at(i)->getDateOfBirth() << ",";
             out << userList.at(i)->getNHI() << ",";
-            out << userList.at(i)->getGuardian() << ",";
+            out << userList.at(i)->getEmergencyContact() << ",";
             out << userList.at(i)->getAdditionalNotes() << ",";
             out << userList.at(i)->getVaccineStatus() << ",";
-            out << userList.at(i)->getCVN()<< endl;
+            out << userList.at(i)->getCVN()<< ",";
+            out << userList.at(i)->getVaccineName1() << ",";
+            out << userList.at(i)->getBatchNumber1() << ",";
+            out << userList.at(i)->getDateGiven1() << ",";
+            out << userList.at(i)->getVaccineName2() << ",";
+            out << userList.at(i)->getBatchNumber2() << ",";
+            out << userList.at(i)->getDateGiven2() << endl;
            }
         // Flushing file and then closing.
         out.flush();
@@ -160,8 +185,13 @@ void MainWindow::saveUser()
         ui->addUserNHI->clear();
         ui->addUserGuardian->clear();
         ui->addNotes->clear();
-        ui->addVaccStatus->clear();
         ui->addUserCVN->clear();
+        ui->add1stDoseName->clear();
+        ui->add1stDoseBatch->clear();
+        ui->add1stDoseDate->clear();
+        ui->add2ndDoseName->clear();
+        ui->add2ndDoseBatch->clear();
+        ui->add2ndDoseDate->clear();
 
         // Displaying saved message for admin user
         ui->lblSavedMessage->show();
@@ -199,7 +229,8 @@ void MainWindow::loadUser()
        ui->listAllUsersNew->addItem(info.at(4));
 
        // Adding file information to vector
-       classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8));
+       classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8), info.at(9),
+                                             info.at(10), info.at(11), info.at(12), info.at(13), info.at(14));
        userList.push_back(temp);
    } // End while
 
@@ -224,7 +255,7 @@ void MainWindow::selectUserDetails()
         ui->showUserEmail->setText(selectedUser->getEmailAddress());
         ui->showUserDOB->setText(selectedUser->getDateOfBirth());
         ui->showUserNHI->setText(selectedUser->getNHI());
-        ui->showUserGuardian->setText(selectedUser->getGuardian());
+        ui->showUserGuardian->setText(selectedUser->getEmergencyContact());
         ui->showUserNotes->setText(selectedUser->getAdditionalNotes());
         ui->showUserVaccStatus->setText(selectedUser->getVaccineStatus());
         ui->showUserCVN->setText(selectedUser->getCVN());
@@ -290,10 +321,16 @@ void MainWindow:: editUser()
                 ui->editUserEmail->setText(ptrCurrentCitizen->getEmailAddress());
                 ui->editUserDOB->setText(ptrCurrentCitizen->getDateOfBirth());
                 ui->NHIDisplayLabel->setText(ptrCurrentCitizen->getNHI()); // Non-editable
-                ui->editUserGuardian->setText(ptrCurrentCitizen->getGuardian());
+                ui->editUserGuardian->setText(ptrCurrentCitizen->getEmergencyContact());
                 ui->editUserNotes->setText(ptrCurrentCitizen->getAdditionalNotes());
                 ui->editUserVaccineSB->setCurrentText(ptrCurrentCitizen->getVaccineStatus());
                 ui->CVNDisplayLabel->setText(ptrCurrentCitizen->getCVN()); // Non-editable
+                ui->edit1stDoseName->setText(ptrCurrentCitizen->getVaccineName1());
+                ui->edit1stDoseBatch->setText(ptrCurrentCitizen->getBatchNumber1());
+                ui->edit1stDoseDate->setText(ptrCurrentCitizen->getDateGiven1());
+                ui->edit2ndDoseName->setText(ptrCurrentCitizen->getVaccineName2());
+                ui->edit2ndDoseBatch->setText(ptrCurrentCitizen->getBatchNumber2());
+                ui->edit2ndDoseDate->setText(ptrCurrentCitizen->getDateGiven2());
             }
             else
             {
@@ -319,9 +356,15 @@ void MainWindow::saveEdit()
     QString editPhone = ui->editUserPhone->text();
     QString editEmail = ui->editUserEmail->text();
     QString editDob = ui->editUserDOB->text();
-    QString editGuardian = ui->editUserGuardian->text();
+    QString editEmergencyContact = ui->editUserGuardian->text();
     QString editNotes = ui->editUserNotes->text();
     QString editVaccStatus = ui->editUserVaccineSB->currentText();
+    QString edit1VaccName = ui->edit1stDoseName->text();
+    QString edit1BatchNum = ui->edit1stDoseBatch->text();
+    QString edit1Date = ui->edit1stDoseDate->text();
+    QString edit2VaccName = ui->edit2ndDoseName->text();
+    QString edit2BatchNum = ui->edit2ndDoseBatch->text();
+    QString edit2Date = ui->edit2ndDoseDate->text();
 
     if(editName.trimmed() != "")
     {
@@ -330,9 +373,15 @@ void MainWindow::saveEdit()
         ptrCurrentCitizen->setContactNumber(editPhone);
         ptrCurrentCitizen->setEmailAddress(editEmail);
         ptrCurrentCitizen->setDateOfBirth(editDob);
-        ptrCurrentCitizen->setGuardian(editGuardian);
+        ptrCurrentCitizen->setEmergencyContact(editEmergencyContact);
         ptrCurrentCitizen->setAdditionalNotes(editNotes);
         ptrCurrentCitizen->setVaccineStatus(editVaccStatus);
+        ptrCurrentCitizen->setVaccineName1(edit1VaccName);
+        ptrCurrentCitizen->setBatchNumber1(edit1BatchNum);
+        ptrCurrentCitizen->setDateGiven1(edit1Date);
+        ptrCurrentCitizen->setVaccineName2(edit2VaccName);
+        ptrCurrentCitizen->setBatchNumber2(edit2BatchNum);
+        ptrCurrentCitizen->setDateGiven2(edit2Date);
 
         // Writing edit to file
         /// Windows File Path
@@ -350,10 +399,16 @@ void MainWindow::saveEdit()
                 out << userList.at(i)->getEmailAddress() << ",";
                 out << userList.at(i)->getDateOfBirth() << ",";
                 out << userList.at(i)->getNHI() << ",";
-                out << userList.at(i)->getGuardian() << ",";
+                out << userList.at(i)->getEmergencyContact() << ",";
                 out << userList.at(i)->getAdditionalNotes() << ",";
                 out << userList.at(i)->getVaccineStatus() << ",";
-                out << userList.at(i)->getCVN()<< endl;
+                out << userList.at(i)->getCVN()<< ",";
+                out << userList.at(i)->getVaccineName1() << ",";
+                out << userList.at(i)->getBatchNumber1() << ",";
+                out << userList.at(i)->getDateGiven1() << ",";
+                out << userList.at(i)->getVaccineName2() << ",";
+                out << userList.at(i)->getBatchNumber2() << ",";
+                out << userList.at(i)->getDateGiven2() << endl;
                }
             // Flushing file and then closing.
             out.flush();
@@ -370,6 +425,12 @@ void MainWindow::saveEdit()
             ui->editUserNotes->clear();
             ui->editUserVaccineSB->clear();
             ui->CVNDisplayLabel->clear();
+            ui->add1stDoseName->clear();
+            ui->add1stDoseBatch->clear();
+            ui->add1stDoseDate->clear();
+            ui->add2ndDoseName->clear();
+            ui->add2ndDoseBatch->clear();
+            ui->add2ndDoseDate->clear();
 
             // Changing input from view user labels
             ui->showUserName->setText(ptrCurrentCitizen->getName());
@@ -377,7 +438,7 @@ void MainWindow::saveEdit()
             ui->showUserEmail->setText(ptrCurrentCitizen->getEmailAddress());
             ui->showUserDOB->setText(ptrCurrentCitizen->getDateOfBirth());
             ui->showUserNHI->setText(ptrCurrentCitizen->getNHI());
-            ui->showUserGuardian->setText(ptrCurrentCitizen->getGuardian());
+            ui->showUserGuardian->setText(ptrCurrentCitizen->getEmergencyContact());
             ui->showUserNotes->setText(ptrCurrentCitizen->getAdditionalNotes());
             ui->showUserVaccStatus->setText(ptrCurrentCitizen->getVaccineStatus());
             ui->showUserCVN->setText(ptrCurrentCitizen->getCVN());

@@ -117,7 +117,8 @@ void UserLogin::on_pbLogin_clicked()
                 if (accessNumber == "1234")
                 {
                     // Adding file information to vector
-                    classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8));
+                    classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8), info.at(9), info.at(10),
+                                                          info.at(11), info.at(12), info.at(13), info.at(14));
                     userList.push_back(temp);
 
 
@@ -130,7 +131,12 @@ void UserLogin::on_pbLogin_clicked()
                     ui->showUserCV->setText(temp->getCVN());
                     ui->showUserGuardian->setText(temp->getGuardian());
                     ui->showUserVaccStatus->setText(temp->getVaccineStatus());
-                    // ui->showUserNotes->setText(info.at(8));
+                    ui->showDose1Name->setText(temp->getVaccineName1());
+                    ui->showDose1Batch->setText(temp->getBatchNumber1());
+                    ui->showDose1Date->setText(temp->getDateGiven1());
+                    ui->showDose2Name->setText(temp->getVaccineName2());
+                    ui->showDose2Batch->setText(temp->getBatchNumber2());
+                    ui->showDose2Date->setText(temp->getDateGiven2());
 
                     ui->editPreferredName->setText(temp->getName());
                     ui->editPreferredContact->setText(temp->getEmailAddress());
@@ -192,7 +198,7 @@ void UserLogin::submitReport()
     //QFile outputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/UserReports.txt");
 
     QTextStream out(&outputFile);
-    outputFile.open(QIODevice::WriteOnly | QIODevice:: Append | QIODevice::Text);
+    outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
 
     for (int i = 0; i < reportList.size(); i++)
        {

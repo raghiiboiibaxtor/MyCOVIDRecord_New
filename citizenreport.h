@@ -16,7 +16,7 @@ private:
     QString reportDetails;
 
 public:
-    explicit citizenReport(QString preferredName, QString preferredContact, QString reportCategory, QString reportSubject, QString reportDetails); //: classCitizen(name, email)
+    explicit citizenReport(QString preferredName, QString preferredContact, QString reportCategory, QString reportSubject, QString reportDetails);
 
     QString getName();
     QString getContact();

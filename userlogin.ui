@@ -112,9 +112,9 @@ text-align: center;</string>
       <property name="geometry">
        <rect>
         <x>510</x>
-        <y>20</y>
+        <y>240</y>
         <width>571</width>
-        <height>621</height>
+        <height>401</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -387,7 +387,7 @@ color: #2B2D2F;</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="uiUserHomePage">
        <widget class="QFrame" name="HomeFrame">
@@ -807,40 +807,6 @@ border-color: black;</string>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <widget class="QLabel" name="label1Dose2">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>160</y>
-            <width>481</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 14pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(255, 236, 207, 0.88);
-border: 2.23px rgba(255, 236, 207, 0.88);
-box-sizing: border-box;
-border-radius: 25px;</string>
-          </property>
-          <property name="text">
-           <string>Pfizer BioNTech COVID-19 </string>
-          </property>
-          <property name="scaledContents">
-           <bool>false</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="margin">
-           <number>12</number>
-          </property>
-         </widget>
          <widget class="QLabel" name="labelVaccineResults2">
           <property name="geometry">
            <rect>
@@ -873,121 +839,7 @@ border: 0px;</string>
            <number>13</number>
           </property>
          </widget>
-         <widget class="QPushButton" name="pbVaxDate">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>120</y>
-            <width>101</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(84, 219, 97, 0.08);
-border: 2.23px rgba(84, 219, 97, 0.08);
-box-sizing: border-box;
-border-radius: 10px;</string>
-          </property>
-          <property name="text">
-           <string>Date</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pbBatch">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>120</y>
-            <width>121</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(84, 219, 97, 0.08);
-border: 2.23px rgba(84, 219, 97, 0.08);
-box-sizing: border-box;
-border-radius: 10px;</string>
-          </property>
-          <property name="text">
-           <string>#Batch</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="labelResultNote">
-          <property name="geometry">
-           <rect>
-            <x>60</x>
-            <y>380</y>
-            <width>441</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 10pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-          </property>
-          <property name="text">
-           <string>You are required to self-isolate immediately.   We'll be in touch shortly.</string>
-          </property>
-          <property name="scaledContents">
-           <bool>false</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="margin">
-           <number>13</number>
-          </property>
-         </widget>
-         <widget class="QLabel" name="labelTestResults2">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>257</y>
-            <width>321</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 18pt;
-line-height: 23px;
-color: #2B2D2F;
-border-color: white;
-border: 0px;</string>
-          </property>
-          <property name="text">
-           <string>Test Results</string>
-          </property>
-          <property name="scaledContents">
-           <bool>false</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-          <property name="margin">
-           <number>13</number>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label2Dose2">
+         <widget class="QLabel" name="showDose1Name">
           <property name="geometry">
            <rect>
             <x>21</x>
@@ -1009,7 +861,7 @@ box-sizing: border-box;
 border-radius: 25px;</string>
           </property>
           <property name="text">
-           <string>Pfizer BioNTech COVID-19 </string>
+           <string/>
           </property>
           <property name="scaledContents">
            <bool>false</bool>
@@ -1019,159 +871,6 @@ border-radius: 25px;</string>
           </property>
           <property name="margin">
            <number>12</number>
-          </property>
-         </widget>
-         <widget class="QLabel" name="labelResult2">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>300</y>
-            <width>481</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">zfont-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 14pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(255, 203, 203, 0.88);
-border: 2.23px rgba(255, 203, 203, 0.88);
-box-sizing: border-box;
-border-radius: 25px;</string>
-          </property>
-          <property name="text">
-           <string>Positive</string>
-          </property>
-          <property name="scaledContents">
-           <bool>false</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="margin">
-           <number>12</number>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pbStatus">
-          <property name="geometry">
-           <rect>
-            <x>31</x>
-            <y>220</y>
-            <width>161</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(255, 236, 207, 0.88);
-border: 2.23px rgba(255, 236, 207, 0.88);
-box-sizing: border-box;
-border-radius: 10px;</string>
-          </property>
-          <property name="text">
-           <string>Not yet recieved</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pbTestDate">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>360</y>
-            <width>101</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">zfont-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(255, 203, 203, 0.88);
-border: 2.23px rgba(255, 203, 203, 0.88);
-box-sizing: border-box;
-border-radius: 10px;</string>
-          </property>
-          <property name="text">
-           <string>Date</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pbVariant">
-          <property name="geometry">
-           <rect>
-            <x>160</x>
-            <y>360</y>
-            <width>101</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">zfont-family: Quicksand;
-font-style: thin;
-font-weight: 200;
-font-size: 12pt;
-line-height: 0px;
-color: #2B2D2F;
-background: rgba(255, 203, 203, 0.88);
-border: 2.23px rgba(255, 203, 203, 0.88);
-box-sizing: border-box;
-border-radius: 10px;</string>
-          </property>
-          <property name="text">
-           <string>Delta</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="labelTestIcon">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>310</y>
-            <width>31</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background: rgba(255, 203, 203, 0.88);
-border: 2.23px solid rgba(255, 71, 71, 0.77);
-box-sizing: border-box;
-border-radius: 15px;</string>
-          </property>
-          <property name="lineWidth">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-         <widget class="QLabel" name="labelDose12">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>170</y>
-            <width>31</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background: rgba(255, 236, 207, 0.88);
-border: 2.23px solid #FFB61D;
-box-sizing: border-box;
-border-radius: 15px;</string>
-          </property>
-          <property name="lineWidth">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string/>
           </property>
          </widget>
          <widget class="QLabel" name="labelDose22">
@@ -1179,6 +878,198 @@ border-radius: 15px;</string>
            <rect>
             <x>31</x>
             <y>70</y>
+            <width>31</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: rgba(84, 219, 97, 0.08);
+border: 2.23px solid #81C79F;
+box-sizing: border-box;
+border-radius: 15px;</string>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="showDose1Batch">
+          <property name="geometry">
+           <rect>
+            <x>28</x>
+            <y>120</y>
+            <width>141</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 10pt;
+line-height: 30px;
+color: #2B2D2F;
+background: rgba(84, 219, 97, 0.08);
+border: 2.23px rgba(84, 219, 97, 0.08);
+box-sizing: border-box;
+border-radius: 15px;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="margin">
+           <number>12</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="showDose1Date">
+          <property name="geometry">
+           <rect>
+            <x>180</x>
+            <y>120</y>
+            <width>141</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 10pt;
+line-height: 0px;
+color: #2B2D2F;
+background: rgba(84, 219, 97, 0.08);
+border: 2.23px rgba(84, 219, 97, 0.08);
+box-sizing: border-box;
+border-radius: 15px;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="margin">
+           <number>12</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="showDose2Name">
+          <property name="geometry">
+           <rect>
+            <x>23</x>
+            <y>180</y>
+            <width>481</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 14pt;
+line-height: 0px;
+color: #2B2D2F;
+background: rgba(84, 219, 97, 0.08);
+border: 2.23px rgba(84, 219, 97, 0.08);
+box-sizing: border-box;
+border-radius: 25px;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="margin">
+           <number>12</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="showDose2Date">
+          <property name="geometry">
+           <rect>
+            <x>182</x>
+            <y>240</y>
+            <width>141</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 10pt;
+line-height: 0px;
+color: #2B2D2F;
+background: rgba(84, 219, 97, 0.08);
+border: 2.23px rgba(84, 219, 97, 0.08);
+box-sizing: border-box;
+border-radius: 15px;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="margin">
+           <number>12</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="showDose2Batch">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>240</y>
+            <width>141</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-family: Quicksand;
+font-style: thin;
+font-weight: 200;
+font-size: 10pt;
+line-height: 0px;
+color: #2B2D2F;
+background: rgba(84, 219, 97, 0.08);
+border: 2.23px rgba(84, 219, 97, 0.08);
+box-sizing: border-box;
+border-radius: 15px;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="margin">
+           <number>12</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="labelDose22_2">
+          <property name="geometry">
+           <rect>
+            <x>33</x>
+            <y>190</y>
             <width>31</width>
             <height>31</height>
            </rect>
@@ -1597,7 +1488,7 @@ border-color: white;
 border: 0px;</string>
           </property>
           <property name="text">
-           <string>Guardian Full Name:</string>
+           <string>Emergency Contact</string>
           </property>
           <property name="scaledContents">
            <bool>false</bool>
@@ -1767,7 +1658,7 @@ color: gray;</string>
            <string/>
           </property>
          </widget>
-         <widget class="QLabel" name="showUserGuardian">
+         <widget class="QLabel" name="showUseEmergency">
           <property name="geometry">
            <rect>
             <x>10</x>

@@ -14,26 +14,26 @@ private:
     QString dateOfBirth;
     QString nhi;
     QString cvn;
-    QString guardian;
+    QString emergencyContact;
     QString accessNumber; // Either default Admin# or User Auth#
     //bool result;
     QString additionalNotes;
     QString vaccineStatus;
-    QString vaccineName;
-    QString batchNumber;
-    QString dateGiven;
-    QString qrCode;
-    QString certificate;
-    QString testResult;
+    QString vaccineName1;
+    QString batchNumber1;
+    QString dateGiven1;
+    QString vaccineName2;
+    QString batchNumber2;
+    QString dateGiven2;
+    QString qrCodeImage;
+    QString certificateImage;
+    QString testResultImage;
 
 public:
     // Constructor
-    explicit classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString guardian, QString additionalNotes,
-                          QString vaccineStatus, QString cvn);
-
-
-    /*bool getLogin ();
-    bool getResult();*/
+    explicit classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString emergencyContact, QString additionalNotes,
+                          QString vaccineStatus, QString cvn, QString vaccineName1, QString batchNumber1, QString dateGiven1, QString vaccineName2, QString batchNumber2, QString dateGiven2,
+                          QString certificateImage = "none.png", QString qrCodeImage = "none.png", QString testResultImage = "none.png");
 
     // Personal Info / Login Getters
     QString getName() const;
@@ -41,15 +41,18 @@ public:
     QString getEmailAddress() const;
     QString getDateOfBirth() const;
     QString getNHI() const;
-    QString getGuardian() const;
+    QString getEmergencyContact() const;
     QString getAdditionalNotes() const;
 
 
     // Vaccine & Covid Info Getters
     QString getVaccineStatus() const;
-    QString getVaccineName() const;
-    QString getBatchNumber() const;
-    QString getDateGiven() const;
+    QString getVaccineName1() const;
+    QString getBatchNumber1() const;
+    QString getDateGiven1() const;
+    QString getVaccineName2() const;
+    QString getBatchNumber2() const;
+    QString getDateGiven2() const;
     QString getCVN() const;
     QString getQRCode() const;
     QString getCertificate() const;
@@ -65,17 +68,20 @@ public:
     void setDateOfBirth(QString dateOfBirth);
     void setNHI(QString nhi);
     void setCVN(QString cvn);
-    void setGuardian(QString guardian);
+    void setEmergencyContact(QString emergencyContact);
     void setAdditionalNotes(QString additionalNotes);
 
     // Vaccine & Covid Info Setters
     void setVaccineStatus(QString vaccineStatus);
-    void setVaccineName(QString vaccineName);
-    void setBatchNumber(QString batchNumber);
-    void setDateGiven(QString dateGiven);
-    void setQRCode(QString qrCode);
-    void setCertificate(QString location);
-    void setTestResult(QString testResult);
+    void setVaccineName1(QString vaccineName1);
+    void setBatchNumber1(QString batchNumber1);
+    void setDateGiven1(QString dateGiven1);
+    void setVaccineName2(QString vaccineName2);
+    void setBatchNumber2(QString batchNumber2);
+    void setDateGiven2(QString dateGiven2);
+    void setQRCode(QString qrCodeImage);
+    void setCertificate(QString certificateImage);
+    void setTestResult(QString testResultImage);
 };
 
 #endif // CLASSCITIZEN_H

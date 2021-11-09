@@ -25,6 +25,7 @@ private:
     QVector<citizenReport*> reportList;
     citizenReport *ptrCurrentReport;
 
+    QString qrCodeImage;
 
     void addNewUser();
     void saveUser();
