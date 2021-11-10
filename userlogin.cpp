@@ -270,16 +270,15 @@ void UserLogin::submitReport()
     QString addSubject = ui->editReportSubject->text();
     QString addDetails = ui->editReportDetails->toPlainText();
 
-    if (addDetails.trimmed() != "")
+    if (addSubject.trimmed() != "" && addDetails.trimmed() != "")
     {
         citizenReport *ptrNewReport = new citizenReport(addName, addContact, addCategory, addSubject, addDetails);
         reportList.push_back(ptrNewReport);
     }
     else
     {
-       QMessageBox messageBox;
-       messageBox.setText("Please enter details...");
-       messageBox.exec();
+        QMessageBox::information(this, "More Details Required",
+                                       "Please ensure the Subject and Message has been entered...");
     }
 
     // Writing to file
