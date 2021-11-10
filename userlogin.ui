@@ -46,6 +46,9 @@
       <property name="text">
        <string/>
       </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="labelLogin">
       <property name="geometry">
@@ -111,10 +114,10 @@ text-align: center;</string>
      <widget class="QLabel" name="imgHome">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>240</y>
+        <x>500</x>
+        <y>160</y>
         <width>571</width>
-        <height>401</height>
+        <height>461</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -127,7 +130,7 @@ text-align: center;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resources.qrc">:/res/MyCOVIDRecord_New/images/loginHome.png</pixmap>
+       <pixmap resource="Resources.qrc">:/res/images/imgHome.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -724,7 +727,7 @@ border-color: black;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/res/images/dose1.png</pixmap>
+          <pixmap resource="Resources.qrc">:/res/images/dose1.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -752,7 +755,7 @@ border-color: black;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/res/images/dose2.png</pixmap>
+          <pixmap resource="Resources.qrc">:/res/images/dose2.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -796,10 +799,23 @@ background-color: white;</string>
           <bool>false</bool>
          </property>
          <property name="styleSheet">
-          <string notr="true">border: 2.3px solid #979797;
+          <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
 box-sizing: border-box;
-border-radius: 33px;
-border-color: black;</string>
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 23px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::Box</enum>
@@ -1092,6 +1108,114 @@ border-radius: 15px;</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pbEnlargeCertificate">
+          <property name="geometry">
+           <rect>
+            <x>410</x>
+            <y>215</y>
+            <width>81</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 801px;
+
+background: rgba(252, 219, 100, 0.44);
+/*border: 2.3px solid #FFB61D;*/
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;
+display: flex;
+align-items: center;
+text-align: center;</string>
+          </property>
+          <property name="text">
+           <string>Enlarge</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pbEnlargeQR">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>410</y>
+            <width>81</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 801px;
+
+background: rgba(252, 219, 100, 0.44);
+/*border: 2.3px solid #FFB61D;*/
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;
+display: flex;
+align-items: center;
+text-align: center;</string>
+          </property>
+          <property name="text">
+           <string>Enlarge</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pbEnlargeResults">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>410</y>
+            <width>81</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 801px;
+
+background: rgba(252, 219, 100, 0.44);
+/*border: 2.3px solid #FFB61D;*/
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;
+display: flex;
+align-items: center;
+text-align: center;</string>
+          </property>
+          <property name="text">
+           <string>Enlarge</string>
           </property>
          </widget>
         </widget>
@@ -1708,6 +1832,126 @@ color: gray;</string>
           </property>
          </widget>
         </widget>
+        <widget class="QLabel" name="showLargeCertificate">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>160</y>
+           <width>521</width>
+           <height>501</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 23px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="showLargeQR">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>160</y>
+           <width>521</width>
+           <height>501</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 23px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="showLargeResults">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>160</y>
+           <width>521</width>
+           <height>501</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">width: 542px;
+height: 77px;
+left: 54px;
+top: 486px;
+background:#FAFCFF;
+border: 2.3px solid #979797;
+box-sizing: border-box;
+border-radius: 20px;
+font-family: Quicksand;
+font-style: normal;
+font-weight: 600;
+font-size: 23px;
+line-height: 33px;
+/* or 143% */
+display: flex;
+align-items: center;
+color: gray;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pbCloseImage">
+         <property name="geometry">
+          <rect>
+           <x>690</x>
+           <y>100</y>
+           <width>81</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgba(252, 219, 100, 0.44);
+border: 2.3px rgba(252, 219, 100, 0.44);
+border-radius: 15px;
+font-size: 14px;
+line-height: 23px;
+color: #2B2D2F;</string>
+         </property>
+         <property name="text">
+          <string>Close Image</string>
+         </property>
+        </widget>
         <zorder>labelHeading</zorder>
         <zorder>pbGetVacc</zorder>
         <zorder>pbGetTest</zorder>
@@ -1715,6 +1959,10 @@ color: gray;</string>
         <zorder>pbLearnMore</zorder>
         <zorder>frameResults3</zorder>
         <zorder>frameInfo</zorder>
+        <zorder>showLargeCertificate</zorder>
+        <zorder>showLargeQR</zorder>
+        <zorder>showLargeResults</zorder>
+        <zorder>pbCloseImage</zorder>
        </widget>
       </widget>
       <widget class="QWidget" name="uiContactUsPage">
@@ -2425,7 +2673,7 @@ color: #2B2D2F;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Resources.qrc">:/res/MyCOVIDRecord_New/images/user.png</pixmap>
+         <pixmap>:/res/MyCOVIDRecord_New/images/user.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>

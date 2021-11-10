@@ -17,9 +17,6 @@ class UserLogin : public QMainWindow
 {
     Q_OBJECT
 
-private slots:
-    void on_pbLogin_clicked();
-
 private:
     Ui::UserLogin *ui;
     QMainWindow *mainWindow;
@@ -29,10 +26,19 @@ private:
     QVector<citizenReport*> reportList;
     citizenReport **ptrNewReport;
 
+    void login();
+
     void pbHome();
+
     void pbMyDetails();
+    void pbShowCertificate();
+    void pbShowQRCode();
+    void pbShowTestResult();
+    void pbClose();
+
     void pbContactUs();
     void submitReport();
+
     void logout();
 
 public:
@@ -40,10 +46,6 @@ public:
     explicit UserLogin(classCitizen* ptrCurrentCitizen, QWidget *parent = nullptr);
     explicit UserLogin(citizenReport*& ptrNewReport, QWidget *parent = nullptr);
     ~UserLogin();
-
-
-    void accessLUI();
-
 };
 
 #endif // USERLOGIN_H

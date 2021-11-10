@@ -1,5 +1,4 @@
 //
-
 #include "userlogin.h"
 #include "ui_userlogin.h"
 #include "mainwindow.h"
@@ -11,25 +10,44 @@
 #include <QString>
 #include <QMessageBox>
 
-//UserMain userLoginDetails;
+
+// Login for Admin/User & User Main Window
+//*********************************************************
+
+// { Overloading constructors begins :
 
 UserLogin::UserLogin(QWidget *parent) : QMainWindow(parent), ui(new Ui::UserLogin)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
 
+    // Hidden UI Elements
     ui->labelConfirmation->hide();
+    ui->showLargeCertificate->hide();
+    ui->showLargeQR->hide();
+    ui->showLargeResults->hide();
+    ui->pbCloseImage->hide();
 
-    connect(ui->pbLogout, &QPushButton::clicked, this, &UserLogin::logout);
+    // Manual Connections
+    connect(ui->pbLogin, &QPushButton::clicked, this, &UserLogin::login);
+
     connect(ui->pbHome, &QPushButton::clicked, this, &UserLogin::pbHome);
+
     connect(ui->pbMyDetails, &QPushButton::clicked, this, &UserLogin::pbMyDetails);
+    connect(ui->pbEnlargeCertificate, &QPushButton::clicked, this, &UserLogin::pbShowCertificate);
+    connect(ui->pbEnlargeQR, &QPushButton::clicked, this, &UserLogin::pbShowQRCode);
+    connect(ui->pbEnlargeResults, &QPushButton::clicked, this, &UserLogin::pbShowTestResult);
+    connect(ui->pbCloseImage, &QPushButton::clicked, this, &UserLogin::pbClose);
+
     connect(ui->pbContactUs, &QPushButton::clicked, this, &UserLogin::pbContactUs);
     connect(ui->pbSendMessage, &QPushButton::clicked, this, &UserLogin::submitReport);
 
+    connect(ui->pbLogout, &QPushButton::clicked, this, &UserLogin::logout);
+
     // Home page display image
-    /*QPixmap pixmap("/res/images/admin.png");
+    QPixmap pixmap(":/res/images/imgHome.png");
     ui->imgHome->setPixmap(pixmap);
-    ui->imgHome->setScaledContents(true);*/
+    ui->imgHome->setScaledContents(true);
 
 }
 
@@ -45,20 +63,15 @@ UserLogin::UserLogin(citizenReport*& ptrNewReport, QWidget *parent) : QMainWindo
     ui->setupUi(this);
     this->ptrNewReport = &ptrNewReport;
 }
+// Overloading constructors ends }
 
-UserLogin::~UserLogin()
-{
-    for (int i=0; i<reportList.size(); i++)
-    {
-        delete reportList.at(i);
-    }
-    reportList.clear();
 
-    delete ui;
-}
+// PROGRAM FUNCTIONS
+//*********************************************************
 
-// Login Function = if default info entered, will direct to Admin Window, else will change to User Index
-void UserLogin::on_pbLogin_clicked()
+
+// Function to login
+void UserLogin::login()
 {
     QString email = ui->editEmail->text();
     QString NHI = ui->editNHI->text();
@@ -107,10 +120,8 @@ void UserLogin::on_pbLogin_clicked()
             QString line = read.readLine();
             QStringList info = line.split(",");
 
-
             QString fileEmail = info.at(2);
             QString fileNHI = info.at(4);
-
 
             if (email == fileEmail && NHI == fileNHI) // User Login Check Loop
             {
@@ -121,6 +132,7 @@ void UserLogin::on_pbLogin_clicked()
                                                           info.at(11), info.at(12), info.at(13), info.at(14), info.at(15), info.at(16), info.at(17));
                     userList.push_back(temp);
 
+                    // Populating labels on My Details page
                     ui->showUserName->setText(temp->getName());
                     ui->showUserNumber->setText(temp->getContactNumber());
                     ui->showUserEmail->setText(temp->getEmailAddress());
@@ -138,18 +150,28 @@ void UserLogin::on_pbLogin_clicked()
                     QPixmap pixmap(temp->getCertificate());
                     ui->showCertificate->setPixmap(pixmap);
                     ui->showCertificate->setScaledContents(true);
+                    ui->showLargeCertificate->setPixmap(pixmap);
+                    ui->showLargeCertificate->setScaledContents(true);
                     QPixmap pixmap1(temp->getQRCode());
                     ui->showQRCode->setPixmap(pixmap1);
                     ui->showQRCode->setScaledContents(true);
+                    ui->showLargeQR->setPixmap(pixmap1);
+                    ui->showLargeQR->setScaledContents(true);
                     QPixmap pixmap2(temp->getTestResult());
                     ui->showTestResults->setPixmap(pixmap2);
                     ui->showTestResults->setScaledContents(true);
+                    ui->showLargeResults->setPixmap(pixmap2);
+                    ui->showLargeResults->setScaledContents(true);
 
+                    // Populating labels on Contact Us page
                     ui->editPreferredName->setText(temp->getName());
                     ui->editPreferredContact->setText(temp->getEmailAddress());
 
-                    ui->stackedWidget->setCurrentIndex(1);
+                    // Populating label in Welcome label
                     ui->labelUserName->setText(info.at(0));
+
+                    // Change page index to User Home Page
+                    ui->stackedWidget->setCurrentIndex(1);
                 }
                 else
                 {
@@ -165,7 +187,6 @@ void UserLogin::on_pbLogin_clicked()
                 ui->labelError->setText("Incorrect NHI Number Entered");
             }
         }
-
         //Flushing file and then closing.
         read.flush();
         inputFile.close();
@@ -174,10 +195,73 @@ void UserLogin::on_pbLogin_clicked()
     {
         ui->labelError->setText("Incorrect Email Entered");
     }
-}
+} /// End of login()
 
-// Report Function
-//*********************************************************
+// Function to display Home Page
+void UserLogin::pbHome()
+{
+    ui->stackedWidget2->setCurrentIndex(0);
+} /// End of pbHome()
+
+
+/// Display User Details Functions
+///*********************************************************
+
+// Function to display User Profile page
+void UserLogin::pbMyDetails()
+{
+    ui->stackedWidget2->setCurrentIndex(1);
+} /// End of pbMyDetails()
+
+// Function to show Enlarged Certificate Image
+void UserLogin::pbShowCertificate()
+{
+    ui->showLargeCertificate->show();
+    ui->pbCloseImage->show();
+} /// End of pbShowCertificate()
+
+// Function to show Enlarged QR Code Image
+void UserLogin::pbShowQRCode()
+{
+    ui->showLargeQR->show();
+    ui->pbCloseImage->show();
+} /// End of pbShowQRCode
+
+// Function to show Enlarged Test Results Image
+void UserLogin::pbShowTestResult()
+{
+    ui->showLargeResults->show();
+    ui->pbCloseImage->show();
+} /// End of pbShowTestResult
+
+
+// Function to close enlarged images
+void UserLogin::pbClose()
+{
+    ui->showLargeCertificate->hide();
+    ui->showLargeQR->hide();
+    ui->showLargeResults->hide();
+    ui->pbCloseImage->hide();
+} /// End of pbClose()
+
+
+/// Report Functions
+///*********************************************************
+
+// Function to display Contact Us page
+void UserLogin::pbContactUs()
+{
+    ui->stackedWidget2->setCurrentIndex(2);
+
+    citizenReport* ptrNewReport = nullptr;
+
+    if (ptrNewReport != nullptr)
+    {
+        reportList.push_back(ptrNewReport);
+    }
+} /// End of pbContactUs();
+
+// Function to submit user's report
 void UserLogin::submitReport()
 {
     QString addName = ui->editPreferredName->text();
@@ -227,10 +311,10 @@ void UserLogin::submitReport()
 
     // Displaying saved message for admin user
     ui->labelConfirmation->show();
-}
+} /// End of submitReport()
 
 
-// Logout Function
+// Function to logout
 void UserLogin::logout()
 {
     UserLogin *login;
@@ -238,27 +322,18 @@ void UserLogin::logout()
     //Displays Login window
     login = new UserLogin(this);
     login->show();
-}
+} // E/nd of logout()
 
-/// Home Menu Button
-void UserLogin::pbHome()
-{
-    ui->stackedWidget2->setCurrentIndex(0);
-}
-/// User Profile Menu Button
-void UserLogin::pbMyDetails()
-{
-    ui->stackedWidget2->setCurrentIndex(1);
-}
-/// Contact Menu Button
-void UserLogin::pbContactUs()
-{
-    ui->stackedWidget2->setCurrentIndex(2);
 
-    citizenReport* ptrNewReport = nullptr;
-
-    if (ptrNewReport != nullptr)
+/// Destructor : End of Program.
+///*********************************************************
+UserLogin::~UserLogin()
+{
+    for (int i=0; i<reportList.size(); i++)
     {
-        reportList.push_back(ptrNewReport);
+        delete reportList.at(i);
     }
+    reportList.clear();
+
+    delete ui;
 }

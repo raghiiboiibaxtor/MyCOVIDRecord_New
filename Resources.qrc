@@ -1,15 +1,16 @@
 <RCC>
     <qresource prefix="/res">
-        <file>../MyCOVIDRecord_New/images/admin.png</file>
-        <file>../MyCOVIDRecord_New/images/attach.png</file>
-        <file>../MyCOVIDRecord_New/images/check.png</file>
-        <file>../MyCOVIDRecord_New/images/close.png</file>
-        <file>../MyCOVIDRecord_New/images/dose1.png</file>
-        <file>../MyCOVIDRecord_New/images/dose2.png</file>
-        <file>../MyCOVIDRecord_New/images/dp.png</file>
-        <file>../MyCOVIDRecord_New/images/loginHome.png</file>
-        <file>../MyCOVIDRecord_New/images/thumbsup.png</file>
-        <file>../MyCOVIDRecord_New/images/user.png</file>
-        <file>../MyCOVIDRecord_New/images/warning.png</file>
+        <file>images/admin.png</file>
+        <file>images/attach.png</file>
+        <file>images/check.png</file>
+        <file>images/close.png</file>
+        <file>images/dose1.png</file>
+        <file>images/dose2.png</file>
+        <file>images/dp.png</file>
+        <file>images/loginHome.png</file>
+        <file>images/thumbsup.png</file>
+        <file>images/user.png</file>
+        <file>images/warning.png</file>
+        <file>images/imgHome.png</file>
     </qresource>
 </RCC>

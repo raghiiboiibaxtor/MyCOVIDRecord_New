@@ -2,7 +2,7 @@
 //
 classCitizen::classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString emergencyContact, QString additionalNotes,
                            QString vaccineStatus, QString cvn, QString vaccineName1, QString batchNumber1, QString dateGiven1, QString vaccineName2, QString batchNumber2, QString dateGiven2,
-                           QString certificateImage, QString qrCodeImage, QString testResultImage)
+                           QString certificateImage, QString qrCodeImage, QString testResultImage) //QString citizenImage,
 {
     this->name = name;
     this->contactNumber = contactNumber;
@@ -12,6 +12,7 @@ classCitizen::classCitizen(QString name, QString contactNumber, QString emailAdd
     this->cvn = cvn;
     this->emergencyContact = emergencyContact;
     this->additionalNotes = additionalNotes;
+    //this->citizenImage = citizenImage;
     this->vaccineStatus = vaccineStatus;
     this->vaccineName1 = vaccineName1;
     this->batchNumber1 = batchNumber1;
@@ -60,6 +61,11 @@ void classCitizen::setAdditionalNotes(QString additionalNotes)
 {
     this->additionalNotes = additionalNotes;
 }
+
+/*void classCitizen::setCitizenImage(QString citizenImage)
+{
+    this->citizenImage = citizenImage;
+}*/
 
 // Vaccine & Covid Info Setters
 void classCitizen::setVaccineStatus(QString vaccineStatus)
@@ -153,6 +159,10 @@ QString classCitizen::getAdditionalNotes() const
     return additionalNotes;
 }
 
+/*QString classCitizen::getCitizenImage() const
+{
+    return citizenImage;
+}*/
 
 // Vaccine & Covid Info Getters
 QString classCitizen::getVaccineStatus() const

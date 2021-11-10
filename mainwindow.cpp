@@ -1,3 +1,4 @@
+//
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "classcitizen.h"
@@ -14,9 +15,8 @@
 #include <QDir>
 
 
-// Main Window
+// Admin Main Window
 //*********************************************************
-
 
 // { Overloading constructors begins :
 
@@ -25,23 +25,35 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
 
-    ui->lblSavedMessage->hide(); // "Saved" pop up message on Add User Page hidden on launch
+    // Hidden UI Elements
+    ui->lblSavedMessage->hide();
 
-    // Manual Connection
+    // Manual Connections
+    connect(ui->pbHome, &QPushButton::clicked, this, &MainWindow::pbHome);
+
     connect(ui->pbAddUser, &QPushButton::clicked, this, &MainWindow::addNewUser);
     connect(ui->pbAddCertificate, &QPushButton::clicked, this, &MainWindow::addCertificateImage);
     connect(ui->pbAddQRCode, &QPushButton::clicked, this, &MainWindow::addQRCodeImage);
     connect(ui->pbAddTestResults, &QPushButton::clicked, this, &MainWindow::addTestResultImage);
     connect(ui->pbSave, &QPushButton::clicked, this, &MainWindow::saveUser);
-    connect(ui->pbLogout, &QPushButton::clicked, this, &MainWindow::logout);
-    connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
-    connect(ui->pbEditUser, &QPushButton::clicked, this, &MainWindow::editUser);
-    connect(ui->pbSaveEdit, &QPushButton::clicked, this, &MainWindow::saveEdit);
+
+    connect(ui->pbAllUsers, &QPushButton::clicked, this, &MainWindow::pbAllUsers);
+    //connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
     connect(ui->listAllUsersNew, &QListWidget::itemClicked, this, &MainWindow::selectUserDetails);
     connect(ui->pbSearch, &QPushButton::clicked, this, &MainWindow::searchUser);
-    connect(ui->pbLoadReports, &QPushButton::clicked, this, &MainWindow::loadReports);
+
+    connect(ui->pbEditUser, &QPushButton::clicked, this, &MainWindow::editUser);
+    connect(ui->pbEditCertificate, &QPushButton::clicked, this, &MainWindow::editCertificateImage);
+    connect(ui->pbEditQRCode, &QPushButton::clicked, this, &MainWindow::editQRCodeImage);
+    connect(ui->pbEditTestResults, &QPushButton::clicked, this, &MainWindow::editTestResultImage);
+    connect(ui->pbSaveEdit, &QPushButton::clicked, this, &MainWindow::saveEdit);
+
+    connect(ui->pbReports, &QPushButton::clicked, this, &MainWindow::pbReports);
+    //connect(ui->pbLoadReports, &QPushButton::clicked, this, &MainWindow::loadReports);
     connect(ui->listAllReports, &QListWidget::itemClicked, this, &MainWindow::selectReportDetails);
     connect(ui->pbSearchCategory, &QPushButton::clicked, this, &MainWindow::searchCategory);
+
+    connect(ui->pbLogout, &QPushButton::clicked, this, &MainWindow::logout);
 
    //Mac Create Directory
    /*QDir pathDir("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files");
@@ -57,6 +69,7 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
     ui->setupUi(this);
     this->ptrNewCitizen = &ptrNewCitizen;
 
+    // File path for Vaccine Certificates
     QDir pathDir("./VaccineCertificates");
     if(!pathDir.exists())
     {
@@ -64,6 +77,7 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
         QDir().mkdir("./VaccineCertificates");
     }
 
+    // File path for QRCodes
     QDir pathDir1("./QRCodes");
     if(!pathDir1.exists())
     {
@@ -71,13 +85,13 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
         QDir().mkdir("./QRCodes");
     }
 
+    // File path for Test Results
     QDir pathDir2("./TestResults");
     if(!pathDir2.exists())
     {
         //create it!
         QDir().mkdir("./TestResults");
     }
-
 }
 
 // Third constructor passing single pointer for classCitizen ptrCurrentCitizen.
@@ -87,36 +101,34 @@ MainWindow::MainWindow(classCitizen* ptrCurrentCitizen, QWidget *parent) : QMain
     this->ptrCurrentCitizen = ptrCurrentCitizen;
 }
 
+// Fourth constructor passing single pointer for citizenReport ptrCurrentReport.
 MainWindow::MainWindow(citizenReport* ptrCurrentReport, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     this->ptrCurrentReport = ptrCurrentReport;
 }
+// Overloading constructors ends }
 
 
-
-// { Class MainWindow methods begin:
-
-// Login Functions
+// PROGRAM FUNCTIONS
 //*********************************************************
 
-// Logout Function
-void MainWindow::logout()
+
+// Function to display Home Page
+void MainWindow::pbHome()
 {
-    UserLogin *login;
-    close();
-    //Displays Login window
-    login = new UserLogin(this);
-    login->show();
-}
+    ui->stackedWidget->setCurrentIndex(0);
+} // End of pbHome()
 
 
-// Admin Functions
-//*********************************************************
+/// Add New User Functions
+///*********************************************************
 
-// Pushing new users information to a vector of pointers
+// Function to display Add User Page & Push new user's information to a vector of pointers
 void MainWindow::addNewUser()
 {
+    ui->stackedWidget->setCurrentIndex(2);
+
     classCitizen* newCitizen = nullptr;
 
     if (newCitizen != nullptr)
@@ -124,7 +136,76 @@ void MainWindow::addNewUser()
          userList.push_back(newCitizen);
          ui->listAllUsersNew->addItem(newCitizen->getName());
     }
-}
+} /// End of addNewUser()
+
+// Function to add Vaccine Certificate Image
+void MainWindow::addCertificateImage()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
+
+    if(fileName != "")
+    {
+        int lastSlash = fileName.lastIndexOf("/");
+
+        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
+
+        QFile::copy(fileName, "./vaccineCertificates/"+shortName);
+
+        QPixmap pixmap("./vaccineCertificates/"+shortName);
+
+        ui->showCertificate->setPixmap(pixmap);
+        ui->showCertificate->setScaledContents(true);
+
+        certificateImage = "./vaccineCertificates/" + shortName;
+    }
+} /// End of addCertificateImage()
+
+// Function to add QR Code Image
+void MainWindow::addQRCodeImage()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
+
+    if(fileName != "")
+    {
+        int lastSlash = fileName.lastIndexOf("/");
+
+        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
+
+        QFile::copy(fileName, "./qrCodes/"+shortName);
+
+        QPixmap pixmap1("./qrCodes/"+shortName);
+
+        ui->showQRCode->setPixmap(pixmap1);
+        ui->showQRCode->setScaledContents(true);
+
+        qrCodeImage = "./qrCodes/" + shortName;
+    }
+} /// End of addQRCodeImage()
+
+// Function to add QR Code
+void MainWindow::addTestResultImage()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
+
+    if(fileName != "")
+    {
+        int lastSlash = fileName.lastIndexOf("/");
+
+        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
+
+        QFile::copy(fileName, "./testResults/"+shortName);
+
+        QPixmap pixmap2("./testResults/"+shortName);
+
+        ui->showTestResults->setPixmap(pixmap2);
+        ui->showTestResults->setScaledContents(true);
+
+        testResultImage = "./testResults/" + shortName;
+    }
+} /// End of addTestResultImage()
 
 // Saving new user information to file
 void MainWindow::saveUser()
@@ -215,81 +296,56 @@ void MainWindow::saveUser()
         // Displaying saved message for admin user
         ui->lblSavedMessage->show();
 
-} // End of saveUser()
+} /// End of saveUser()
 
-// Function to add Vaccine Certificate Image
-void MainWindow::addCertificateImage()
+
+/// Display List of All Users & Info Functions
+///*********************************************************
+
+// Function to display All Users Page
+void MainWindow::pbAllUsers()
 {
-    QString fileName;
-    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
+    ui->stackedWidget->setCurrentIndex(1);
 
-    if(fileName != "")
+    // Open file for reading
+    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
+    QFile inputFile("Citizens.txt");
+    inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
+    QTextStream read(&inputFile);
+
+    // Clearing existing data from vector
+   for (int i = 0; i< userList.size(); i++)
     {
-        int lastSlash = fileName.lastIndexOf("/");
-
-        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
-
-        QFile::copy(fileName, "./vaccineCertificates/"+shortName);
-
-        QPixmap pixmap("./vaccineCertificates/"+shortName);
-
-        ui->showCertificate->setPixmap(pixmap);
-        ui->showCertificate->setScaledContents(true);
-
-        certificateImage = "./vaccineCertificates/" + shortName;
+        delete userList.at(i);
     }
-} // End of addQRCodeImage()
-
-// Function to add QR Code Image
-void MainWindow::addQRCodeImage()
-{
-    QString fileName;
-    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
-
-    if(fileName != "")
-    {
-        int lastSlash = fileName.lastIndexOf("/");
-
-        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
-
-        QFile::copy(fileName, "./qrCodes/"+shortName);
-
-        QPixmap pixmap("./qrCodes/"+shortName);
-
-        ui->showQRCode->setPixmap(pixmap);
-        ui->showQRCode->setScaledContents(true);
-
-        qrCodeImage = "./qrCodes/" + shortName;
-    }
-} // End of addQRCodeImage()
-
-// Function to add QR Code
-void MainWindow::addTestResultImage()
-{
-    QString fileName;
-    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
-
-    if(fileName != "")
-    {
-        int lastSlash = fileName.lastIndexOf("/");
-
-        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
-
-        QFile::copy(fileName, "./testResults/"+shortName);
-
-        QPixmap pixmap("./testResults/"+shortName);
-
-        ui->showTestResults->setPixmap(pixmap);
-        ui->showTestResults->setScaledContents(true);
-
-        testResultImage = "./testResults/" + shortName;
-    }
-} // End of addTestResultImage()
+   // Clearing ui
+    userList.clear();
+    ui->listAllUsersNew->clear();
 
 
+   while(!read.atEnd()) // Start while loop to read file and push info to vec
+   {
+       // Reading from file and seperating info at text.split()
+        QString text = read.readLine();
+        QStringList info = text.split(",");
 
-// Loading Users from Text File on All Users Pages
-void MainWindow::loadUser()
+       // Add read information to ui
+       ui->listAllUsersNew->addItem(info.at(4));
+
+       // Adding file information to vector
+       classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8), info.at(9),
+                                             info.at(10), info.at(11), info.at(12), info.at(13), info.at(14), info.at(15), info.at(16), info.at(17));
+       userList.push_back(temp);
+   } // End while
+
+
+   // Flushing file and then closing.
+   read.flush();
+   inputFile.close();
+} // End of pbAllUsers()
+
+// Function to load users from Citizens.txt to list widget
+/*void MainWindow::loadUser()
 {
     // Open file for reading
     //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/Citizens.txt");
@@ -327,10 +383,10 @@ void MainWindow::loadUser()
    read.flush();
    inputFile.close();
 
-} // End of loadUser()
+} /// End of loadUser() */
 
 
-// Showing User's Data when selected from list widget
+// Function to show user's information when selected from list widget
 void MainWindow::selectUserDetails()
 {
     int index = ui->listAllUsersNew->currentRow();
@@ -348,9 +404,9 @@ void MainWindow::selectUserDetails()
         ui->showUserVaccStatus->setText(selectedUser->getVaccineStatus());
         ui->showUserCVN->setText(selectedUser->getCVN());
     }
-}
+} /// End of selectUserDetails()
 
-// Search for user in AllUsersList
+// Function to search for user in list widget
 void MainWindow::searchUser()
 {
     QString search = ui->labelSearchUser->text();
@@ -382,17 +438,17 @@ void MainWindow::searchUser()
             item->setBackground(Qt::transparent);
         }
     }
-}
+} /// End of searchUser()
 
 
+/// Edit User Functions
+///*********************************************************
 
-// ****************************************************************************************************************  NEW EDIT USER
-// NEW EDIT USER FUNCTIONS
-
-// Editing existing users information
+// Function to edit existing user's information
 void MainWindow:: editUser()
-{
+{  
     int listNum = ui->listAllUsersNew->currentRow();
+    ui->stackedWidget->setCurrentIndex(3);
 
     if (listNum != -1)
     {
@@ -403,7 +459,7 @@ void MainWindow:: editUser()
                 // Changing UI page
                 ui->stackedWidget->setCurrentIndex(3);
 
-                // Populating Labels with existing info
+                // Populating labels with existing info
                 ui->editUserName->setText(ptrCurrentCitizen->getName());
                 ui->editUserPhone->setText(ptrCurrentCitizen->getContactNumber());
                 ui->editUserEmail->setText(ptrCurrentCitizen->getEmailAddress());
@@ -419,24 +475,95 @@ void MainWindow:: editUser()
                 ui->edit2ndDoseName->setText(ptrCurrentCitizen->getVaccineName2());
                 ui->edit2ndDoseBatch->setText(ptrCurrentCitizen->getBatchNumber2());
                 ui->edit2ndDoseDate->setText(ptrCurrentCitizen->getDateGiven2());
-            }
-            else
-            {
-                QMessageBox messageBox;
-                messageBox.setText("ptrCurrentCitizen = nullptr");
-                messageBox.exec();
+                QPixmap pixmap(ptrCurrentCitizen->getCertificate());
+                ui->displayCertificate->setPixmap(pixmap);
+                ui->displayCertificate->setScaledContents(true);
+                QPixmap pixmap1(ptrCurrentCitizen->getQRCode());
+                ui->displayQRCode->setPixmap(pixmap1);
+                ui->displayQRCode->setScaledContents(true);
+                QPixmap pixmap2(ptrCurrentCitizen->getTestResult());
+                ui->displayTestResults->setPixmap(pixmap2);
+                ui->displayTestResults->setScaledContents(true);
             }
     }
     else
     {
         QMessageBox messageBox;
-        messageBox.setText("listNum = -1");
+        messageBox.setText("No citizen selected for editing.");
         messageBox.exec();
     }
-}
+} /// End of editUser()
 
+// Function to add Vaccine Certificate Image
+void MainWindow::editCertificateImage()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
 
-// Saving edited information and re-writing file
+    if(fileName != "")
+    {
+        int lastSlash = fileName.lastIndexOf("/");
+
+        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
+
+        QFile::copy(fileName, "./vaccineCertificates/"+shortName);
+
+        QPixmap pixmap("./vaccineCertificates/"+shortName);
+
+        ui->displayCertificate->setPixmap(pixmap);
+        ui->displayCertificate->setScaledContents(true);
+
+        certificateImage = "./vaccineCertificates/" + shortName;
+    }
+} /// End of addQRCodeImage()
+
+// Function to add QR Code Image
+void MainWindow::editQRCodeImage()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
+
+    if(fileName != "")
+    {
+        int lastSlash = fileName.lastIndexOf("/");
+
+        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
+
+        QFile::copy(fileName, "./qrCodes/"+shortName);
+
+        QPixmap pixmap1("./qrCodes/"+shortName);
+
+        ui->displayQRCode->setPixmap(pixmap1);
+        ui->displayQRCode->setScaledContents(true);
+
+        qrCodeImage = "./qrCodes/" + shortName;
+    }
+} /// End of addQRCodeImage()
+
+// Function to add QR Code
+void MainWindow::editTestResultImage()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
+
+    if(fileName != "")
+    {
+        int lastSlash = fileName.lastIndexOf("/");
+
+        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
+
+        QFile::copy(fileName, "./testResults/"+shortName);
+
+        QPixmap pixmap2("./testResults/"+shortName);
+
+        ui->displayTestResults->setPixmap(pixmap2);
+        ui->displayTestResults->setScaledContents(true);
+
+        testResultImage = "./testResults/" + shortName;
+    }
+} /// End of addTestResultImage()
+
+// Function to save edited information and re-writing file
 void MainWindow::saveEdit()
 {
     // Retrieving edited information from ui
@@ -454,6 +581,14 @@ void MainWindow::saveEdit()
     QString edit2BatchNum = ui->edit2ndDoseBatch->text();
     QString edit2Date = ui->edit2ndDoseDate->text();
 
+    QPixmap pixmap(ptrCurrentCitizen->getCertificate());
+    ui->displayCertificate->setPixmap(pixmap);
+    QPixmap pixmap1(ptrCurrentCitizen->getQRCode());
+    ui->displayQRCode->setPixmap(pixmap1);
+    QPixmap pixmap2(ptrCurrentCitizen->getTestResult());
+    ui->displayTestResults->setPixmap(pixmap2);
+
+
     if(editName.trimmed() != "")
     {
         // Changing the information of the current citizen
@@ -470,6 +605,9 @@ void MainWindow::saveEdit()
         ptrCurrentCitizen->setVaccineName2(edit2VaccName);
         ptrCurrentCitizen->setBatchNumber2(edit2BatchNum);
         ptrCurrentCitizen->setDateGiven2(edit2Date);
+        ptrCurrentCitizen->setCertificate(certificateImage);
+        ptrCurrentCitizen->setQRCode(qrCodeImage);
+        ptrCurrentCitizen->setTestResult(testResultImage);
 
         // Writing edit to file
         /// Windows File Path
@@ -496,7 +634,10 @@ void MainWindow::saveEdit()
                 out << userList.at(i)->getDateGiven1() << ",";
                 out << userList.at(i)->getVaccineName2() << ",";
                 out << userList.at(i)->getBatchNumber2() << ",";
-                out << userList.at(i)->getDateGiven2() << Qt::endl;
+                out << userList.at(i)->getDateGiven2() << ",";
+                out << userList.at(i)->getCertificate() << ",";
+                out << userList.at(i)->getQRCode() << ",";
+                out << userList.at(i)->getTestResult() << Qt::endl;
                }
             // Flushing file and then closing.
             out.flush();
@@ -519,6 +660,9 @@ void MainWindow::saveEdit()
             ui->add2ndDoseName->clear();
             ui->add2ndDoseBatch->clear();
             ui->add2ndDoseDate->clear();
+            ui->showCertificate->clear();
+            ui->showQRCode->clear();
+            ui->showTestResults->clear();
 
             // Changing input from view user labels
             ui->showUserName->setText(ptrCurrentCitizen->getName());
@@ -534,16 +678,54 @@ void MainWindow::saveEdit()
             //Changing page back to All Users
             ui->stackedWidget->setCurrentIndex(1);
     }
-    else
-    {
-        QMessageBox messageBox;
-        messageBox.setText("Please enter all user information.");
-        messageBox.exec();
-    }
-}
+} /// End of saveEdit()
 
-// Loading Reports from Text File
-void MainWindow::loadReports()
+
+/// Citizen Report Functions
+///*********************************************************
+
+// Display Reports Page
+void MainWindow::pbReports()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+
+    // Open file for reading
+    //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/UserReports.txt");
+    QFile inputFile("UserReports.txt");
+    inputFile.open(QIODevice::ReadOnly | QIODevice:: Text);
+    QTextStream read(&inputFile);
+
+    // Clearing existing data from vector
+   for (int i = 0; i< reportList.size(); i++)
+    {
+        delete reportList.at(i);
+    }
+    // Clearing UI
+    reportList.clear();
+    ui->listAllReports->clear();
+
+    while(!read.atEnd())
+    {
+        // Reading from file and seperating info at text.split()
+        QString text = read.readLine();
+        QStringList info = text.split(",");
+
+        // Add read information to ui list widget
+        ui->listAllReports->addItem(info.at(3)); // Display subject in list widget
+
+        // Adding file information to vector
+        citizenReport* temp = new citizenReport(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4));
+        reportList.push_back(temp);
+    } // End while
+
+    // Flushing file and then closing.
+    read.flush();
+    inputFile.close();
+
+} /// End of pbReports()
+
+// Function to load reports from UserReports.txt
+/*void MainWindow::loadReports()
 {
     // Open file for reading
     //QFile inputFile("/Users/raghiiboiibaxtor/Documents/MyCOVIDRecord_New/files/UserReports.txt");
@@ -578,9 +760,9 @@ void MainWindow::loadReports()
     read.flush();
     inputFile.close();
 
-} // End of loadReports()
+} /// End of loadReports()*/
 
-// Show Report Details when selected ******************  FUNCTION IN PROGRESS ********************************
+// Function to show report details when selected
 void MainWindow::selectReportDetails()
 {
     int index = ui->listAllReports->currentRow();
@@ -594,9 +776,10 @@ void MainWindow::selectReportDetails()
             ui->showPreferredName->setText(selectedReport->getName());
             ui->showContactDetails->setText(selectedReport->getContact());
         }
-} // End of selectedReportDetails() ****************** FUNCTION IN PROGRESS ********************************
+} /// End of selectedReportDetails()
 
-void MainWindow::searchCategory() // ******************  FUNCTION NOT STARTED ********************************
+// Function to search report category in list widget
+void MainWindow::searchCategory()
 {
     QString search = ui->cbReportCategory->currentText();
 
@@ -627,48 +810,21 @@ void MainWindow::searchCategory() // ******************  FUNCTION NOT STARTED **
             item->setBackground(Qt::transparent);
         }
     }
-} // End of searchCategory()
+} /// End of searchCategory()
 
-
-// Stacked Widget Button Slots
-//*********************************************************
-
-/// Home Menu Buttons
-void MainWindow::on_pbHome_clicked()
+// Function to logout
+void MainWindow::logout()
 {
-    ui->stackedWidget->setCurrentIndex(0);
-}
+    UserLogin *login;
+    close();
+    //Displays Login window
+    login = new UserLogin(this);
+    login->show();
+} // End of logout()
 
 
-/// Add User Menu Buttons
-void MainWindow::on_pbAllUsers_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-/// All Users Menu Buttons
-void MainWindow::on_pbAddUser_clicked()
-{
-     ui->stackedWidget->setCurrentIndex(2);
-}
-
-/// All Users Menu Buttons
-void MainWindow::on_pbEditUser_clicked()
-{
-     ui->stackedWidget->setCurrentIndex(3);
-}
-
-/// Reports Menu Buttons
-void MainWindow::on_pbReports_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(4);
-}
-
-
-// Destructor : End of Program.
-
-//*********************************************************
-
+/// Destructor : End of Program.
+///*********************************************************
 MainWindow::~MainWindow()
 {
     for (int i=0; i<userList.size(); i++)
@@ -679,4 +835,3 @@ MainWindow::~MainWindow()
 
     delete ui;
 }
-

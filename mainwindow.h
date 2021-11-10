@@ -29,20 +29,31 @@ private:
     QString qrCodeImage;
     QString testResultImage;
 
+    void pbHome();
+
     void addNewUser();
     void addCertificateImage();
     void addQRCodeImage();
     void addTestResultImage();
     void saveUser();
-    void logout();
-    void loadUser();
-    void editUser();
-    void saveEdit();
+
+    void pbAllUsers();
+    //void loadUser();
     void selectUserDetails();
     void searchUser();
-    void loadReports();
+
+    void editUser();
+    void editCertificateImage();
+    void editQRCodeImage();
+    void editTestResultImage();
+    void saveEdit();
+
+    void pbReports();
+    //void loadReports();
     void selectReportDetails();
     void searchCategory();
+
+    void logout();  
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
@@ -51,14 +62,6 @@ public:
     explicit MainWindow(citizenReport* ptrCurrentReport, QWidget *parent = nullptr);
     //explicit MainWindow(classCitizen* ptrReportDetails, QWidget *parent = nullptr);
     ~MainWindow();
-
-
-private slots:
-    void on_pbAllUsers_clicked();
-    void on_pbAddUser_clicked();
-    void on_pbHome_clicked();
-    void on_pbReports_clicked();
-    void on_pbEditUser_clicked();
 };
 #endif // MAINWINDOW_H
 
