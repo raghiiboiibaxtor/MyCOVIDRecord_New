@@ -24,7 +24,7 @@ private:
     QString vaccineName2;
     QString batchNumber2;
     QString dateGiven2;
-    //QString citizenImage;
+    QString citizenImage;
     QString qrCodeImage;
     QString certificateImage;
     QString testResultImage;
@@ -33,7 +33,7 @@ public:
     // Constructor
     explicit classCitizen(QString name, QString contactNumber, QString emailAddress, QString dateOfBirth, QString nhi, QString emergencyContact, QString additionalNotes,
                           QString vaccineStatus, QString cvn, QString vaccineName1, QString batchNumber1, QString dateGiven1, QString vaccineName2, QString batchNumber2, QString dateGiven2,
-                          QString certificateImage = "none.png", QString qrCodeImage = "none.png", QString testResultImage = "none.png"); //QString citizenImage,
+                          QString certificateImage = "none.png", QString qrCodeImage = "none.png", QString testResultImage = "none.png", QString citizenImage = "none.png");
 
     // Personal Info / Login Getters
     QString getName() const;
@@ -43,7 +43,7 @@ public:
     QString getNHI() const;
     QString getEmergencyContact() const;
     QString getAdditionalNotes() const;
-    //QString getCitizenImage() const;
+    QString getCitizenImage() const;
 
 
     // Vaccine & Covid Info Getters
@@ -69,7 +69,7 @@ public:
     void setCVN(QString cvn);
     void setEmergencyContact(QString emergencyContact);
     void setAdditionalNotes(QString additionalNotes);
-    //void setCitizenImage(QString citizenImage);
+    void setCitizenImage(QString citizenImage);
 
     // Vaccine & Covid Info Setters
     void setVaccineStatus(QString vaccineStatus);

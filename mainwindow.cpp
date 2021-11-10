@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->pbAddCertificate, &QPushButton::clicked, this, &MainWindow::addCertificateImage);
     connect(ui->pbAddQRCode, &QPushButton::clicked, this, &MainWindow::addQRCodeImage);
     connect(ui->pbAddTestResults, &QPushButton::clicked, this, &MainWindow::addTestResultImage);
+    connect(ui->pbAddUserPicture, &QPushButton::clicked, this, &MainWindow::addUserPicture);
     connect(ui->pbSave, &QPushButton::clicked, this, &MainWindow::saveUser);
 
     connect(ui->pbAllUsers, &QPushButton::clicked, this, &MainWindow::pbAllUsers);
@@ -46,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->pbEditCertificate, &QPushButton::clicked, this, &MainWindow::editCertificateImage);
     connect(ui->pbEditQRCode, &QPushButton::clicked, this, &MainWindow::editQRCodeImage);
     connect(ui->pbEditTestResults, &QPushButton::clicked, this, &MainWindow::editTestResultImage);
+    connect(ui->pbEditUserPicture, &QPushButton::clicked, this, &MainWindow::editUserPicture);
     connect(ui->pbSaveEdit, &QPushButton::clicked, this, &MainWindow::saveEdit);
 
     connect(ui->pbReports, &QPushButton::clicked, this, &MainWindow::pbReports);
@@ -91,6 +93,14 @@ MainWindow::MainWindow(classCitizen*& ptrNewCitizen, QWidget *parent) : QMainWin
     {
         //create it!
         QDir().mkdir("./TestResults");
+    }
+
+    // File path for User Profile Pictures
+    QDir pathDir3("./UserProfilePictures");
+    if(!pathDir3.exists())
+    {
+        //create it!
+        QDir().mkdir("./UserProfilePictures");
     }
 }
 
@@ -207,6 +217,29 @@ void MainWindow::addTestResultImage()
     }
 } /// End of addTestResultImage()
 
+// Function to add QR Code
+void MainWindow::addUserPicture()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
+
+    if(fileName != "")
+    {
+        int lastSlash = fileName.lastIndexOf("/");
+
+        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
+
+        QFile::copy(fileName, "./userProfilePictures/"+shortName);
+
+        QPixmap pixmap3("./userProfilePictures/"+shortName);
+
+        ui->showUserPicture->setPixmap(pixmap3);
+        ui->showUserPicture->setScaledContents(true);
+
+        userProfilePicture = "./userProfilePictures/" + shortName;
+    }
+} /// End of addTestResultImage()
+
 // Saving new user information to file
 void MainWindow::saveUser()
 {
@@ -229,7 +262,7 @@ void MainWindow::saveUser()
     if (addName.trimmed() != "" && addNhi.trimmed() != "" && addEmail.trimmed() != "")
     {
         classCitizen *ptrNewCitizen = new classCitizen(addName, addPhone, addEmail, addDob, addNhi, addEmergencyContact, addNotes, addVaccStatus, addCvn,
-                                                       add1VaccName, add1BatchNum, add1Date, add2VaccName, add2BatchNum, add2Date, certificateImage, qrCodeImage, testResultImage);
+                                                       add1VaccName, add1BatchNum, add1Date, add2VaccName, add2BatchNum, add2Date, certificateImage, qrCodeImage, testResultImage, userProfilePicture);
         userList.push_back(ptrNewCitizen);
         ui->listAllUsersNew->addItem(ptrNewCitizen->getNHI()); // Displays added user name to list widget on "all users page"
 
@@ -261,7 +294,8 @@ void MainWindow::saveUser()
                 out << userList.at(i)->getDateGiven2() << ",";
                 out << userList.at(i)->getCertificate() << ",";
                 out << userList.at(i)->getQRCode() << ",";
-                out << userList.at(i)->getTestResult() << Qt::endl;
+                out << userList.at(i)->getTestResult() << ",";
+                out << userList.at(i)->getCitizenImage() << Qt::endl;
                }
             // Flushing file and then closing.
             out.flush();
@@ -285,6 +319,7 @@ void MainWindow::saveUser()
             ui->showCertificate->clear();
             ui->showQRCode->clear();
             ui->showTestResults->clear();
+            ui->showUserPicture->clear();
 
             // Displaying saved message for admin user
             ui->lblSavedMessage->show();
@@ -294,8 +329,6 @@ void MainWindow::saveUser()
        QMessageBox::information(this, "More Details Required",
                                       "Please ensure the Name, Email, and National Health Index has been entered...");
     }
-
-
 
 } /// End of saveUser()
 
@@ -335,7 +368,7 @@ void MainWindow::pbAllUsers()
 
        // Adding file information to vector
        classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8), info.at(9),
-                                             info.at(10), info.at(11), info.at(12), info.at(13), info.at(14), info.at(15), info.at(16), info.at(17));
+                                             info.at(10), info.at(11), info.at(12), info.at(13), info.at(14), info.at(15), info.at(16), info.at(17), info.at(18));
        userList.push_back(temp);
    } // End while
 
@@ -362,6 +395,9 @@ void MainWindow::selectUserDetails()
         ui->showUserNotes->setText(selectedUser->getAdditionalNotes());
         ui->showUserVaccStatus->setText(selectedUser->getVaccineStatus());
         ui->showUserCVN->setText(selectedUser->getCVN());
+        QPixmap pixmap3(selectedUser->getCitizenImage());
+        ui->showUserPicture2->setPixmap(pixmap3);
+        ui->showUserPicture2->setScaledContents(true);
     }    
 } /// End of selectUserDetails()
 
@@ -388,10 +424,10 @@ void MainWindow::searchUser()
             item->setBackground(Qt::cyan);
         }
     }
-    else
+    else if (search == "")
     {
         QMessageBox::information(this, "Invalid Search",
-                                 "No matching user found...");
+                                       "Please type the National Health Index in the search bar...");
         // Loop to remove highlight
         for (int i = 0; i < ui->listAllUsersNew->count(); i++)
         {
@@ -445,6 +481,9 @@ void MainWindow:: editUser()
                 QPixmap pixmap2(ptrCurrentCitizen->getTestResult());
                 ui->displayTestResults->setPixmap(pixmap2);
                 ui->displayTestResults->setScaledContents(true);
+                QPixmap pixmap3(ptrCurrentCitizen->getCitizenImage());
+                ui->displayUserPicture->setPixmap(pixmap3);
+                ui->displayUserPicture->setScaledContents(true);
             }
     }
     else
@@ -523,6 +562,29 @@ void MainWindow::editTestResultImage()
     }
 } /// End of addTestResultImage()
 
+// Function to add QR Code
+void MainWindow::editUserPicture()
+{
+    QString fileName;
+    fileName = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image File(*.png *.jpg .*jpeg)");
+
+    if(fileName != "")
+    {
+        int lastSlash = fileName.lastIndexOf("/");
+
+        QString shortName = fileName.right(fileName.size() - lastSlash - 1);
+
+        QFile::copy(fileName, "./userProfilePictures/"+shortName);
+
+        QPixmap pixmap2("./userProfilePictures/"+shortName);
+
+        ui->displayUserPicture->setPixmap(pixmap2);
+        ui->displayUserPicture->setScaledContents(true);
+
+        userProfilePicture = "./userProfilePictures/" + shortName;
+    }
+} /// End of addTestResultImage()
+
 // Function to save edited information and re-writing file
 void MainWindow::saveEdit()
 {
@@ -547,6 +609,8 @@ void MainWindow::saveEdit()
     ui->displayQRCode->setPixmap(pixmap1);
     QPixmap pixmap2(ptrCurrentCitizen->getTestResult());
     ui->displayTestResults->setPixmap(pixmap2);
+    QPixmap pixmap3(ptrCurrentCitizen->getCitizenImage());
+    ui->displayUserPicture->setPixmap(pixmap2);
 
 
     if(editName.trimmed() != "" && editEmail.trimmed() != "")
@@ -568,6 +632,7 @@ void MainWindow::saveEdit()
         ptrCurrentCitizen->setCertificate(certificateImage);
         ptrCurrentCitizen->setQRCode(qrCodeImage);
         ptrCurrentCitizen->setTestResult(testResultImage);
+        ptrCurrentCitizen->setCitizenImage(userProfilePicture);
 
         // Writing edit to file
         /// Windows File Path
@@ -597,7 +662,8 @@ void MainWindow::saveEdit()
                 out << userList.at(i)->getDateGiven2() << ",";
                 out << userList.at(i)->getCertificate() << ",";
                 out << userList.at(i)->getQRCode() << ",";
-                out << userList.at(i)->getTestResult() << Qt::endl;
+                out << userList.at(i)->getTestResult() << ",";
+                out << userList.at(i)->getCitizenImage() << Qt::endl;
                }
             // Flushing file and then closing.
             out.flush();
@@ -623,6 +689,7 @@ void MainWindow::saveEdit()
             ui->showCertificate->clear();
             ui->showQRCode->clear();
             ui->showTestResults->clear();
+            ui->showUserPicture->clear();
 
             // Changing input from view user labels
             ui->showUserName->setText(ptrCurrentCitizen->getName());
@@ -634,6 +701,9 @@ void MainWindow::saveEdit()
             ui->showUserNotes->setText(ptrCurrentCitizen->getAdditionalNotes());
             ui->showUserVaccStatus->setText(ptrCurrentCitizen->getVaccineStatus());
             ui->showUserCVN->setText(ptrCurrentCitizen->getCVN());
+            QPixmap pixmap3(ptrCurrentCitizen->getCitizenImage());
+            ui->displayUserPicture->setPixmap(pixmap3);
+            ui->displayUserPicture->setScaledContents(true);
 
             //Changing page back to All Users
             ui->stackedWidget->setCurrentIndex(1);

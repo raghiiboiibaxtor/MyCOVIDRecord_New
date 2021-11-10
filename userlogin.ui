@@ -2650,7 +2650,7 @@ color: #2B2D2F;</string>
          <string>Logout</string>
         </property>
        </widget>
-       <widget class="QLabel" name="labelAdminPicture">
+       <widget class="QLabel" name="showUserPicture">
         <property name="geometry">
          <rect>
           <x>20</x>

@@ -28,6 +28,7 @@ private:
     QString certificateImage;
     QString qrCodeImage;
     QString testResultImage;
+    QString userProfilePicture;
 
     void pbHome();
 
@@ -35,10 +36,10 @@ private:
     void addCertificateImage();
     void addQRCodeImage();
     void addTestResultImage();
+    void addUserPicture();
     void saveUser();
 
     void pbAllUsers();
-    //void loadUser();
     void selectUserDetails();
     void searchUser();
 
@@ -46,10 +47,10 @@ private:
     void editCertificateImage();
     void editQRCodeImage();
     void editTestResultImage();
+    void editUserPicture();
     void saveEdit();
 
     void pbReports();
-    //void loadReports();
     void selectReportDetails();
     void searchCategory();
 

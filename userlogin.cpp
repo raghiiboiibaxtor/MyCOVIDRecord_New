@@ -129,7 +129,7 @@ void UserLogin::login()
                 {
                     // Adding file information to vector
                     classCitizen* temp = new classCitizen(info.at(0), info.at(1), info.at(2), info.at(3), info.at(4), info.at(5), info.at(6), info.at(7), info.at(8), info.at(9), info.at(10),
-                                                          info.at(11), info.at(12), info.at(13), info.at(14), info.at(15), info.at(16), info.at(17));
+                                                          info.at(11), info.at(12), info.at(13), info.at(14), info.at(15), info.at(16), info.at(17), info.at(18));
                     userList.push_back(temp);
 
                     // Populating labels on My Details page
@@ -167,8 +167,11 @@ void UserLogin::login()
                     ui->editPreferredName->setText(temp->getName());
                     ui->editPreferredContact->setText(temp->getEmailAddress());
 
-                    // Populating label in Welcome label
+                    // Populating labels in Welcome label
                     ui->labelUserName->setText(info.at(0));
+                    QPixmap pixmap3(temp->getCitizenImage());
+                    ui->showUserPicture->setPixmap(pixmap3);
+                    ui->showUserPicture->setScaledContents(true);
 
                     // Change page index to User Home Page
                     ui->stackedWidget->setCurrentIndex(1);
