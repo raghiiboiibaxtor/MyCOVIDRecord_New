@@ -39,7 +39,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->pbSave, &QPushButton::clicked, this, &MainWindow::saveUser);
 
     connect(ui->pbAllUsers, &QPushButton::clicked, this, &MainWindow::pbAllUsers);
-    //connect(ui->pbLoadUsers, &QPushButton::clicked, this, &MainWindow::loadUser);
     connect(ui->listAllUsersNew, &QListWidget::itemClicked, this, &MainWindow::selectUserDetails);
     connect(ui->pbSearch, &QPushButton::clicked, this, &MainWindow::searchUser);
 
@@ -51,7 +50,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->pbSaveEdit, &QPushButton::clicked, this, &MainWindow::saveEdit);
 
     connect(ui->pbReports, &QPushButton::clicked, this, &MainWindow::pbReports);
-    //connect(ui->pbLoadReports, &QPushButton::clicked, this, &MainWindow::loadReports);
     connect(ui->listAllReports, &QListWidget::itemClicked, this, &MainWindow::selectReportDetails);
     connect(ui->pbSearchCategory, &QPushButton::clicked, this, &MainWindow::searchCategory);
 
